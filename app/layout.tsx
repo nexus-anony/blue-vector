@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Baskerville, Noto_Sans_JP } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Shell from "@/app/components/Shell";
 import "./globals.css";
 
@@ -24,7 +26,7 @@ const jp = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bluevector.vercel.app"),
+  metadataBase: new URL("https://blue-vector.vercel.app"),
   title: {
     default: "BLUE VECTOR | Defense & Security",
     template: "%s | BLUE VECTOR",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
     title: "BLUE VECTOR | Defense & Security Consulting",
     description:
       "Defense and security consulting and strategic advisory. Supporting defense innovation, policy strategy, and ecosystem development.",
-    url: "https://bluevector.vercel.app",
+    url: "https://blue-vector.vercel.app",
     siteName: "Blue Vector",
     locale: "en_US",
     type: "website",
@@ -76,6 +78,8 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-white text-[var(--color-ink)]">
         <Shell>{children}</Shell>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
