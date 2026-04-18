@@ -8,9 +8,11 @@ import BrandMark from "./BrandMark";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "./LanguageContext";
+import { useTheme } from "./ThemeContext";
 
 export default function Header() {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -51,9 +53,15 @@ export default function Header() {
     path === "/" ? pathname === "/" : pathname.startsWith(path);
 
   const transformClass = `transition-transform duration-150 ease-out will-change-transform ${hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"}`;
-  const shellClass = mobileOpen
-    ? `fixed inset-x-0 top-0 z-40 bg-[var(--surface)]/95 backdrop-blur-[2px] border-b border-[var(--rule)] ${transformClass}`
-    : `fixed inset-x-0 top-0 z-40 bg-transparent border-b border-[var(--rule)] ${transformClass}`;
+  // Home page in light mode has a fixed navy hero, so a transparent header
+  // would be unreadable. Force a solid surface background in that case so the
+  // navbar looks the same as on other light-mode pages.
+  const forceSolid = pathname === "/" && theme === "light";
+  const bgClass =
+    mobileOpen || forceSolid
+      ? "bg-[var(--surface)]/95 backdrop-blur-[2px]"
+      : "bg-transparent";
+  const shellClass = `fixed inset-x-0 top-0 z-40 ${bgClass} border-b border-[var(--rule)] ${transformClass}`;
 
   return (
     <header className={shellClass}>
