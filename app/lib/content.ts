@@ -15,6 +15,7 @@ type TeamMember = {
   role: string;
   bio: string;
   initials: string;
+  photo: string;
 };
 
 type NewsItem = {
@@ -224,6 +225,7 @@ export const content: Record<Lang, Dict> = {
           role: "Co-Founder · Defense Advisory",
           bio: "Former Lieutenant Colonel in the Japan Air Self-Defense Force. After graduating from the National Defense Academy, Kota served on the front lines of fighter units for approximately ten years. He later worked in the Japan–U.S. Security Treaty Division of the Ministry of Foreign Affairs, was involved in the first post-war exemption from the Three Principles on Arms Exports, and initiated the first Japan–U.S. cyber dialogue on security. He participated in the drafting of the Japan–U.S. Defense Guidelines within the Ministry of Defense before founding a company supporting defense startups and emerging-technology commercialization.",
           initials: "KU",
+          photo: "/kota-uemura.png",
         },
         {
           id: "maehara",
@@ -231,6 +233,7 @@ export const content: Record<Lang, Dict> = {
           role: "Co-Founder · Managing Partner",
           bio: "Government Relations Officer at Solafune Co., Ltd. and Managing Partner of the Asia Defense Innovation Fund. A graduate of the Faculty of Policy Management at Keio University, Tsuyoshi experienced the ravages of war in Kyiv in 2022. He has engaged in negotiations with international organizations and governments across Japan, Africa, and Asia. In 2024 he assisted a former Senior Advisor to the Prime Minister on the establishment of a family office managing capital from Japanese, U.S., and South Korean conglomerates. In 2025 he founded the Asia Defense Innovation Fund, Japan's first private defense fund, and serves as Managing Partner.",
           initials: "TM",
+          photo: "/tsuyoshi-maehara.png",
         },
       ],
     },
@@ -424,6 +427,7 @@ export const content: Record<Lang, Dict> = {
           role: "共同創業者 ／ 防衛アドバイザリー",
           bio: "元航空自衛隊2等空佐。防衛大学校を卒業後、戦闘機部隊等の第一線で10年間勤務。その後、指揮幕僚課程を修了し、外務省日米安全保障条約課にて、戦後初の武器輸出三原則例外化措置（F-35製造国内企業参画）に従事したほか、米国務省IVLP（宇宙・サイバー）に招聘され、新領域の政策調査を調査、日米政府間のサイバー対話（安全保障）を初企画。航空幕僚監部では、F-35ステルス機の新規部隊建設にも従事。2015年に自衛隊退職後、GE・デロイトでの勤務経験を重ね、防衛スタートアップ支援会社を設立。AI等新興技術の防衛事業化に取り組んでいる。",
           initials: "KU",
+          photo: "/kota-uemura.png",
         },
         {
           id: "maehara",
@@ -431,6 +435,7 @@ export const content: Record<Lang, Dict> = {
           role: "共同創業者 ／ 代表パートナー",
           bio: "株式会社Solafune 政府渉外役／Asia Defense Innovation Fund 代表パートナー。慶應義塾大学総合政策学部卒業。2022年、ウクライナのキーウにて戦禍を経験。帰国後の2023年より、株式会社 Solafune の政府渉外役として、国際機関をはじめ、国内およびアフリカ・アジア地域を中心に各国政府・関連省庁との交渉業務に従事。2024年、日米韓の財閥系資本を運用するファミリーオフィスの日本拠点設立において、元内閣総理大臣補佐官（国家安全保障に関する重要政策担当）の補佐役として参画。2025年に日本初の民間防衛ファンド「Asia Defense Innovation Fund」を設立、代表パートナーに就任。一貫して民間サイドから日本の外交・安全保障・防衛領域の課題に取り組んでいる。",
           initials: "TM",
+          photo: "/tsuyoshi-maehara.png",
         },
       ],
     },

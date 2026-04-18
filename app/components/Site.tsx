@@ -450,17 +450,36 @@ function Services({ t }: { t: Dict["services"] }) {
   );
 }
 
-function Avatar({ initials }: { initials: string }) {
+function Avatar({
+  name,
+  photo,
+  initials,
+}: {
+  name: string;
+  photo?: string;
+  initials: string;
+}) {
   return (
-    <div className="aspect-[4/5] bg-[var(--color-navy-900)] text-white relative overflow-hidden flex items-center justify-center">
-      <div className="absolute inset-0 bv-diag opacity-40" aria-hidden />
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent" />
-      <div
-        className="font-display text-[80px] md:text-[120px] font-bold text-white/90 tracking-tight"
-        aria-hidden
-      >
-        {initials}
-      </div>
+    <div className="aspect-[4/5] bg-[var(--color-stone)] text-[var(--color-navy-900)] relative overflow-hidden flex items-center justify-center border border-[var(--color-rule)]">
+      {photo ? (
+        <Image
+          src={photo}
+          alt={name}
+          fill
+          sizes="(min-width: 768px) 40vw, 100vw"
+          className="object-cover object-top grayscale"
+        />
+      ) : (
+        <>
+          <div className="absolute inset-0 bv-diag opacity-30" aria-hidden />
+          <div
+            className="font-display text-[80px] md:text-[120px] font-bold tracking-tight"
+            aria-hidden
+          >
+            {initials}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -479,19 +498,26 @@ function Team({ t }: { t: Dict["team"] }) {
         />
         <div className="mt-14 grid md:grid-cols-2 gap-10 md:gap-14 border-t border-[var(--color-rule)] pt-12">
           {t.members.map((m) => (
-            <article key={m.id}>
-              <Avatar initials={m.initials} />
-              <div className="mt-6 flex items-baseline justify-between gap-4 border-b border-[var(--color-rule)] pb-4">
-                <h3 className="font-display text-[22px] md:text-[26px] font-bold text-[var(--color-navy-900)]">
+            <article
+              key={m.id}
+              className="flex flex-col sm:flex-row gap-6 sm:gap-8"
+            >
+              <div className="w-36 sm:w-40 lg:w-44 shrink-0">
+                <Avatar name={m.name} photo={m.photo} initials={m.initials} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-display text-[20px] md:text-[24px] font-bold text-[var(--color-navy-900)] leading-tight">
                   {m.name}
                 </h3>
-                <div className="text-[11px] tracking-[0.18em] uppercase text-[var(--color-navy-700)] font-semibold text-right shrink-0">
+                <div className="mt-2 text-[10px] tracking-[0.22em] uppercase text-[var(--color-navy-700)] font-semibold">
                   {m.role}
                 </div>
+                <div className="mt-4 pt-4 border-t border-[var(--color-rule)]">
+                  <p className="text-[13px] md:text-[14px] leading-[1.75] text-[var(--color-ink-soft)]">
+                    {m.bio}
+                  </p>
+                </div>
               </div>
-              <p className="mt-5 text-[14px] md:text-[15px] leading-[1.8] text-[var(--color-ink-soft)]">
-                {m.bio}
-              </p>
             </article>
           ))}
         </div>
