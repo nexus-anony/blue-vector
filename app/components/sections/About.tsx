@@ -2,49 +2,59 @@
 
 import SectionHeading from "../SectionHeading";
 import { useLanguage } from "../LanguageContext";
+import { content } from "@/app/lib/content";
 
 export default function About() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const about = t.about;
+  const altEyebrow = content[lang === "en" ? "jp" : "en"].about.eyebrow;
   const pillars = [
     { label: about.visionLabel, text: about.vision, n: "I" },
     { label: about.missionLabel, text: about.mission, n: "II" },
     { label: about.valuesLabel, text: about.values, n: "III" },
   ];
   return (
-    <section className="pt-10 md:pt-14 lg:pt-16 pb-20 md:pb-28 lg:pb-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <SectionHeading
-          eyebrow={about.eyebrow}
-          heading={about.heading}
-          lede={about.lede}
-        />
-        <div className="mt-16 grid md:grid-cols-3 gap-10 md:gap-12 border-t border-[var(--color-rule)] pt-12">
-          {pillars.map((p) => (
-            <div key={p.label}>
-              <div className="flex items-baseline gap-4 mb-4">
-                <span className="font-display text-[var(--color-navy-600)] text-lg">
-                  {p.n}
-                </span>
-                <span className="eyebrow">{p.label}</span>
+    <section className="relative min-h-screen pt-28 md:pt-36 lg:pt-44 pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
+      <div className="absolute inset-0 bv-diag opacity-60 pointer-events-none" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid grid-cols-12">
+          <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+            <SectionHeading
+              eyebrow={about.eyebrow}
+              eyebrowAlt={altEyebrow}
+              heading={about.heading}
+              lede={about.lede}
+            />
+            <div className="mt-16 md:mt-20 grid md:grid-cols-3 gap-0 md:gap-px bg-[var(--rule)] border-y border-[var(--rule)]">
+              {pillars.map((p) => (
+                <div key={p.label} className="bg-[var(--surface)] p-6 md:p-8">
+                  <div className="flex items-baseline gap-3 mb-5">
+                    <span className="font-display text-[var(--ink-faint)] text-xl">{p.n}</span>
+                    <span className="text-[10px] tracking-[0.22em] uppercase font-medium text-[var(--ink-soft)]">
+                      {p.label}
+                    </span>
+                  </div>
+                  <p className="font-display text-[14px] md:text-[15px] leading-[1.6] text-[var(--ink)]">
+                    {p.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-12 md:mt-14 pt-8 border-t border-[var(--rule)] grid md:grid-cols-3 gap-8">
+              <div>
+                <div className="text-[10px] tracking-[0.22em] uppercase font-medium text-[var(--ink-soft)] mb-2">
+                  {about.establishedLabel}
+                </div>
+                <div className="text-[13px] text-[var(--ink)]">{about.established}</div>
               </div>
-              <p className="font-display text-[20px] md:text-[22px] leading-[1.45] text-[var(--color-navy-900)]">
-                {p.text}
-              </p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-14 border-t border-[var(--color-rule)] pt-8 grid md:grid-cols-3 gap-6">
-          <div>
-            <div className="eyebrow mb-2">{about.establishedLabel}</div>
-            <div className="text-[15px] text-[var(--color-ink)]">
-              {about.established}
-            </div>
-          </div>
-          <div className="md:col-span-2">
-            <div className="eyebrow mb-2">{about.clientsLabel}</div>
-            <div className="text-[15px] text-[var(--color-ink)] leading-relaxed">
-              {about.clients}
+              <div className="md:col-span-2">
+                <div className="text-[10px] tracking-[0.22em] uppercase font-medium text-[var(--ink-soft)] mb-2">
+                  {about.clientsLabel}
+                </div>
+                <div className="text-[13px] text-[var(--ink-soft)] leading-relaxed">
+                  {about.clients}
+                </div>
+              </div>
             </div>
           </div>
         </div>

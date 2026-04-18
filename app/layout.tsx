@@ -76,7 +76,7 @@ export default function RootLayout({
       lang="en"
       className={`${sans.variable} ${serif.variable} ${jp.variable} h-full`}
     >
-      <body className="min-h-full bg-white text-[var(--color-ink)]">
+      <body className="min-h-full bg-[var(--surface)] text-[var(--ink)]">
         <Shell>{children}</Shell>
         <Analytics />
         <SpeedInsights />

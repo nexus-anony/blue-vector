@@ -12,7 +12,7 @@ export default function LanguageToggle() {
       aria-label="Language"
     >
       <Option code="en" label="EN" lang={lang} setLang={setLang} />
-      <span className="text-[var(--color-rule)]">/</span>
+      <span className="text-[var(--ink-faint)]">/</span>
       <Option code="jp" label="JP" lang={lang} setLang={setLang} />
     </div>
   );
@@ -30,26 +30,13 @@ function Option({
   setLang: (l: Lang) => void;
 }) {
   const active = lang === code;
-  if (active) {
-    return (
-      <button
-        type="button"
-        onClick={() => setLang(code)}
-        className="px-2 py-1 cursor-pointer transition-colors text-[var(--color-navy-900)]"
-        role="radio"
-        aria-checked="true"
-      >
-        {label}
-      </button>
-    );
-  }
   return (
     <button
       type="button"
       onClick={() => setLang(code)}
-      className="px-2 py-1 cursor-pointer transition-colors text-[var(--color-ink-muted)] hover:text-[var(--color-ink)]"
+      className={`px-2 py-1 cursor-pointer transition-colors ${active ? "text-[var(--ink)]" : "text-[var(--ink-muted)] hover:text-[var(--ink)]"}`}
       role="radio"
-      aria-checked="false"
+      aria-checked={active ? "true" : "false"}
     >
       {label}
     </button>

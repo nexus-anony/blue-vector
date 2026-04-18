@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export default function BrandMark({
   brand,
-  onDark = false,
 }: {
   brand: { name: string; subtitle: string };
   onDark?: boolean;
@@ -17,22 +16,14 @@ export default function BrandMark({
         alt={`${brand.name} logo`}
         width={32}
         height={32}
-        priority
+        preload
         className="h-8 w-8 object-contain"
       />
       <div className="leading-tight">
-        <div
-          className={`text-[13px] tracking-[0.28em] font-bold ${
-            onDark ? "text-white" : "text-[var(--color-navy-900)]"
-          }`}
-        >
+        <div className="text-[13px] tracking-[0.28em] font-bold text-[var(--ink)]">
           {brand.name}
         </div>
-        <div
-          className={`text-[9px] tracking-[0.32em] uppercase mt-0.5 ${
-            onDark ? "text-white/60" : "text-[var(--color-ink-muted)]"
-          }`}
-        >
+        <div className="text-[9px] tracking-[0.32em] uppercase mt-0.5 text-[var(--ink-muted)]">
           {brand.subtitle}
         </div>
       </div>

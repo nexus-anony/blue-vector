@@ -1,13 +1,6 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #0a1a2f;
-
-  --color-ink: #0a1a2f;
-  --color-ink-soft: #384356;
-  --color-ink-muted: #6b7280;
-
   --color-navy-900: #0a1f3d;
   --color-navy-800: #0f2a53;
   --color-navy-700: #13356b;
@@ -15,11 +8,16 @@
   --color-navy-500: #2f5ba5;
   --color-navy-50: #f2f5fa;
 
-  --color-rule: #d8dde4;
-  --color-rule-soft: #eceff3;
   --color-stone: #f6f6f3;
-
   --color-accent: #9a2a2a;
+
+  --color-background: var(--surface);
+  --color-foreground: var(--ink);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-rule: var(--rule);
+  --color-rule-soft: var(--rule-soft);
 
   --font-serif: var(--font-serif, "Libre Baskerville"), "Source Serif 4",
     "Times New Roman", Georgia, serif;
@@ -29,17 +27,73 @@
     "Yu Gothic", sans-serif;
 }
 
+:root,
+:root[data-theme="dark"] {
+  --surface: #0a1f3d;
+  --surface-subtle: #0f2a53;
+  --surface-raised: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.75);
+  --ink-muted: rgba(255, 255, 255, 0.55);
+  --ink-faint: rgba(255, 255, 255, 0.4);
+
+  --rule: rgba(255, 255, 255, 0.1);
+  --rule-soft: rgba(255, 255, 255, 0.06);
+  --rule-strong: rgba(255, 255, 255, 0.25);
+
+  --invert: #0a1f3d;
+  --on-invert: #ffffff;
+
+  --diag-stroke: rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="light"] {
+  --surface: #f6f6f3;
+  --surface-subtle: #ffffff;
+  --surface-raised: rgba(10, 31, 61, 0.03);
+  --surface-hover: rgba(10, 31, 61, 0.04);
+
+  --ink: #0a1f3d;
+  --ink-soft: #384356;
+  --ink-muted: #6b7280;
+  --ink-faint: #9ca3af;
+
+  --rule: #d8dde4;
+  --rule-soft: #eceff3;
+  --rule-strong: #b4bbc5;
+
+  --invert: #ffffff;
+  --on-invert: #0a1f3d;
+
+  --diag-stroke: rgba(10, 31, 61, 0.05);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-ink);
+  background: var(--surface);
+  color: var(--ink);
   font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+.tabular-nums,
+time,
+[data-numeric] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "cv11";
+}
+
+.font-mono,
+.font-mono * {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "zero";
 }
 
 .font-display {
@@ -96,8 +150,8 @@ body {
 .bv-diag {
   background-image: repeating-linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.04) 0,
-    rgba(255, 255, 255, 0.04) 1px,
+    var(--diag-stroke) 0,
+    var(--diag-stroke) 1px,
     transparent 1px,
     transparent 14px
   );
