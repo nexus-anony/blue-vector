@@ -516,11 +516,13 @@ export const content: Record<Lang, Dict> = {
   },
 };
 
-export const sectionIds = {
-  home: "home",
-  about: "about",
-  services: "services",
-  team: "team",
-  news: "news",
-  contact: "contact",
-} as const;
+export type NavKey = "home" | "about" | "services" | "team" | "news" | "contact";
+
+export const NAV_ITEMS: ReadonlyArray<{ path: string; key: NavKey }> = [
+  { path: "/", key: "home" },
+  { path: "/about", key: "about" },
+  { path: "/services", key: "services" },
+  { path: "/team", key: "team" },
+  { path: "/news", key: "news" },
+  { path: "/contact", key: "contact" },
+] as const;

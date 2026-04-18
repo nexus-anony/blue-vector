@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Baskerville, Noto_Sans_JP } from "next/font/google";
+import Shell from "@/app/components/Shell";
 import "./globals.css";
 
 const sans = Inter({
@@ -23,9 +24,9 @@ const jp = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bluevector.co.jp"),
+  metadataBase: new URL("https://bluevector.vercel.app"),
   title: {
-    default: "BLUE VECTOR | Defense & Security Consulting",
+    default: "BLUE VECTOR | Defense & Security",
     template: "%s | BLUE VECTOR",
   },
   description:
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     title: "BLUE VECTOR | Defense & Security Consulting",
     description:
       "Defense and security consulting and strategic advisory. Supporting defense innovation, policy strategy, and ecosystem development.",
-    url: "https://bluevector.co.jp",
+    url: "https://bluevector.vercel.app",
     siteName: "Blue Vector",
     locale: "en_US",
     type: "website",
@@ -73,8 +74,8 @@ export default function RootLayout({
       lang="en"
       className={`${sans.variable} ${serif.variable} ${jp.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-white text-[var(--color-ink)]">
-        {children}
+      <body className="min-h-full bg-white text-[var(--color-ink)]">
+        <Shell>{children}</Shell>
       </body>
     </html>
   );

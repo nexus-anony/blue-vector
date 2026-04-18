@@ -1,5 +1,5 @@
-import Site from "@/app/components/Site";
+import Hero from "@/app/components/sections/Hero";
 
 export default function Home() {
-  return <Site />;
+  return <Hero />;
 }
