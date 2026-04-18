@@ -19,7 +19,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-[var(--color-navy-900)] text-white">
+    <section className="pt-10 md:pt-14 lg:pt-16 pb-20 md:pb-28 lg:pb-32 bg-[var(--color-navy-900)] text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-5">

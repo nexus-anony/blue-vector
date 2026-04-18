@@ -24,7 +24,7 @@ export default function News() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-white">
+    <section className="pt-10 md:pt-14 lg:pt-16 pb-20 md:pb-28 lg:pb-32 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={news.eyebrow}

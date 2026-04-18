@@ -25,7 +25,7 @@ export default function Hero() {
           </g>
         </svg>
       </div>
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-24 md:py-32 lg:py-40">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 pt-14 md:pt-20 lg:pt-24 pb-15 md:pb-30 lg:pb-38">
         <div className="max-w-4xl">
           <div className="flex items-center gap-3 mb-8">
             <span className="inline-block w-10 h-px bg-white/60" />
@@ -63,7 +63,7 @@ export default function Hero() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-5 flex flex-wrap gap-x-8 gap-y-2 text-[10px] tracking-[0.24em] uppercase text-white/55">
           <span>Est. 2026</span>
           <span className="text-white/20">·</span>
-          <span>Tokyo, Japan</span>
+          <span>Japan</span>
           <span className="text-white/20 hidden sm:inline">·</span>
           <span className="hidden sm:inline">Defense · Security</span>
           <span className="text-white/20 hidden md:inline">·</span>

@@ -300,13 +300,13 @@ export const content: Record<Lang, Dict> = {
       success:
         "Thank you. Your inquiry has been received. A member of the firm will respond shortly.",
       officeLabel: "Office",
-      officeValue: "Tokyo, Japan",
+      officeValue: "Japan",
       emailContactLabel: "General inquiries",
       emailContactValue: "inquiries@bluevector.co.jp",
     },
     footer: {
       tagline: "Defense & Security Consulting and Strategic Advisory",
-      address: "Blue Vector Inc. · Tokyo, Japan",
+      address: "Blue Vector Inc. · Japan",
       copyright: "© 2026 Blue Vector Inc. All rights reserved.",
       legal: ["Privacy Notice", "Terms of Engagement", "Accessibility"],
     },
@@ -502,13 +502,13 @@ export const content: Record<Lang, Dict> = {
       success:
         "お問い合わせを受け付けました。担当者よりご連絡いたします。",
       officeLabel: "オフィス",
-      officeValue: "東京都",
+      officeValue: "日本",
       emailContactLabel: "お問い合わせ窓口",
       emailContactValue: "inquiries@bluevector.co.jp",
     },
     footer: {
       tagline: "防衛・安全保障領域の戦略コンサルティング",
-      address: "株式会社 BLUE VECTOR ・ 東京",
+      address: "株式会社 BLUE VECTOR ・ 日本",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["プライバシー", "利用規約", "アクセシビリティ"],
     },

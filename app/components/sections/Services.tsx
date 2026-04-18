@@ -7,7 +7,7 @@ export default function Services() {
   const { t } = useLanguage();
   const s = t.services;
   return (
-    <section className="py-20 md:py-28 lg:py-32 bg-[var(--color-stone)]">
+    <section className="pt-10 md:pt-14 lg:pt-16 pb-20 md:pb-28 lg:pb-32 bg-[var(--color-stone)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading eyebrow={s.eyebrow} heading={s.heading} lede={s.lede} />
         <ul className="mt-14 border-t border-[var(--color-rule)]">

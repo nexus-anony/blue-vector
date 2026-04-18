@@ -12,7 +12,7 @@ export default function About() {
     { label: about.valuesLabel, text: about.values, n: "III" },
   ];
   return (
-    <section className="py-20 md:py-28 lg:py-32">
+    <section className="pt-10 md:pt-14 lg:pt-16 pb-20 md:pb-28 lg:pb-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
           eyebrow={about.eyebrow}
