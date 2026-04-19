@@ -126,7 +126,7 @@ export const content: Record<Lang, Dict> = {
     },
     hero: {
       eyebrow: "Defense · Security · Strategic Advisory",
-      headline: "Blue Vector",
+      headline: "BLUE VECTOR",
       tagline: "Defense & Security Consulting and Strategic Advisory",
       subtext:
         "Supporting defense innovation, policy strategy, and ecosystem development for governments, primes, and emerging technology firms operating at the intersection of national security and industry.",
@@ -136,7 +136,7 @@ export const content: Record<Lang, Dict> = {
     about: {
       eyebrow: "01 — About",
       heading: "Connecting people and knowledge in defense",
-      lede: "Blue Vector is a private infrastructure firm that advances the Japanese and allied defense ecosystem through intelligence advisory, strategic assessment, and venture formation. Our model draws on the traditions of civilian strategic assessment organizations while emphasizing execution alongside analysis.",
+      lede: "BLUE VECTOR is a private infrastructure firm that advances the Japanese and allied defense ecosystem through intelligence advisory, strategic assessment, and venture formation. Our model draws on the traditions of civilian strategic assessment organizations while emphasizing execution alongside analysis.",
       visionLabel: "Vision",
       vision: "To realize a society that co-creates peace.",
       missionLabel: "Mission",
@@ -240,7 +240,7 @@ export const content: Record<Lang, Dict> = {
     news: {
       eyebrow: "04 — News",
       heading: "Insights, briefings & announcements",
-      lede: "Updates from Blue Vector — firm announcements, selected research, and perspectives on the evolving defense landscape.",
+      lede: "Updates from BLUE VECTOR — firm announcements, selected research, and perspectives on the evolving defense landscape.",
       viewAll: "View all news",
       readMore: "Read more",
       close: "Close",
@@ -249,10 +249,10 @@ export const content: Record<Lang, Dict> = {
           id: "n1",
           date: "2026-04-01",
           category: "Announcement",
-          title: "Blue Vector is formally established",
+          title: "BLUE VECTOR is formally established",
           excerpt:
-            "Blue Vector Inc. begins operations as a private infrastructure firm for defense and security advisory.",
-          body: "Blue Vector Inc. has been formally established as a private infrastructure firm dedicated to the Japanese and allied defense ecosystem. The firm will provide intelligence advisory, strategic assessment, community initiatives, technology incubation, and investment support services to governments, prime contractors, startups, and capital providers.",
+            "BLUE VECTOR Inc. begins operations as a private infrastructure firm for defense and security advisory.",
+          body: "BLUE VECTOR Inc. has been formally established as a private infrastructure firm dedicated to the Japanese and allied defense ecosystem. The firm will provide intelligence advisory, strategic assessment, community initiatives, technology incubation, and investment support services to governments, prime contractors, startups, and capital providers.",
         },
         {
           id: "n2",
@@ -261,7 +261,7 @@ export const content: Record<Lang, Dict> = {
           title: "Advisory briefing on dual-use technology priorities",
           excerpt:
             "Our analysts outline near-term priority domains across autonomy, cyber, and space for the 2026 planning cycle.",
-          body: "Blue Vector analysts have published an internal briefing covering priority dual-use technology domains for the 2026 planning cycle, with an emphasis on autonomy, cyber resilience, and space-based ISR. The briefing is available to engagement clients on request.",
+          body: "BLUE VECTOR analysts have published an internal briefing covering priority dual-use technology domains for the 2026 planning cycle, with an emphasis on autonomy, cyber resilience, and space-based ISR. The briefing is available to engagement clients on request.",
         },
         {
           id: "n3",
@@ -278,14 +278,14 @@ export const content: Record<Lang, Dict> = {
           category: "Event",
           title: "Hosted defense ecosystem roundtable",
           excerpt:
-            "Blue Vector hosted a closed-door roundtable bringing together primes, startups, and capital allocators.",
-          body: "Blue Vector hosted a closed-door roundtable bringing together representatives of defense primes, emerging technology startups, and institutional capital allocators. Attendees discussed collaboration models for dual-use research and pathways to program-of-record adoption.",
+            "BLUE VECTOR hosted a closed-door roundtable bringing together primes, startups, and capital allocators.",
+          body: "BLUE VECTOR hosted a closed-door roundtable bringing together representatives of defense primes, emerging technology startups, and institutional capital allocators. Attendees discussed collaboration models for dual-use research and pathways to program-of-record adoption.",
         },
       ],
     },
     contact: {
       eyebrow: "05 — Contact",
-      heading: "Engage with Blue Vector",
+      heading: "Engage with BLUE VECTOR",
       lede: "For advisory engagements, briefings, or general inquiries, please send us a note. We respond to qualified correspondence within three business days.",
       nameLabel: "Name",
       namePlaceholder: "Full name",
@@ -306,8 +306,8 @@ export const content: Record<Lang, Dict> = {
     },
     footer: {
       tagline: "Defense & Security Consulting and Strategic Advisory",
-      address: "Blue Vector Inc. · Japan",
-      copyright: "© 2026 Blue Vector Inc. All rights reserved.",
+      address: "BLUE VECTOR Inc. · Japan",
+      copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["Privacy Notice", "Terms of Engagement", "Accessibility"],
     },
     lang: { current: "EN", switchTo: "日本語" },
@@ -328,7 +328,7 @@ export const content: Record<Lang, Dict> = {
     },
     hero: {
       eyebrow: "防衛・安全保障・戦略アドバイザリー",
-      headline: "Blue Vector",
+      headline: "BLUE VECTOR",
       tagline: "防衛・安全保障領域の戦略コンサルティング",
       subtext:
         "防衛イノベーション、政策戦略、そしてエコシステム形成を支援します。官公庁、防衛プライム、そして安全保障と産業の交差点で事業を展開する新興企業のパートナーとして活動します。",

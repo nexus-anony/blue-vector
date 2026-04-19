@@ -72,7 +72,7 @@ export default function Team() {
                       {m.role}
                     </div>
                     <div className="mt-3 pt-3 border-t border-[var(--rule)]">
-                      <p className="text-[12px] leading-[1.7] text-[var(--ink-soft)] line-clamp-6">
+                      <p className="text-[12px] leading-[1.7] text-[var(--ink-soft)]">
                         {m.bio}
                       </p>
                     </div>

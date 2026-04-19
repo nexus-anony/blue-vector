@@ -21,7 +21,7 @@ const LanguageContext = createContext<Ctx | null>(null);
 const STORAGE_KEY = "bv-lang";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  const [lang, setLangState] = useState<Lang>("jp");
 
   useEffect(() => {
     try {

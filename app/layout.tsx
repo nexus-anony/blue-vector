@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     template: "%s | BLUE VECTOR",
   },
   description:
-    "Blue Vector is a private infrastructure firm providing defense and security consulting, strategic advisory, community initiatives, technology incubation, and investment support.",
+    "BLUE VECTOR is a private infrastructure firm providing defense and security consulting, strategic advisory, community initiatives, technology incubation, and investment support.",
   keywords: [
-    "Blue Vector",
+    "BLUE VECTOR",
     "Defense",
     "Security",
     "National Security",
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     "Defense Technology",
     "Defense Investment",
   ],
-  authors: [{ name: "Blue Vector Inc." }],
+  authors: [{ name: "BLUE VECTOR Inc." }],
   openGraph: {
     title: "BLUE VECTOR | Defense & Security Consulting",
     description:
       "Defense and security consulting and strategic advisory. Supporting defense innovation, policy strategy, and ecosystem development.",
     url: "https://blue-vector.vercel.app",
-    siteName: "Blue Vector",
+    siteName: "BLUE VECTOR",
     locale: "en_US",
     type: "website",
   },
