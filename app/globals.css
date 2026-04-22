@@ -27,8 +27,7 @@
     "Yu Gothic", sans-serif;
 }
 
-:root,
-:root[data-theme="dark"] {
+:root {
   --surface: #0a1f3d;
   --surface-subtle: #0f2a53;
   --surface-raised: rgba(255, 255, 255, 0.04);
@@ -47,27 +46,6 @@
   --on-invert: #ffffff;
 
   --diag-stroke: rgba(255, 255, 255, 0.04);
-}
-
-:root[data-theme="light"] {
-  --surface: #f6f6f3;
-  --surface-subtle: #ffffff;
-  --surface-raised: rgba(10, 31, 61, 0.03);
-  --surface-hover: rgba(10, 31, 61, 0.04);
-
-  --ink: #0a1f3d;
-  --ink-soft: #384356;
-  --ink-muted: #6b7280;
-  --ink-faint: #9ca3af;
-
-  --rule: #d8dde4;
-  --rule-soft: #eceff3;
-  --rule-strong: #b4bbc5;
-
-  --invert: #ffffff;
-  --on-invert: #0a1f3d;
-
-  --diag-stroke: rgba(10, 31, 61, 0.05);
 }
 
 html {

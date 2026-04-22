@@ -6,13 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import { NAV_ITEMS } from "@/app/lib/content";
 import BrandMark from "./BrandMark";
 import LanguageToggle from "./LanguageToggle";
-import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "./LanguageContext";
-import { useTheme } from "./ThemeContext";
 
 export default function Header() {
   const { t } = useLanguage();
-  const { theme } = useTheme();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -53,14 +50,9 @@ export default function Header() {
     path === "/" ? pathname === "/" : pathname.startsWith(path);
 
   const transformClass = `transition-transform duration-150 ease-out will-change-transform ${hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"}`;
-  // Home page in light mode has a fixed navy hero, so a transparent header
-  // would be unreadable. Force a solid surface background in that case so the
-  // navbar looks the same as on other light-mode pages.
-  const forceSolid = pathname === "/" && theme === "light";
-  const bgClass =
-    mobileOpen || forceSolid
-      ? "bg-[var(--surface)]/95 backdrop-blur-[2px]"
-      : "bg-transparent";
+  const bgClass = mobileOpen
+    ? "bg-[var(--surface)]/95 backdrop-blur-[2px]"
+    : "bg-transparent";
   const shellClass = `fixed inset-x-0 top-0 z-40 ${bgClass} border-b border-[var(--rule)] ${transformClass}`;
 
   return (
@@ -81,9 +73,6 @@ export default function Header() {
             ))}
           </nav>
           <div className="flex items-center gap-3">
-            <div className="hidden md:block border-l border-[var(--rule)] pl-4">
-              <ThemeToggle />
-            </div>
             <div className="hidden md:block border-l border-[var(--rule)] pl-4">
               <LanguageToggle />
             </div>
@@ -125,9 +114,7 @@ export default function Header() {
                 {t.nav[item.key]}
               </Link>
             ))}
-            <div className="mt-3 pt-3 border-t border-[var(--rule)] flex items-center gap-4">
-              <ThemeToggle />
-              <span className="text-[var(--ink-faint)]">·</span>
+            <div className="mt-3 pt-3 border-t border-[var(--rule)]">
               <LanguageToggle />
             </div>
           </div>
