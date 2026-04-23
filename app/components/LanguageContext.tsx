@@ -18,7 +18,7 @@ type Ctx = {
 
 const LanguageContext = createContext<Ctx | null>(null);
 
-const STORAGE_KEY = "bv-lang";
+const STORAGE_KEY = "bv-lang-v2";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("jp");

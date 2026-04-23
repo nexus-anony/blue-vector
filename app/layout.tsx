@@ -73,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ja"
       className={`${sans.variable} ${serif.variable} ${jp.variable} h-full`}
     >
       <body className="min-h-full bg-[var(--surface)] text-[var(--ink)]">
