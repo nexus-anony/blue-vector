@@ -26,7 +26,7 @@ export default function SectionHeading({
               className="font-mono text-[11px] leading-[1.1] text-[var(--ink-faint)] tabular-nums"
               aria-hidden
             >
-              § {sectionNum}
+              {sectionNum}
             </span>
           )}
           <span className="inline-block w-6 h-px mt-[0.55rem] bg-[var(--rule-strong)]" aria-hidden />
