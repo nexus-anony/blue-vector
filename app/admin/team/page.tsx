@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { listTeam } from "@/app/lib/team-queries";
 import { deleteTeamAction } from "./actions";
@@ -34,12 +35,29 @@ export default async function TeamAdminPage() {
                 key={m.id}
                 className="border-b border-[var(--rule)] last:border-b-0 px-5 py-4 flex items-center gap-4 hover:bg-[var(--surface-hover)] transition-colors"
               >
-                <div className="w-10 h-10 border border-[var(--rule-strong)] flex items-center justify-center text-[10px] font-bold text-[var(--ink-soft)] shrink-0">
-                  {m.initials}
+                <div className="w-10 h-10 border border-[var(--rule-strong)] relative overflow-hidden flex items-center justify-center text-[8px] tracking-[0.15em] uppercase text-[var(--ink-muted)] shrink-0">
+                  {m.photo ? (
+                    <Image
+                      src={m.photo}
+                      alt={m.name_en}
+                      fill
+                      sizes="40px"
+                      className="object-cover"
+                    />
+                  ) : (
+                    "No img"
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-display text-sm font-bold truncate">
-                    {m.name_en}
+                  <div className="flex items-center gap-2">
+                    <span className="font-display text-sm font-bold truncate">
+                      {m.name_en}
+                    </span>
+                    {m.is_founder && (
+                      <span className="text-[8px] tracking-[0.2em] uppercase font-bold text-[var(--surface)] bg-[var(--ink)] px-1.5 py-0.5">
+                        Founder
+                      </span>
+                    )}
                   </div>
                   <div className="text-[11px] text-[var(--ink-soft)] truncate">
                     {m.role_en}

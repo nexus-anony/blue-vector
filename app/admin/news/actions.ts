@@ -7,16 +7,12 @@ import { verifySession } from "@/app/lib/dal";
 import {
   createNews,
   deleteNews,
+  getNews,
   updateNews,
-  type NewsInput,
 } from "@/app/lib/news-queries";
+import { slugifyWords, uniqueSlug } from "@/app/lib/slug";
 
 const NewsSchema = z.object({
-  slug: z
-    .string()
-    .trim()
-    .min(1)
-    .regex(/^[a-z0-9-]+$/i, "Slug may only contain letters, numbers, and dashes."),
   date_published: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD."),
   sort_order: z.coerce.number().int().default(0),
   category_en: z.string().trim().min(1),
@@ -27,6 +23,12 @@ const NewsSchema = z.object({
   excerpt_jp: z.string().trim().min(1),
   body_en: z.string().trim().min(1),
   body_jp: z.string().trim().min(1),
+  image: z
+    .string()
+    .trim()
+    .transform((v) => (v.length === 0 ? null : v))
+    .nullable()
+    .default(null),
 });
 
 export type NewsFormState = {
@@ -34,7 +36,11 @@ export type NewsFormState = {
   fieldErrors?: Record<string, string[]>;
 };
 
-function parseForm(formData: FormData): NewsInput | { error: string; fieldErrors: Record<string, string[]> } {
+type Parsed = z.infer<typeof NewsSchema>;
+
+function parseForm(
+  formData: FormData
+): Parsed | { error: string; fieldErrors: Record<string, string[]> } {
   const raw = Object.fromEntries(formData);
   const result = NewsSchema.safeParse(raw);
   if (!result.success) {
@@ -53,7 +59,13 @@ export async function createNewsAction(
   await verifySession();
   const parsed = parseForm(formData);
   if ("error" in parsed) return parsed;
-  await createNews(parsed);
+
+  const slug = await uniqueSlug(
+    "news",
+    slugifyWords(parsed.title_en, 3),
+    `post-${Date.now()}`
+  );
+  await createNews({ ...parsed, slug });
   revalidatePath("/news");
   revalidatePath("/admin/news");
   redirect("/admin/news");
@@ -67,7 +79,12 @@ export async function updateNewsAction(
   await verifySession();
   const parsed = parseForm(formData);
   if ("error" in parsed) return parsed;
-  await updateNews(id, parsed);
+
+  const existing = await getNews(id);
+  if (!existing) {
+    return { error: "Post not found." };
+  }
+  await updateNews(id, { ...parsed, slug: existing.slug });
   revalidatePath("/news");
   revalidatePath("/admin/news");
   redirect("/admin/news");

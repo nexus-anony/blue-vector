@@ -7,16 +7,12 @@ import { verifySession } from "@/app/lib/dal";
 import {
   createTeamMember,
   deleteTeamMember,
+  getTeamMember,
   updateTeamMember,
-  type TeamInput,
 } from "@/app/lib/team-queries";
+import { slugify, uniqueSlug } from "@/app/lib/slug";
 
 const TeamSchema = z.object({
-  slug: z
-    .string()
-    .trim()
-    .min(1)
-    .regex(/^[a-z0-9-]+$/i, "Slug may only contain letters, numbers, and dashes."),
   sort_order: z.coerce.number().int().default(0),
   name_en: z.string().trim().min(1),
   name_jp: z.string().trim().min(1),
@@ -24,7 +20,6 @@ const TeamSchema = z.object({
   role_jp: z.string().trim().min(1),
   bio_en: z.string().trim().min(1),
   bio_jp: z.string().trim().min(1),
-  initials: z.string().trim().min(1).max(4),
   photo: z
     .string()
     .trim()
@@ -38,9 +33,11 @@ export type TeamFormState = {
   fieldErrors?: Record<string, string[]>;
 };
 
+type Parsed = z.infer<typeof TeamSchema>;
+
 function parseForm(
   formData: FormData
-): TeamInput | { error: string; fieldErrors: Record<string, string[]> } {
+): Parsed | { error: string; fieldErrors: Record<string, string[]> } {
   const raw = Object.fromEntries(formData);
   const result = TeamSchema.safeParse(raw);
   if (!result.success) {
@@ -59,7 +56,13 @@ export async function createTeamAction(
   await verifySession();
   const parsed = parseForm(formData);
   if ("error" in parsed) return parsed;
-  await createTeamMember(parsed);
+
+  const slug = await uniqueSlug(
+    "team_members",
+    slugify(parsed.name_en),
+    `member-${Date.now()}`
+  );
+  await createTeamMember({ ...parsed, slug, initials: "", is_founder: false });
   revalidatePath("/team");
   revalidatePath("/admin/team");
   redirect("/admin/team");
@@ -73,7 +76,17 @@ export async function updateTeamAction(
   await verifySession();
   const parsed = parseForm(formData);
   if ("error" in parsed) return parsed;
-  await updateTeamMember(id, parsed);
+
+  const existing = await getTeamMember(id);
+  if (!existing) {
+    return { error: "Member not found." };
+  }
+  await updateTeamMember(id, {
+    ...parsed,
+    slug: existing.slug,
+    initials: existing.initials,
+    is_founder: existing.is_founder,
+  });
   revalidatePath("/team");
   revalidatePath("/admin/team");
   redirect("/admin/team");

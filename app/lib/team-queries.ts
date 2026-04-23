@@ -5,6 +5,7 @@ export type TeamRow = {
   id: number;
   slug: string;
   sort_order: number;
+  is_founder: boolean;
   name_en: string;
   name_jp: string;
   role_en: string;
@@ -20,6 +21,7 @@ function normalize(rows: Record<string, unknown>[]): TeamRow[] {
     id: r.id as number,
     slug: r.slug as string,
     sort_order: r.sort_order as number,
+    is_founder: Boolean(r.is_founder),
     name_en: r.name_en as string,
     name_jp: r.name_jp as string,
     role_en: r.role_en as string,
@@ -33,17 +35,17 @@ function normalize(rows: Record<string, unknown>[]): TeamRow[] {
 
 export async function listTeam(): Promise<TeamRow[]> {
   const rows = await sql`
-    SELECT id, slug, sort_order, name_en, name_jp, role_en, role_jp,
+    SELECT id, slug, sort_order, is_founder, name_en, name_jp, role_en, role_jp,
            bio_en, bio_jp, initials, photo
     FROM team_members
-    ORDER BY sort_order ASC, id ASC
+    ORDER BY is_founder DESC, sort_order ASC, id ASC
   `;
   return normalize(rows as Record<string, unknown>[]);
 }
 
 export async function getTeamMember(id: number): Promise<TeamRow | null> {
   const rows = await sql`
-    SELECT id, slug, sort_order, name_en, name_jp, role_en, role_jp,
+    SELECT id, slug, sort_order, is_founder, name_en, name_jp, role_en, role_jp,
            bio_en, bio_jp, initials, photo
     FROM team_members WHERE id = ${id}
   `;
@@ -56,13 +58,13 @@ export type TeamInput = Omit<TeamRow, "id">;
 export async function createTeamMember(input: TeamInput): Promise<number> {
   const rows = await sql`
     INSERT INTO team_members (
-      slug, sort_order,
+      slug, sort_order, is_founder,
       name_en, name_jp,
       role_en, role_jp,
       bio_en, bio_jp,
       initials, photo
     ) VALUES (
-      ${input.slug}, ${input.sort_order},
+      ${input.slug}, ${input.sort_order}, ${input.is_founder},
       ${input.name_en}, ${input.name_jp},
       ${input.role_en}, ${input.role_jp},
       ${input.bio_en}, ${input.bio_jp},
@@ -81,6 +83,7 @@ export async function updateTeamMember(
     UPDATE team_members SET
       slug = ${input.slug},
       sort_order = ${input.sort_order},
+      is_founder = ${input.is_founder},
       name_en = ${input.name_en},
       name_jp = ${input.name_jp},
       role_en = ${input.role_en},

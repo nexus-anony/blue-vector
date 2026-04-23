@@ -21,6 +21,7 @@ export default async function NewsPage() {
     excerpt_jp: r.excerpt_jp,
     body_en: r.body_en,
     body_jp: r.body_jp,
+    image: r.image,
   }));
   return <News items={items} />;
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import type { TeamRow } from "@/app/lib/team-queries";
 import type { TeamFormState } from "./actions";
+import ImageUpload from "../ImageUpload";
 
 type Action = (
   state: TeamFormState | undefined,
@@ -26,35 +27,18 @@ export default function TeamForm({
 
   return (
     <form action={formAction} className="space-y-6">
-      <div className="grid md:grid-cols-3 gap-5">
-        <Field
-          label="Slug"
-          name="slug"
-          defaultValue={initial?.slug}
-          errors={state?.fieldErrors?.slug}
-          required
-        />
-        <Field
-          label="Initials"
-          name="initials"
-          defaultValue={initial?.initials}
-          errors={state?.fieldErrors?.initials}
-          required
-        />
-        <Field
-          label="Sort order"
-          name="sort_order"
-          type="number"
-          defaultValue={String(initial?.sort_order ?? 0)}
-          errors={state?.fieldErrors?.sort_order}
-        />
-      </div>
-
       <Field
-        label="Photo path (e.g. /kota-uemura.png) — optional"
+        label="Sort order"
+        name="sort_order"
+        type="number"
+        defaultValue={String(initial?.sort_order ?? 0)}
+        errors={state?.fieldErrors?.sort_order}
+      />
+
+      <ImageUpload
         name="photo"
-        defaultValue={initial?.photo ?? ""}
-        errors={state?.fieldErrors?.photo}
+        label="Photo — optional"
+        initialUrl={initial?.photo}
       />
 
       <Section title="English">

@@ -14,6 +14,7 @@ export type NewsRow = {
   body_en: string;
   body_jp: string;
   sort_order: number;
+  image: string | null;
 };
 
 function normalize(rows: Record<string, unknown>[]): NewsRow[] {
@@ -33,6 +34,7 @@ function normalize(rows: Record<string, unknown>[]): NewsRow[] {
     body_en: r.body_en as string,
     body_jp: r.body_jp as string,
     sort_order: r.sort_order as number,
+    image: (r.image as string | null) ?? null,
   }));
 }
 
@@ -40,7 +42,7 @@ export async function listNews(): Promise<NewsRow[]> {
   const rows = await sql`
     SELECT id, slug, date_published, category_en, category_jp,
            title_en, title_jp, excerpt_en, excerpt_jp,
-           body_en, body_jp, sort_order
+           body_en, body_jp, sort_order, image
     FROM news
     ORDER BY date_published DESC, id DESC
   `;
@@ -51,7 +53,7 @@ export async function getNews(id: number): Promise<NewsRow | null> {
   const rows = await sql`
     SELECT id, slug, date_published, category_en, category_jp,
            title_en, title_jp, excerpt_en, excerpt_jp,
-           body_en, body_jp, sort_order
+           body_en, body_jp, sort_order, image
     FROM news WHERE id = ${id}
   `;
   const list = normalize(rows as Record<string, unknown>[]);
@@ -63,13 +65,13 @@ export type NewsInput = Omit<NewsRow, "id">;
 export async function createNews(input: NewsInput): Promise<number> {
   const rows = await sql`
     INSERT INTO news (
-      slug, date_published, sort_order,
+      slug, date_published, sort_order, image,
       category_en, category_jp,
       title_en, title_jp,
       excerpt_en, excerpt_jp,
       body_en, body_jp
     ) VALUES (
-      ${input.slug}, ${input.date_published}, ${input.sort_order},
+      ${input.slug}, ${input.date_published}, ${input.sort_order}, ${input.image},
       ${input.category_en}, ${input.category_jp},
       ${input.title_en}, ${input.title_jp},
       ${input.excerpt_en}, ${input.excerpt_jp},
@@ -86,6 +88,7 @@ export async function updateNews(id: number, input: NewsInput): Promise<void> {
       slug = ${input.slug},
       date_published = ${input.date_published},
       sort_order = ${input.sort_order},
+      image = ${input.image},
       category_en = ${input.category_en},
       category_jp = ${input.category_jp},
       title_en = ${input.title_en},

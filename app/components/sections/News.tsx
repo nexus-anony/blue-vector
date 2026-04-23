@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import SectionHeading from "../SectionHeading";
 import { useLanguage } from "../LanguageContext";
@@ -16,6 +17,7 @@ export type NewsItemView = {
   excerpt_jp: string;
   body_en: string;
   body_jp: string;
+  image: string | null;
 };
 
 function pick(item: NewsItemView, field: "category" | "title" | "excerpt" | "body", lang: Lang) {
@@ -162,6 +164,17 @@ function NewsModal({
           <h3 className="font-display text-[17px] md:text-[20px] leading-[1.3] font-bold text-[var(--ink)] mb-4">
             {pick(item, "title", lang)}
           </h3>
+          {item.image && (
+            <div className="relative w-full aspect-[16/9] mb-6 border border-[var(--rule)] overflow-hidden bg-[var(--surface-raised)]">
+              <Image
+                src={item.image}
+                alt={pick(item, "title", lang)}
+                fill
+                sizes="(min-width: 768px) 640px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )}
           <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)] whitespace-pre-line">
             {pick(item, "body", lang)}
           </p>

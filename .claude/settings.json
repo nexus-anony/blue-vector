@@ -15,7 +15,8 @@
       "Bash(curl -s \"http://localhost:3000/team?nocache=$\\(date +%s\\)\")",
       "Bash(curl -s \"http://localhost:3000/team\")",
       "Bash(curl -s -o /dev/null -w \"/admin/news: %{http_code}\\\\n\" http://localhost:3000/admin/news)",
-      "Bash(curl -s \"http://localhost:3000/login\")"
+      "Bash(curl -s \"http://localhost:3000/login\")",
+      "Bash(curl -s -o /dev/null -w \"/api/admin/upload \\(no auth, expect 307\\): %{http_code}\\\\n\" -X POST http://localhost:3000/api/admin/upload)"
     ]
   }
 }

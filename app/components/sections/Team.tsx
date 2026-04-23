@@ -13,7 +13,6 @@ export type TeamMemberView = {
   role_jp: string;
   bio_en: string;
   bio_jp: string;
-  initials: string;
   photo: string | null;
 };
 
@@ -26,11 +25,9 @@ function pick(m: TeamMemberView, field: "name" | "role" | "bio", lang: Lang) {
 function Avatar({
   name,
   photo,
-  initials,
 }: {
   name: string;
   photo?: string | null;
-  initials: string;
 }) {
   return (
     <div className="aspect-[4/5] bg-[var(--surface-raised)] relative overflow-hidden flex items-center justify-center border border-[var(--rule)]">
@@ -45,11 +42,8 @@ function Avatar({
       ) : (
         <>
           <div className="absolute inset-0 bv-diag opacity-60" aria-hidden />
-          <div
-            className="font-display text-[64px] md:text-[96px] font-bold tracking-tight text-[var(--ink-muted)]"
-            aria-hidden
-          >
-            {initials}
+          <div className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[var(--ink-muted)]">
+            No image
           </div>
         </>
       )}
@@ -87,11 +81,7 @@ export default function Team({ members }: { members: TeamMemberView[] }) {
                       className="flex flex-col sm:flex-row gap-5 sm:gap-7"
                     >
                       <div className="w-32 sm:w-36 lg:w-40 shrink-0">
-                        <Avatar
-                          name={name}
-                          photo={m.photo}
-                          initials={m.initials}
-                        />
+                        <Avatar name={name} photo={m.photo} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-display text-[16px] md:text-[18px] font-bold text-[var(--ink)] leading-tight">

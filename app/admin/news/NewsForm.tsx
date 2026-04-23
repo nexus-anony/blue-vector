@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import type { NewsRow } from "@/app/lib/news-queries";
 import type { NewsFormState } from "./actions";
+import ImageUpload from "../ImageUpload";
 
 type Action = (
   state: NewsFormState | undefined,
@@ -28,26 +29,25 @@ export default function NewsForm({
     <form action={formAction} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-5">
         <Field
-          label="Slug"
-          name="slug"
-          defaultValue={initial?.slug}
-          errors={state?.fieldErrors?.slug}
-          required
-        />
-        <Field
           label="Date (YYYY-MM-DD)"
           name="date_published"
           defaultValue={initial?.date_published}
           errors={state?.fieldErrors?.date_published}
           required
         />
+        <Field
+          label="Sort order"
+          name="sort_order"
+          type="number"
+          defaultValue={String(initial?.sort_order ?? 0)}
+          errors={state?.fieldErrors?.sort_order}
+        />
       </div>
-      <Field
-        label="Sort order"
-        name="sort_order"
-        type="number"
-        defaultValue={String(initial?.sort_order ?? 0)}
-        errors={state?.fieldErrors?.sort_order}
+
+      <ImageUpload
+        name="image"
+        label="Cover image — optional"
+        initialUrl={initial?.image}
       />
 
       <Section title="English">

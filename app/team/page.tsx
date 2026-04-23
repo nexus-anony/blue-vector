@@ -18,7 +18,6 @@ export default async function TeamPage() {
     role_jp: r.role_jp,
     bio_en: r.bio_en,
     bio_jp: r.bio_jp,
-    initials: r.initials,
     photo: r.photo,
   }));
   return <Team members={members} />;
