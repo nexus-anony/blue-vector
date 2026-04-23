@@ -6,7 +6,6 @@ type ServiceItem = {
   title: string;
   subtitle: string;
   description: string;
-  bullets: string[];
 };
 
 type TeamMember = {
@@ -159,58 +158,34 @@ export const content: Record<Lang, Dict> = {
         {
           id: "consulting",
           number: "01",
-          title: "Defense Consulting Services",
-          subtitle: "Strategy formulation · Proposal support · Project execution",
+          title: "Defense Consulting",
+          subtitle: "Advisory · Proposal support · Project execution",
           description:
-            "End-to-end advisory for companies entering the defense sector — from business launch and proposal development for the Ministry of Defense through to project implementation alongside operating units.",
-          bullets: [
-            "Defense market entry strategy",
-            "Requirements analysis and concept development",
-            "Proposal authoring and bid support",
-            "Program execution and stakeholder engagement",
-          ],
+            "Supporting companies entering the defense sector end-to-end, from business launch and proposal development for the Ministry of Defense through to project implementation.",
         },
         {
           id: "community",
           number: "02",
-          title: "Defense Community Initiatives",
-          subtitle: "Ecosystem creation · Industry collaboration",
+          title: "Defense Community",
+          subtitle: "Startups · Primes · VC / Finance · Research institutions",
           description:
-            "Analyzing defense needs and technology sectors, designing curated communities, and supporting companies in their decisions to enter the defense industry.",
-          bullets: [
-            "Ecosystem mapping and gap analysis",
-            "Curated industry convenings",
-            "Policy and industry engagement briefings",
-            "Partner matchmaking across primes and startups",
-          ],
+            "Analyzing defense needs and technology domains, designing a paid community, and supporting companies' decisions to enter the defense sector.",
         },
         {
           id: "incubation",
           number: "03",
-          title: "Defense Technology Incubation",
+          title: "Defense Tech Creation",
           subtitle: "Business area selection · Entrepreneur matching",
           description:
-            "Identifying business gaps based on the information and insights gathered, and supporting entrepreneurs in launching their ventures and securing funding.",
-          bullets: [
-            "Whitespace and opportunity identification",
-            "Founder and operator matching",
-            "Go-to-market and dual-use strategy",
-            "Introductions to capital and government stakeholders",
-          ],
+            "Identifying business whitespace from the information and insights we gather, and supporting entrepreneurs with introductions and capital.",
         },
         {
           id: "investment",
           number: "04",
           title: "Defense Investment Support",
-          subtitle: "Evaluation of potential targets · Startup selection",
+          subtitle: "Judgment on investment candidates",
           description:
-            "Supporting the identification of investment targets from defense technology companies entering the market through our consulting engagements.",
-          bullets: [
-            "Technology and program due diligence",
-            "Market and competitive assessment",
-            "Policy and export-control review",
-            "Post-investment advisory and board support",
-          ],
+            "Supporting investment-target judgment using information on defense-tech entrants obtained through our consulting engagements.",
         },
       ],
     },
@@ -300,13 +275,15 @@ export const content: Record<Lang, Dict> = {
       success:
         "Thank you. Your inquiry has been received. A member of the firm will respond shortly.",
       officeLabel: "Office",
-      officeValue: "Japan",
+      officeValue:
+        "7F, East Wing, Shin-Aoyama Building\n1-1-1 Minami-Aoyama, Minato-ku, Tokyo, Japan",
       emailContactLabel: "General inquiries",
       emailContactValue: "inquiries@bluevector.co.jp",
     },
     footer: {
       tagline: "Defense & Security Consulting and Strategic Advisory",
-      address: "BLUE VECTOR Inc. · Japan",
+      address:
+        "BLUE VECTOR Inc. · 7F, East Wing, Shin-Aoyama Building, 1-1-1 Minami-Aoyama, Minato-ku, Tokyo",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["Privacy Notice", "Terms of Engagement", "Accessibility"],
     },
@@ -362,29 +339,17 @@ export const content: Record<Lang, Dict> = {
           id: "consulting",
           number: "01",
           title: "防衛コンサル事業",
-          subtitle: "戦略策定 ／ 事業提案 ／ プロジェクト実行",
+          subtitle: "アドバイザリー ／ 事業提案支援 ／ 事業実施支援",
           description:
-            "防衛事業への参入企業に対し、事業立ち上げから防衛省への提案書作成、プロジェクト実施までを一貫して支援します。",
-          bullets: [
-            "防衛領域への市場参入戦略",
-            "要件分析とコンセプト策定",
-            "提案書作成・入札支援",
-            "プロジェクト実行とステークホルダー対応",
-          ],
+            "防衛事業参入企業に対して事業立ち上げから防衛省への提案支援〜事業実施を一貫して支援。",
         },
         {
           id: "community",
           number: "02",
           title: "防衛コミュニティ事業",
-          subtitle: "エコシステム創造 ／ 産業連携",
+          subtitle: "スタートアップ ／ 防衛プライム ／ VC・金融 ／ 研究機関",
           description:
-            "防衛ニーズと技術領域を分析し、有料コミュニティを設計。企業の防衛事業参入判断をサポートします。",
-          bullets: [
-            "エコシステムのマッピングと分析",
-            "キュレーションされた業界会合",
-            "政策・産業動向のブリーフィング",
-            "プライムとスタートアップの連携支援",
-          ],
+            "防衛ニーズと技術領域を分析、有料コミュニティを設計、企業の防衛事業参入判断をサポート。",
         },
         {
           id: "incubation",
@@ -392,27 +357,15 @@ export const content: Record<Lang, Dict> = {
           title: "防衛テック創出事業",
           subtitle: "事業領域選定 ／ 起業家マッチング",
           description:
-            "得られた情報・知見から事業空白領域を識別し、起業家の提供と資金供給を支援します。",
-          bullets: [
-            "事業機会・空白領域の抽出",
-            "創業者・運営メンバーのマッチング",
-            "市場投入とデュアルユース戦略の設計",
-            "資金と政府関係者との接続",
-          ],
+            "得られた情報・知見から事業空白領域を識別し、起業家の提供と資金供給を支援。",
         },
         {
           id: "investment",
           number: "04",
           title: "防衛投資支援事業",
-          subtitle: "投資候補の評価判断 ／ スタートアップ選定",
+          subtitle: "投資先候補の判断支援",
           description:
-            "防衛コンサル事業を通じた参入防衛テック企業の情報から、投資候補先の判断を支援します。",
-          bullets: [
-            "技術・プログラムのデューデリジェンス",
-            "市場・競合環境の評価",
-            "政策・輸出管理レビュー",
-            "投資後のアドバイザリー／取締役会支援",
-          ],
+            "防衛コンサル事業を通じた参入防衛テック企業の情報から投資候補先判断を支援。",
         },
       ],
     },
@@ -502,13 +455,14 @@ export const content: Record<Lang, Dict> = {
       success:
         "お問い合わせを受け付けました。担当者よりご連絡いたします。",
       officeLabel: "オフィス",
-      officeValue: "日本",
+      officeValue: "東京都港区南青山１丁目１−１\n新青山ビル 東館7F",
       emailContactLabel: "お問い合わせ窓口",
       emailContactValue: "inquiries@bluevector.co.jp",
     },
     footer: {
       tagline: "防衛・安全保障領域の戦略コンサルティング",
-      address: "株式会社 BLUE VECTOR ・ 日本",
+      address:
+        "株式会社 BLUE VECTOR ・ 東京都港区南青山１丁目１−１ 新青山ビル 東館7F",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["プライバシー", "利用規約", "アクセシビリティ"],
     },

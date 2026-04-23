@@ -35,23 +35,9 @@ export default function Services() {
                     </div>
                   </div>
                   <div className="lg:col-span-6">
-                    <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)] mb-5">
+                    <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)]">
                       {item.description}
                     </p>
-                    <ul className="space-y-2.5">
-                      {item.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="flex gap-4 text-[12px] text-[var(--ink)]"
-                        >
-                          <span
-                            className="mt-[0.58rem] inline-block w-3 h-px bg-[var(--rule-strong)]"
-                            aria-hidden
-                          />
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </li>
               ))}

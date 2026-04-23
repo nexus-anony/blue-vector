@@ -10,25 +10,13 @@ export default function SectionHeading({
   lede?: string;
   onDark?: boolean;
 }) {
-  const numberMatch = eyebrow.match(/^(\d{2})\s*[—–-]\s*(.*)$/);
-  const sectionNum = numberMatch?.[1];
-  const eyebrowLabel = numberMatch?.[2] ?? eyebrow;
-
-  const altMatch = eyebrowAlt?.match(/^(\d{2})\s*[—–-]\s*(.*)$/);
-  const altLabel = altMatch?.[2] ?? eyebrowAlt;
+  const eyebrowLabel = eyebrow.replace(/^\d{2}\s*[—–-]\s*/, "");
+  const altLabel = eyebrowAlt?.replace(/^\d{2}\s*[—–-]\s*/, "");
 
   return (
     <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       <div className="lg:col-span-4">
         <div className="flex items-start gap-3">
-          {sectionNum && (
-            <span
-              className="font-mono text-[11px] leading-[1.1] text-[var(--ink-faint)] tabular-nums"
-              aria-hidden
-            >
-              § {sectionNum}
-            </span>
-          )}
           <span className="inline-block w-6 h-px mt-[0.55rem] bg-[var(--rule-strong)]" aria-hidden />
           <div className="flex flex-col leading-tight">
             <span className="text-[11px] tracking-[0.22em] uppercase font-medium text-[var(--ink-soft)]">
