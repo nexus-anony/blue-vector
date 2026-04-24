@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import SectionHeading from "../SectionHeading";
 import { useLanguage } from "../LanguageContext";
-import { content, type Lang } from "@/app/lib/content";
+import { type Lang } from "@/app/lib/content";
 
 export type NewsItemView = {
   id: number;
@@ -42,7 +41,6 @@ function formatDate(raw: string, lang: Lang) {
 export default function News({ items }: { items: NewsItemView[] }) {
   const { t, lang } = useLanguage();
   const news = t.news;
-  const altEyebrow = content[lang === "en" ? "jp" : "en"].news.eyebrow;
   const [expanded, setExpanded] = useState<number | null>(null);
 
   const expandedItem = useMemo(
@@ -51,51 +49,95 @@ export default function News({ items }: { items: NewsItemView[] }) {
   );
 
   return (
-    <section className="relative min-h-screen pt-28 md:pt-36 lg:pt-44 pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
+    <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="absolute inset-0 bv-diag opacity-50 pointer-events-none" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid grid-cols-12">
-          <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <SectionHeading
-              eyebrow={news.eyebrow}
-              eyebrowAlt={altEyebrow}
-              heading={news.heading}
-              lede={news.lede}
-            />
-            {items.length === 0 ? (
-              <div className="mt-16 border-t border-[var(--rule)] pt-12 text-sm text-[var(--ink-soft)]">
-                No news yet.
+      <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
+        <Image
+          src="/news-bg.png"
+          alt=""
+          fill
+          sizes="100vw"
+          quality={92}
+          className="object-cover opacity-85 pointer-events-none select-none"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[var(--surface)]/30 via-[var(--surface)]/10 to-[var(--surface)] pointer-events-none"
+          aria-hidden
+        />
+        <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">
+          <div className="grid w-full grid-cols-12">
+            <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+              <h1 className="font-display text-[44px] leading-[1] md:text-[64px] lg:text-[80px] xl:text-[92px] font-bold tracking-tight text-white mb-3 md:mb-4">
+                {lang === "jp" ? "ニュース" : "News"}
+              </h1>
+              <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-md">
+                {lang === "jp"
+                  ? "視点、ブリーフィング、発表。"
+                  : "Perspectives. Briefings. Announcements."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="relative">
+        <div className="absolute inset-0 bv-glow pointer-events-none" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid grid-cols-12">
+            <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+                <div className="lg:col-span-5">
+                  <div className="flex items-start gap-3">
+                    <span className="inline-block w-6 h-px mt-[0.6rem] bg-[var(--rule-strong)]" aria-hidden />
+                    <span className="text-[10px] tracking-[0.22em] uppercase font-medium text-[var(--ink-soft)]">
+                      {lang === "jp" ? "ニュース" : "Dispatches"}
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-display text-[22px] md:text-[28px] lg:text-[32px] leading-[1.2] font-bold text-[var(--ink)] tracking-tight">
+                    {news.heading}
+                  </h2>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--ink-soft)]">
+                    {news.lede}
+                  </p>
+                </div>
               </div>
-            ) : (
-              <div className="mt-16 md:mt-20 border-t border-[var(--rule)] pt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-px bg-[var(--rule)]">
-                {items.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setExpanded(item.id)}
-                    className="group text-left bg-[var(--surface)] p-5 md:p-6 flex flex-col h-full border border-[var(--rule)] md:border-0 mb-[-1px] md:mb-0 hover:bg-[var(--surface-hover)] transition-colors"
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <time className="text-[10px] tracking-[0.18em] uppercase text-[var(--ink-soft)] font-semibold">
-                        {formatDate(item.date, lang)}
-                      </time>
-                      <span className="text-[9px] tracking-[0.18em] uppercase text-[var(--ink-muted)] border border-[var(--rule-strong)] px-2 py-0.5">
-                        {pick(item, "category", lang)}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-[13px] md:text-[14px] leading-[1.4] font-bold text-[var(--ink)] mb-2 line-clamp-3">
-                      {pick(item, "title", lang)}
-                    </h3>
-                    <p className="text-[11px] leading-[1.7] text-[var(--ink-soft)] line-clamp-4 flex-1">
-                      {pick(item, "excerpt", lang)}
-                    </p>
-                    <div className="mt-5 text-[10px] tracking-[0.2em] uppercase font-semibold text-[var(--ink-soft)] group-hover:text-[var(--ink)] inline-flex items-center gap-2">
-                      {news.readMore} <span aria-hidden>→</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
+              {items.length === 0 ? (
+                <div className="mt-16 border-t border-[var(--rule)] pt-12 text-sm text-[var(--ink-soft)]">
+                  No news yet.
+                </div>
+              ) : (
+                <div className="mt-16 md:mt-20 border-t border-[var(--rule)] pt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-px bg-[var(--rule)]">
+                  {items.map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setExpanded(item.id)}
+                      className="group text-left bg-[var(--surface)] p-5 md:p-6 flex flex-col h-full border border-[var(--rule)] md:border-0 mb-[-1px] md:mb-0 hover:bg-[var(--surface-hover)] transition-colors"
+                    >
+                      <div className="flex items-center justify-between mb-4">
+                        <time className="text-[10px] tracking-[0.18em] uppercase text-[var(--ink-soft)] font-semibold">
+                          {formatDate(item.date, lang)}
+                        </time>
+                        <span className="text-[9px] tracking-[0.18em] uppercase text-[var(--ink-muted)] border border-[var(--rule-strong)] px-2 py-0.5">
+                          {pick(item, "category", lang)}
+                        </span>
+                      </div>
+                      <h3 className="font-display text-[13px] md:text-[14px] leading-[1.4] font-bold text-[var(--ink)] mb-2 line-clamp-3">
+                        {pick(item, "title", lang)}
+                      </h3>
+                      <p className="text-[11px] leading-[1.7] text-[var(--ink-soft)] line-clamp-4 flex-1">
+                        {pick(item, "excerpt", lang)}
+                      </p>
+                      <div className="mt-5 text-[10px] tracking-[0.2em] uppercase font-semibold text-[var(--ink-soft)] group-hover:text-[var(--ink)] inline-flex items-center gap-2">
+                        {news.readMore} <span aria-hidden>→</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

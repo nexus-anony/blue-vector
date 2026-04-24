@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import SectionHeading from "../SectionHeading";
 import { useLanguage } from "../LanguageContext";
-import { content, type Lang } from "@/app/lib/content";
+import { type Lang } from "@/app/lib/content";
 
 export type TeamMemberView = {
   id: number;
@@ -54,53 +53,96 @@ function Avatar({
 export default function Team({ members }: { members: TeamMemberView[] }) {
   const { t, lang } = useLanguage();
   const team = t.team;
-  const altEyebrow = content[lang === "en" ? "jp" : "en"].team.eyebrow;
   return (
-    <section className="relative min-h-screen pt-28 md:pt-36 lg:pt-44 pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
+    <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="absolute inset-0 bv-diag opacity-50 pointer-events-none" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="grid grid-cols-12">
-          <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <SectionHeading
-              eyebrow={team.eyebrow}
-              eyebrowAlt={altEyebrow}
-              heading={team.heading}
-              lede={team.lede}
-            />
-            {members.length === 0 ? (
-              <div className="mt-12 border-t border-[var(--rule)] pt-10 text-sm text-[var(--ink-soft)]">
-                No team members yet.
+      <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
+        <Image
+          src="/team-photo.png"
+          alt=""
+          fill
+          sizes="100vw"
+          quality={92}
+          className="object-cover object-[center_70%] brightness-110 pointer-events-none select-none"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--surface)] pointer-events-none"
+          aria-hidden
+        />
+        <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">
+          <div className="grid w-full grid-cols-12">
+            <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+              <h1 className="font-display text-[44px] leading-[1] md:text-[64px] lg:text-[80px] xl:text-[92px] font-bold tracking-tight text-white mb-3 md:mb-4">
+                {lang === "jp" ? "メンバー" : "Team"}
+              </h1>
+              <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-md">
+                {lang === "jp"
+                  ? "現場の経験、防衛への実装。"
+                  : "Operational experience. Defense in practice."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="relative">
+        <div className="absolute inset-0 bv-glow pointer-events-none" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid grid-cols-12">
+            <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+                <div className="lg:col-span-5">
+                  <div className="flex items-start gap-3">
+                    <span className="inline-block w-6 h-px mt-[0.6rem] bg-[var(--rule-strong)]" aria-hidden />
+                    <span className="text-[10px] tracking-[0.22em] uppercase font-medium text-[var(--ink-soft)]">
+                      {lang === "jp" ? "メンバー" : "Leadership"}
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-display text-[22px] md:text-[28px] lg:text-[32px] leading-[1.2] font-bold text-[var(--ink)] tracking-tight">
+                    {team.heading}
+                  </h2>
+                </div>
+                <div className="lg:col-span-7">
+                  <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--ink-soft)]">
+                    {team.lede}
+                  </p>
+                </div>
               </div>
-            ) : (
-              <div className="mt-12 md:mt-14 grid md:grid-cols-2 gap-8 md:gap-10 border-t border-[var(--rule)] pt-8 md:pt-10">
-                {members.map((m) => {
-                  const name = pick(m, "name", lang);
-                  return (
-                    <article
-                      key={m.id}
-                      className="flex flex-col sm:flex-row gap-5 sm:gap-7"
-                    >
-                      <div className="w-32 sm:w-36 lg:w-40 shrink-0">
-                        <Avatar name={name} photo={m.photo} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-display text-[16px] md:text-[18px] font-bold text-[var(--ink)] leading-tight">
-                          {name}
-                        </h3>
-                        <div className="mt-1.5 text-[9px] tracking-[0.22em] uppercase text-[var(--ink-soft)] font-semibold">
-                          {pick(m, "role", lang)}
+              {members.length === 0 ? (
+                <div className="mt-12 border-t border-[var(--rule)] pt-10 text-sm text-[var(--ink-soft)]">
+                  No team members yet.
+                </div>
+              ) : (
+                <div className="mt-12 md:mt-14 grid md:grid-cols-2 gap-8 md:gap-10 border-t border-[var(--rule)] pt-8 md:pt-10">
+                  {members.map((m) => {
+                    const name = pick(m, "name", lang);
+                    return (
+                      <article
+                        key={m.id}
+                        className="flex flex-col sm:flex-row gap-5 sm:gap-7"
+                      >
+                        <div className="w-32 sm:w-36 lg:w-40 shrink-0">
+                          <Avatar name={name} photo={m.photo} />
                         </div>
-                        <div className="mt-3 pt-3 border-t border-[var(--rule)]">
-                          <p className="text-[12px] leading-[1.7] text-[var(--ink-soft)] whitespace-pre-line">
-                            {pick(m, "bio", lang)}
-                          </p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-display text-[16px] md:text-[18px] font-bold text-[var(--ink)] leading-tight">
+                            {name}
+                          </h3>
+                          <div className="mt-1.5 text-[9px] tracking-[0.22em] uppercase text-[var(--ink-soft)] font-semibold">
+                            {pick(m, "role", lang)}
+                          </div>
+                          <div className="mt-3 pt-3 border-t border-[var(--rule)]">
+                            <p className="text-[12px] leading-[1.7] text-[var(--ink-soft)] whitespace-pre-line">
+                              {pick(m, "bio", lang)}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            )}
+                      </article>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

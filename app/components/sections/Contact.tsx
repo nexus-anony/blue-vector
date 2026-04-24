@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, type FormEvent } from "react";
 import { useLanguage } from "../LanguageContext";
 import { content } from "@/app/lib/content";
@@ -23,9 +24,40 @@ export default function Contact() {
   }
 
   return (
-    <section className="relative min-h-screen pt-28 md:pt-36 lg:pt-44 pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
+    <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="absolute inset-0 bv-diag opacity-50 pointer-events-none" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
+        <Image
+          src="/contact-bg.png"
+          alt=""
+          fill
+          sizes="100vw"
+          quality={92}
+          className="object-cover opacity-85 pointer-events-none select-none"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[var(--surface)]/30 via-[var(--surface)]/10 to-[var(--surface)] pointer-events-none"
+          aria-hidden
+        />
+        <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">
+          <div className="grid w-full grid-cols-12">
+            <div className="col-span-12 lg:col-span-10 lg:col-start-2">
+              <h1 className="font-display text-[44px] leading-[1] md:text-[64px] lg:text-[80px] xl:text-[92px] font-bold tracking-tight text-white mb-3 md:mb-4">
+                {lang === "jp" ? "お問い合わせ" : "Contact"}
+              </h1>
+              <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-md">
+                {lang === "jp"
+                  ? "機密保持のもと、ご相談を承ります。"
+                  : "Discreet engagement. Qualified inquiries."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="relative">
+        <div className="absolute inset-0 bv-glow pointer-events-none" aria-hidden />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid grid-cols-12">
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
@@ -124,6 +156,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
