@@ -2,23 +2,61 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
+
+const HERO_IMAGES: { src: string; fit?: "cover" | "contain"; position?: string }[] = [
+  { src: "/hero-4.jpg" },
+  { src: "/hero-6.png" },
+  { src: "/hero-11.png" },
+  { src: "/hero-10.png" },
+  { src: "/hero-13.jpg" },
+];
+const ROTATION_MS = 6000;
 
 export default function Hero() {
   const { t } = useLanguage();
   const hero = t.hero;
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActive((i) => (i + 1) % HERO_IMAGES.length);
+    }, ROTATION_MS);
+    return () => window.clearInterval(id);
+  }, []);
 
   return (
     <section className="relative flex flex-col min-h-screen bg-[var(--surface)] overflow-hidden">
-      <Image
-        src="/hero-bg.jpg"
-        alt=""
-        fill
-        preload
-        sizes="100vw"
-        className="absolute inset-0 object-cover opacity-75 pointer-events-none select-none"
-        aria-hidden
-      />
+      {HERO_IMAGES.map((img, i) => {
+        const prev = (active - 1 + HERO_IMAGES.length) % HERO_IMAGES.length;
+        const isActive = i === active;
+        const isPrev = i === prev;
+        const transform = isActive
+          ? "translate-x-0"
+          : isPrev
+            ? "-translate-x-full"
+            : "translate-x-full";
+        const opacity = isActive || isPrev ? "opacity-75" : "opacity-0";
+        const motion =
+          isActive || isPrev
+            ? "transition-transform duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
+            : "transition-none";
+        const fitClass = img.fit === "contain" ? "object-contain" : "object-cover";
+        return (
+          <Image
+            key={img.src}
+            src={img.src}
+            alt=""
+            fill
+            sizes="100vw"
+            quality={92}
+            preload={i === 0}
+            className={`absolute inset-0 ${fitClass} pointer-events-none select-none ${motion} ${transform} ${opacity}`}
+            aria-hidden
+          />
+        );
+      })}
       <div
         className="absolute inset-0 bg-gradient-to-b from-[var(--surface)]/35 via-[var(--surface)]/25 to-[var(--surface)]/65 pointer-events-none"
         aria-hidden
