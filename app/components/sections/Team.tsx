@@ -67,7 +67,7 @@ export default function Team({ members }: { members: TeamMemberView[] }) {
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--surface)] pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[var(--surface)] pointer-events-none"
           aria-hidden
         />
         <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">

@@ -20,7 +20,7 @@ export default function Services() {
           aria-hidden
         />
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[var(--surface)]/30 via-[var(--surface)]/10 to-[var(--surface)] pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[var(--surface)] pointer-events-none"
           aria-hidden
         />
         <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">
