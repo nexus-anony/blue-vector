@@ -10,12 +10,8 @@ export default function SectionHeading({
   lede?: string;
   onDark?: boolean;
 }) {
-  const numberMatch = eyebrow.match(/^(\d{2})\s*[—–-]\s*(.*)$/);
-  const sectionNum = numberMatch?.[1];
-  const eyebrowLabel = numberMatch?.[2] ?? eyebrow;
-
-  const altMatch = eyebrowAlt?.match(/^(\d{2})\s*[—–-]\s*(.*)$/);
-  const altLabel = altMatch?.[2] ?? eyebrowAlt;
+  const eyebrowLabel = eyebrow.replace(/^\d{2}\s*[—–-]\s*/, "");
+  const altLabel = eyebrowAlt?.replace(/^\d{2}\s*[—–-]\s*/, "");
 
   return (
     <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">

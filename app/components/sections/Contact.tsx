@@ -8,11 +8,8 @@ export default function Contact() {
   const { t, lang } = useLanguage();
   const c = t.contact;
   const altEyebrowRaw = content[lang === "en" ? "jp" : "en"].contact.eyebrow;
-  const numMatch = c.eyebrow.match(/^(\d{2})\s*[—–-]\s*(.*)$/);
-  const sectionNum = numMatch?.[1];
-  const eyebrowLabel = numMatch?.[2] ?? c.eyebrow;
-  const altMatch = altEyebrowRaw.match(/^(\d{2})\s*[—–-]\s*(.*)$/);
-  const altLabel = altMatch?.[2] ?? altEyebrowRaw;
+  const eyebrowLabel = c.eyebrow.replace(/^\d{2}\s*[—–-]\s*/, "");
+  const altLabel = altEyebrowRaw.replace(/^\d{2}\s*[—–-]\s*/, "");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -34,11 +31,6 @@ export default function Contact() {
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
               <div className="lg:col-span-5">
                 <div className="flex items-start gap-3 mb-5">
-                  {sectionNum && (
-                    <span className="font-mono text-[10px] leading-[1.1] text-[var(--ink-faint)] tabular-nums" aria-hidden>
-                      § {sectionNum}
-                    </span>
-                  )}
                   <span className="inline-block w-6 h-px mt-[0.55rem] bg-[var(--rule-strong)]" aria-hidden />
                   <div className="flex flex-col leading-tight">
                     <span className="text-[10px] tracking-[0.22em] uppercase font-medium text-[var(--ink-soft)]">
@@ -62,7 +54,9 @@ export default function Contact() {
                     <div className="text-[10px] tracking-[0.22em] uppercase text-[var(--ink-muted)] mb-1">
                       {c.officeLabel}
                     </div>
-                    <div className="text-[var(--ink)]">{c.officeValue}</div>
+                    <div className="text-[var(--ink)] whitespace-pre-line leading-[1.6]">
+                      {c.officeValue}
+                    </div>
                   </div>
                   <div>
                     <div className="text-[10px] tracking-[0.22em] uppercase text-[var(--ink-muted)] mb-1">
