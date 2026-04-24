@@ -1,12 +1,25 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import Header from "./Header";
 import Footer from "./Footer";
 
 function ShellInner({ children }: { children: ReactNode }) {
   const { lang } = useLanguage();
+  const pathname = usePathname() ?? "/";
+  const isBareLayout =
+    pathname.startsWith("/admin") || pathname.startsWith("/login");
+
+  if (isBareLayout) {
+    return (
+      <div className={`min-h-full ${lang === "jp" ? "font-jp" : ""}`}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div className={`flex min-h-full flex-col ${lang === "jp" ? "font-jp" : ""}`}>
       <Header />
