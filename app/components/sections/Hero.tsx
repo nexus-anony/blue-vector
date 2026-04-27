@@ -15,7 +15,7 @@ const HERO_IMAGES: { src: string; fit?: "cover" | "contain"; position?: string }
 const ROTATION_MS = 6000;
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const hero = t.hero;
   const [active, setActive] = useState(0);
 
@@ -74,7 +74,13 @@ export default function Hero() {
             <h1 className="font-display text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-bold tracking-tight mb-10 md:mb-14 text-[var(--ink)]">
               {hero.headline}
             </h1>
-            <p className="text-[15px] md:text-base lg:text-[17px] text-[var(--ink-soft)] leading-[1.55] max-w-xl mb-10 md:mb-12">
+            <p
+              className={
+                lang === "en"
+                  ? "font-display font-bold tracking-tighter text-[var(--ink)] text-[22px] md:text-[28px] lg:text-[32px] leading-[1.15] max-w-xl mb-10 md:mb-12"
+                  : "text-[15px] md:text-base lg:text-[17px] text-[var(--ink-soft)] leading-[1.55] max-w-xl mb-10 md:mb-12"
+              }
+            >
               {hero.tagline}
             </p>
             <div className="flex flex-wrap gap-3">

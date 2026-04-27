@@ -126,7 +126,7 @@ export const content: Record<Lang, Dict> = {
     hero: {
       eyebrow: "Defense · Security · Strategic Advisory",
       headline: "BLUE VECTOR",
-      tagline: "Defense & Security Consulting and Strategic Advisory",
+      tagline: "Vectoring the Future of Defense",
       subtext:
         "Supporting defense innovation, policy strategy, and ecosystem development for governments, primes, and emerging technology firms operating at the intersection of national security and industry.",
       cta: "Contact Us",
