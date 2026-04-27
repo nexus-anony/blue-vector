@@ -5,6 +5,12 @@ import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import { type Lang } from "@/app/lib/content";
 
+const NEWS_HERO_IMAGES: { src: string; position: string }[] = [
+  { src: "/news-bg.jpg", position: "object-[center_30%]" },
+  { src: "/news-bg-2.jpg", position: "object-[center_50%]" },
+];
+const NEWS_ROTATION_MS = 6000;
+
 export type NewsItemView = {
   id: number;
   date: string;
@@ -42,25 +48,50 @@ export default function News({ items }: { items: NewsItemView[] }) {
   const { t, lang } = useLanguage();
   const news = t.news;
   const [expanded, setExpanded] = useState<number | null>(null);
+  const [activeHero, setActiveHero] = useState(0);
 
   const expandedItem = useMemo(
     () => items.find((x) => x.id === expanded) ?? null,
     [items, expanded]
   );
 
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActiveHero((i) => (i + 1) % NEWS_HERO_IMAGES.length);
+    }, NEWS_ROTATION_MS);
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
-      <div className="absolute inset-0 bv-diag opacity-50 pointer-events-none" aria-hidden />
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
-        <Image
-          src="/news-bg.png"
-          alt=""
-          fill
-          sizes="100vw"
-          quality={92}
-          className="object-cover opacity-85 pointer-events-none select-none"
-          aria-hidden
-        />
+        {NEWS_HERO_IMAGES.map((img, i) => {
+          const prev = (activeHero - 1 + NEWS_HERO_IMAGES.length) % NEWS_HERO_IMAGES.length;
+          const isActive = i === activeHero;
+          const isPrev = i === prev;
+          const transform = isActive
+            ? "translate-x-0"
+            : isPrev
+              ? "-translate-x-full"
+              : "translate-x-full";
+          const opacity = isActive || isPrev ? "opacity-85" : "opacity-0";
+          const motion =
+            isActive || isPrev
+              ? "transition-transform duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
+              : "transition-none";
+          return (
+            <Image
+              key={img.src}
+              src={img.src}
+              alt=""
+              fill
+              sizes="100vw"
+              quality={92}
+              className={`absolute inset-0 object-cover ${img.position} pointer-events-none select-none ${motion} ${transform} ${opacity}`}
+              aria-hidden
+            />
+          );
+        })}
         <div
           className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[var(--surface)] pointer-events-none"
           aria-hidden
