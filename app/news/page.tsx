@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import News, { type NewsItemView } from "@/app/components/sections/News";
 import { listNews } from "@/app/lib/news-queries";
+import { getSiteImages } from "@/app/lib/site-images";
 
 export const metadata: Metadata = {
   title: "News",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function NewsPage() {
-  const rows = await listNews();
+  const [rows, images] = await Promise.all([listNews(), getSiteImages()]);
   const items: NewsItemView[] = rows.map((r) => ({
     id: r.id,
     date: r.date_published,
@@ -23,5 +24,6 @@ export default async function NewsPage() {
     body_jp: r.body_jp,
     image: r.image,
   }));
-  return <News items={items} />;
+  const heroImages = [images.news_hero_1, images.news_hero_2];
+  return <News items={items} heroImages={heroImages} />;
 }

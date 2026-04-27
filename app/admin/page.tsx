@@ -15,7 +15,7 @@ export default async function AdminDashboard() {
           Manage news announcements and team members.
         </p>
       </div>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Link
           href="/admin/news"
           className="block border border-[var(--rule)] p-6 hover:bg-[var(--surface-hover)] transition-colors"
@@ -42,6 +42,20 @@ export default async function AdminDashboard() {
           </div>
           <div className="text-[12px] text-[var(--ink-soft)]">
             Founding and staff profiles →
+          </div>
+        </Link>
+        <Link
+          href="/admin/images"
+          className="block border border-[var(--rule)] p-6 hover:bg-[var(--surface-hover)] transition-colors"
+        >
+          <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--ink-soft)] font-semibold mb-2">
+            Images
+          </div>
+          <div className="font-display text-xl font-bold mb-1">
+            Hero & backgrounds
+          </div>
+          <div className="text-[12px] text-[var(--ink-soft)]">
+            Carousels and section backgrounds across the site →
           </div>
         </Link>
       </div>

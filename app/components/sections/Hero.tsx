@@ -5,30 +5,25 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 
-const HERO_IMAGES: { src: string; fit?: "cover" | "contain"; position?: string }[] = [
-  { src: "/hero-1.jpg" },
-  { src: "/hero-2.jpg" },
-  { src: "/hero-3.jpg" },
-  { src: "/hero-4.jpg" },
-];
 const ROTATION_MS = 6000;
 
-export default function Hero() {
+export default function Hero({ images }: { images: string[] }) {
   const { t, lang } = useLanguage();
   const hero = t.hero;
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+    if (images.length <= 1) return;
     const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % HERO_IMAGES.length);
+      setActive((i) => (i + 1) % images.length);
     }, ROTATION_MS);
     return () => window.clearInterval(id);
-  }, []);
+  }, [images.length]);
 
   return (
     <section className="relative flex flex-col min-h-screen bg-[var(--surface)] overflow-hidden">
-      {HERO_IMAGES.map((img, i) => {
-        const prev = (active - 1 + HERO_IMAGES.length) % HERO_IMAGES.length;
+      {images.map((src, i) => {
+        const prev = (active - 1 + images.length) % images.length;
         const isActive = i === active;
         const isPrev = i === prev;
         const transform = isActive
@@ -41,17 +36,16 @@ export default function Hero() {
           isActive || isPrev
             ? "transition-transform duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
             : "transition-none";
-        const fitClass = img.fit === "contain" ? "object-contain" : "object-cover";
         return (
           <Image
-            key={img.src}
-            src={img.src}
+            key={`${src}-${i}`}
+            src={src}
             alt=""
             fill
             sizes="100vw"
             quality={92}
             preload={i === 0}
-            className={`absolute inset-0 ${fitClass} pointer-events-none select-none ${motion} ${transform} ${opacity}`}
+            className={`absolute inset-0 object-cover pointer-events-none select-none ${motion} ${transform} ${opacity}`}
             aria-hidden
           />
         );

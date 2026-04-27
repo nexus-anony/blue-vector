@@ -3,14 +3,14 @@
 import Image from "next/image";
 import { useLanguage } from "../LanguageContext";
 
-export default function Services() {
+export default function Services({ backgroundImage }: { backgroundImage: string }) {
   const { t, lang } = useLanguage();
   const s = t.services;
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
         <Image
-          src="/services-bg.jpg"
+          src={backgroundImage}
           alt=""
           fill
           sizes="100vw"

@@ -51,6 +51,14 @@ async function main() {
     )
   `;
 
+  await sql`
+    CREATE TABLE IF NOT EXISTS site_images (
+      slot TEXT PRIMARY KEY,
+      url TEXT NOT NULL,
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `;
+
   await sql`ALTER TABLE news ADD COLUMN IF NOT EXISTS image TEXT`;
   await sql`ALTER TABLE team_members ADD COLUMN IF NOT EXISTS is_founder BOOLEAN NOT NULL DEFAULT false`;
   await sql`UPDATE team_members SET is_founder = true WHERE slug IN ('uemura', 'maehara') AND is_founder = false`;

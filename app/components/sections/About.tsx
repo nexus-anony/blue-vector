@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "../LanguageContext";
 
-export default function About() {
+export default function About({ backgroundImage }: { backgroundImage: string }) {
   const { t, lang } = useLanguage();
   const about = t.about;
   const pillars = [
@@ -15,7 +15,7 @@ export default function About() {
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
         <Image
-          src="/about-bg.jpg"
+          src={backgroundImage}
           alt=""
           fill
           sizes="100vw"
