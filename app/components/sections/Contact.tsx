@@ -25,10 +25,9 @@ export default function Contact() {
 
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
-      <div className="absolute inset-0 bv-diag opacity-50 pointer-events-none" aria-hidden />
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
         <Image
-          src="/contact-bg.png"
+          src="/contact-bg.jpg"
           alt=""
           fill
           sizes="100vw"

@@ -1,8 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import { type Lang } from "@/app/lib/content";
+
+const TEAM_HERO_IMAGES: { src: string; position: string }[] = [
+  { src: "/team-photo.jpg", position: "object-[center_50%]" },
+  { src: "/team-photo-2.jpg", position: "object-[center_75%]" },
+  { src: "/team-photo-3.jpg", position: "object-[center_50%]" },
+];
+const TEAM_ROTATION_MS = 6000;
 
 export type TeamMemberView = {
   id: number;
@@ -53,19 +61,45 @@ function Avatar({
 export default function Team({ members }: { members: TeamMemberView[] }) {
   const { t, lang } = useLanguage();
   const team = t.team;
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActive((i) => (i + 1) % TEAM_HERO_IMAGES.length);
+    }, TEAM_ROTATION_MS);
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
-      <div className="absolute inset-0 bv-diag opacity-50 pointer-events-none" aria-hidden />
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
-        <Image
-          src="/team-photo.png"
-          alt=""
-          fill
-          sizes="100vw"
-          quality={92}
-          className="object-cover object-[center_70%] brightness-110 pointer-events-none select-none"
-          aria-hidden
-        />
+        {TEAM_HERO_IMAGES.map((img, i) => {
+          const prev = (active - 1 + TEAM_HERO_IMAGES.length) % TEAM_HERO_IMAGES.length;
+          const isActive = i === active;
+          const isPrev = i === prev;
+          const transform = isActive
+            ? "translate-x-0"
+            : isPrev
+              ? "-translate-x-full"
+              : "translate-x-full";
+          const opacity = isActive || isPrev ? "opacity-100" : "opacity-0";
+          const motion =
+            isActive || isPrev
+              ? "transition-transform duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
+              : "transition-none";
+          return (
+            <Image
+              key={img.src}
+              src={img.src}
+              alt=""
+              fill
+              sizes="100vw"
+              quality={92}
+              className={`absolute inset-0 object-cover ${img.position} brightness-110 pointer-events-none select-none ${motion} ${transform} ${opacity}`}
+              aria-hidden
+            />
+          );
+        })}
         <div
           className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[var(--surface)] pointer-events-none"
           aria-hidden

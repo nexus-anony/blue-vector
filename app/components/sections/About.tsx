@@ -13,7 +13,6 @@ export default function About() {
   ];
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
-      <div className="absolute inset-0 bv-diag opacity-60 pointer-events-none" aria-hidden />
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
         <Image
           src="/about-bg.jpg"
@@ -21,7 +20,7 @@ export default function About() {
           fill
           sizes="100vw"
           quality={92}
-          className="object-cover object-[center_30%] opacity-85 pointer-events-none select-none"
+          className="object-cover object-[center_45%] opacity-85 pointer-events-none select-none"
           aria-hidden
         />
         <div

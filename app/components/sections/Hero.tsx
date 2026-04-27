@@ -6,11 +6,10 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 
 const HERO_IMAGES: { src: string; fit?: "cover" | "contain"; position?: string }[] = [
+  { src: "/hero-1.jpg" },
+  { src: "/hero-2.jpg" },
+  { src: "/hero-3.jpg" },
   { src: "/hero-4.jpg" },
-  { src: "/hero-6.png" },
-  { src: "/hero-11.png" },
-  { src: "/hero-10.png" },
-  { src: "/hero-13.jpg" },
 ];
 const ROTATION_MS = 6000;
 
@@ -61,7 +60,6 @@ export default function Hero() {
         className="absolute inset-0 bg-gradient-to-b from-[var(--surface)]/35 via-[var(--surface)]/25 to-[var(--surface)]/65 pointer-events-none"
         aria-hidden
       />
-      <div className="absolute inset-0 bv-diag opacity-40 pointer-events-none" aria-hidden />
       <div className="relative flex-1 flex items-center mx-auto w-full max-w-7xl px-6 lg:px-10 pt-28 md:pt-32 lg:pt-40 pb-20 md:pb-28 lg:pb-32">
         <div className="grid w-full grid-cols-12">
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
