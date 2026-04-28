@@ -184,6 +184,11 @@ export default function Contact({
                 ) : (
                   <form onSubmit={onSubmit} className="grid gap-5 md:gap-6">
                     <Field
+                      label={c.companyLabel}
+                      name="company"
+                      placeholder={c.companyPlaceholder}
+                    />
+                    <Field
                       label={c.nameLabel}
                       name="name"
                       placeholder={c.namePlaceholder}
@@ -195,11 +200,6 @@ export default function Contact({
                       type="email"
                       placeholder={c.emailPlaceholder}
                       required
-                    />
-                    <Field
-                      label={c.companyLabel}
-                      name="company"
-                      placeholder={c.companyPlaceholder}
                     />
                     <Field
                       label={c.subjectLabel}
