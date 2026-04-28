@@ -58,6 +58,20 @@ export default async function AdminDashboard() {
             Carousels and section backgrounds across the site →
           </div>
         </Link>
+        <Link
+          href="/admin/privacy"
+          className="block border border-[var(--rule)] p-6 hover:bg-[var(--surface-hover)] transition-colors"
+        >
+          <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--ink-soft)] font-semibold mb-2">
+            Privacy
+          </div>
+          <div className="font-display text-xl font-bold mb-1">
+            Policy text
+          </div>
+          <div className="text-[12px] text-[var(--ink-soft)]">
+            Title, body, and button labels for the contact form modal →
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -7,9 +7,30 @@ import { content } from "@/app/lib/content";
 
 export type HeroImage = { url: string; bottomFadeStyle: string };
 
-export default function Contact({ background }: { background: HeroImage }) {
+export type PrivacyContent = {
+  title_en: string;
+  title_jp: string;
+  body_en: string;
+  body_jp: string;
+  agree_en: string;
+  agree_jp: string;
+  cancel_en: string;
+  cancel_jp: string;
+};
+
+export default function Contact({
+  background,
+  privacy,
+}: {
+  background: HeroImage;
+  privacy: PrivacyContent;
+}) {
   const { t, lang } = useLanguage();
   const c = t.contact;
+  const privacyTitle = lang === "jp" ? privacy.title_jp : privacy.title_en;
+  const privacyBody = lang === "jp" ? privacy.body_jp : privacy.body_en;
+  const privacyAgree = lang === "jp" ? privacy.agree_jp : privacy.agree_en;
+  const privacyCancel = lang === "jp" ? privacy.cancel_jp : privacy.cancel_en;
   const altEyebrowRaw = content[lang === "en" ? "jp" : "en"].contact.eyebrow;
   const eyebrowLabel = c.eyebrow.replace(/^\d{2}\s*[—–-]\s*/, "");
   const altLabel = altEyebrowRaw.replace(/^\d{2}\s*[—–-]\s*/, "");
@@ -211,7 +232,7 @@ export default function Contact({ background }: { background: HeroImage }) {
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--rule)]">
               <span className="text-[10px] tracking-[0.22em] uppercase font-semibold text-[var(--ink-soft)]">
-                {c.privacyTitle}
+                {privacyTitle}
               </span>
               <button
                 type="button"
@@ -224,7 +245,7 @@ export default function Contact({ background }: { background: HeroImage }) {
             </div>
             <div className="px-6 py-6 md:px-10 md:py-8 overflow-y-auto flex-1">
               <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)] whitespace-pre-line">
-                {c.privacyBody}
+                {privacyBody}
               </p>
             </div>
             <div className="flex flex-wrap gap-3 px-6 py-4 border-t border-[var(--rule)]">
@@ -233,7 +254,7 @@ export default function Contact({ background }: { background: HeroImage }) {
                 onClick={confirmSubmit}
                 className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--rule-strong)] bg-[var(--invert)] text-[var(--on-invert)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:bg-[var(--surface-hover)] hover:border-[var(--ink)] transition-colors"
               >
-                {c.privacyAgree}
+                {privacyAgree}
                 <span aria-hidden>→</span>
               </button>
               <button
@@ -241,7 +262,7 @@ export default function Contact({ background }: { background: HeroImage }) {
                 onClick={() => setShowPrivacy(false)}
                 className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--rule)] text-[var(--ink-soft)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:text-[var(--ink)] hover:border-[var(--rule-strong)] transition-colors"
               >
-                {c.privacyCancel}
+                {privacyCancel}
               </button>
             </div>
           </div>
