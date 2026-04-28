@@ -305,7 +305,6 @@ function Field({
     <label className="block">
       <span className="block text-[9px] tracking-[0.22em] uppercase text-[var(--ink-soft)] font-medium mb-1.5">
         {label}
-        {required && <span className="text-[var(--ink-muted)] ml-1">*</span>}
       </span>
       {textarea ? (
         <textarea
