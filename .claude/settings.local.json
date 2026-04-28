@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"^/c/Users/ankit/Pictures/blue-vector/[^/]+\\(/[^/]+\\)?$\")",
+      "Bash(xargs -I {} basename {})"
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+import "server-only";
+import { sql } from "./db";
+
+export type SiteImageSlot = {
+  key: string;
+  label: string;
+  section: "home" | "team" | "news" | "about" | "services" | "contact";
+  defaultUrl: string;
+};
+
+export const SITE_IMAGE_SLOTS: SiteImageSlot[] = [
+  { key: "home_hero_1", label: "Home carousel · 1", section: "home", defaultUrl: "/hero-1.jpg" },
+  { key: "home_hero_2", label: "Home carousel · 2", section: "home", defaultUrl: "/hero-2.jpg" },
+  { key: "home_hero_3", label: "Home carousel · 3", section: "home", defaultUrl: "/hero-3.jpg" },
+  { key: "home_hero_4", label: "Home carousel · 4", section: "home", defaultUrl: "/hero-4.jpg" },
+  { key: "team_hero_1", label: "Team carousel · 1", section: "team", defaultUrl: "/team-photo.jpg" },
+  { key: "team_hero_2", label: "Team carousel · 2", section: "team", defaultUrl: "/team-photo-2.jpg" },
+  { key: "team_hero_3", label: "Team carousel · 3", section: "team", defaultUrl: "/team-photo-3.jpg" },
+  { key: "news_hero_1", label: "News carousel · 1", section: "news", defaultUrl: "/news-bg.jpg" },
+  { key: "news_hero_2", label: "News carousel · 2", section: "news", defaultUrl: "/news-bg-2.jpg" },
+  { key: "about_bg", label: "About hero", section: "about", defaultUrl: "/about-bg.jpg" },
+  { key: "services_bg", label: "Services hero", section: "services", defaultUrl: "/services-bg.jpg" },
+  { key: "contact_bg", label: "Contact hero", section: "contact", defaultUrl: "/contact-bg.jpg" },
+];
+
+export const BOTTOM_FADE_LEVELS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] as const;
+export type BottomFadeLevel = (typeof BOTTOM_FADE_LEVELS)[number];
+export const DEFAULT_BOTTOM_FADE_LEVEL: BottomFadeLevel = 100;
+
+const VALID_LEVELS = new Set<number>(BOTTOM_FADE_LEVELS);
+
+export function normalizeBottomFadeLevel(raw: unknown): BottomFadeLevel {
+  const n = typeof raw === "number" ? raw : Number.parseInt(String(raw ?? ""), 10);
+  if (!Number.isFinite(n)) return DEFAULT_BOTTOM_FADE_LEVEL;
+  const rounded = Math.round(n / 10) * 10;
+  return (VALID_LEVELS.has(rounded) ? rounded : DEFAULT_BOTTOM_FADE_LEVEL) as BottomFadeLevel;
+}
+
+export function bottomFadeStyle(level: BottomFadeLevel): string {
+  if (level <= 0) return "";
+  if (level >= 100) {
+    return "linear-gradient(to bottom, transparent 50%, var(--surface) 100%)";
+  }
+  return `linear-gradient(to bottom, transparent 50%, color-mix(in oklab, var(--surface) ${level}%, transparent) 100%)`;
+}
+
+export type SlotImage = {
+  url: string;
+  bottomFadeLevel: BottomFadeLevel;
+  bottomFadeStyle: string;
+};
+
+const DEFAULTS = Object.fromEntries(
+  SITE_IMAGE_SLOTS.map((s) => [s.key, s.defaultUrl])
+) as Record<string, string>;
+
+let initialized = false;
+async function ensureTable() {
+  if (initialized) return;
+  await sql`
+    CREATE TABLE IF NOT EXISTS site_images (
+      slot TEXT PRIMARY KEY,
+      url TEXT NOT NULL,
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `;
+  await sql`ALTER TABLE site_images ADD COLUMN IF NOT EXISTS bottom_fade TEXT NOT NULL DEFAULT ''`;
+  initialized = true;
+}
+
+export async function getSiteImages(): Promise<Record<string, SlotImage>> {
+  await ensureTable();
+  const rows = (await sql`SELECT slot, url, bottom_fade FROM site_images`) as {
+    slot: string;
+    url: string;
+    bottom_fade: string;
+  }[];
+  const map: Record<string, SlotImage> = {};
+  for (const slot of SITE_IMAGE_SLOTS) {
+    map[slot.key] = {
+      url: slot.defaultUrl,
+      bottomFadeLevel: DEFAULT_BOTTOM_FADE_LEVEL,
+      bottomFadeStyle: bottomFadeStyle(DEFAULT_BOTTOM_FADE_LEVEL),
+    };
+  }
+  for (const r of rows) {
+    const target = map[r.slot];
+    if (!target) continue;
+    const level =
+      r.bottom_fade === "" || r.bottom_fade === undefined
+        ? DEFAULT_BOTTOM_FADE_LEVEL
+        : normalizeBottomFadeLevel(r.bottom_fade);
+    target.url = r.url && r.url.length > 0 ? r.url : target.url;
+    target.bottomFadeLevel = level;
+    target.bottomFadeStyle = bottomFadeStyle(level);
+  }
+  return map;
+}
+
+export async function setSiteImage(
+  slot: string,
+  url: string | null,
+  bottomFadeLevel: BottomFadeLevel | null
+): Promise<void> {
+  await ensureTable();
+  const cleanUrl = (url ?? "").trim();
+  const isDefaultLevel =
+    bottomFadeLevel === null || bottomFadeLevel === DEFAULT_BOTTOM_FADE_LEVEL;
+  const fadeStr = isDefaultLevel ? "" : String(bottomFadeLevel);
+  if (cleanUrl.length === 0 && fadeStr === "") {
+    await sql`DELETE FROM site_images WHERE slot = ${slot}`;
+    return;
+  }
+  await sql`
+    INSERT INTO site_images (slot, url, bottom_fade, updated_at)
+    VALUES (${slot}, ${cleanUrl}, ${fadeStr}, now())
+    ON CONFLICT (slot) DO UPDATE SET url = EXCLUDED.url, bottom_fade = EXCLUDED.bottom_fade, updated_at = now()
+  `;
+}
+
+export function getDefaults(): Record<string, string> {
+  return { ...DEFAULTS };
+}

@@ -3,14 +3,16 @@
 import Image from "next/image";
 import { useLanguage } from "../LanguageContext";
 
-export default function Services() {
+export type HeroImage = { url: string; bottomFadeStyle: string };
+
+export default function Services({ background }: { background: HeroImage }) {
   const { t, lang } = useLanguage();
   const s = t.services;
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
         <Image
-          src="/services-bg.jpg"
+          src={background.url}
           alt=""
           fill
           sizes="100vw"
@@ -18,10 +20,13 @@ export default function Services() {
           className="object-cover opacity-85 pointer-events-none select-none"
           aria-hidden
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[var(--surface)] pointer-events-none"
-          aria-hidden
-        />
+        {background.bottomFadeStyle && (
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: background.bottomFadeStyle }}
+          />
+        )}
         <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">
           <div className="grid w-full grid-cols-12">
             <div className="col-span-12 lg:col-span-10 lg:col-start-2">

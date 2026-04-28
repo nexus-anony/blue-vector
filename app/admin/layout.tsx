@@ -33,6 +33,9 @@ export default async function AdminLayout({
               <Link href="/admin/team" className="hover:text-[var(--ink)]">
                 Team
               </Link>
+              <Link href="/admin/images" className="hover:text-[var(--ink)]">
+                Images
+              </Link>
               <Link
                 href="/"
                 className="hover:text-[var(--ink)]"

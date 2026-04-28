@@ -150,6 +150,16 @@ time,
     );
 }
 
+.bv-nav-fade {
+  background: linear-gradient(
+    to bottom,
+    var(--surface) 0%,
+    color-mix(in oklab, var(--surface) 70%, transparent) 55%,
+    transparent 100%
+  );
+}
+
+
 input:focus,
 textarea:focus,
 button:focus-visible,

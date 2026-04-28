@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Team, { type TeamMemberView } from "@/app/components/sections/Team";
 import { listTeam } from "@/app/lib/team-queries";
+import { getSiteImages } from "@/app/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Team",
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function TeamPage() {
-  const rows = await listTeam();
+  const [rows, images] = await Promise.all([listTeam(), getSiteImages()]);
   const members: TeamMemberView[] = rows.map((r) => ({
     id: r.id,
     name_en: r.name_en,
@@ -20,5 +21,10 @@ export default async function TeamPage() {
     bio_jp: r.bio_jp,
     photo: r.photo,
   }));
-  return <Team members={members} />;
+  const heroImages = [
+    images.team_hero_1,
+    images.team_hero_2,
+    images.team_hero_3,
+  ];
+  return <Team members={members} heroImages={heroImages} />;
 }

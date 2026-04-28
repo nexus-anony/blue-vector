@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import { type Lang } from "@/app/lib/content";
 
-const TEAM_HERO_IMAGES: { src: string; position: string }[] = [
-  { src: "/team-photo.jpg", position: "object-[center_50%]" },
-  { src: "/team-photo-2.jpg", position: "object-[center_75%]" },
-  { src: "/team-photo-3.jpg", position: "object-[center_50%]" },
+const TEAM_HERO_POSITIONS = [
+  "object-[center_50%]",
+  "object-[center_75%]",
+  "object-[center_50%]",
 ];
 const TEAM_ROTATION_MS = 6000;
 
@@ -58,23 +58,32 @@ function Avatar({
   );
 }
 
-export default function Team({ members }: { members: TeamMemberView[] }) {
+export type HeroImage = { url: string; bottomFadeStyle: string };
+
+export default function Team({
+  members,
+  heroImages,
+}: {
+  members: TeamMemberView[];
+  heroImages: HeroImage[];
+}) {
   const { t, lang } = useLanguage();
   const team = t.team;
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+    if (heroImages.length <= 1) return;
     const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % TEAM_HERO_IMAGES.length);
+      setActive((i) => (i + 1) % heroImages.length);
     }, TEAM_ROTATION_MS);
     return () => window.clearInterval(id);
-  }, []);
+  }, [heroImages.length]);
 
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
-        {TEAM_HERO_IMAGES.map((img, i) => {
-          const prev = (active - 1 + TEAM_HERO_IMAGES.length) % TEAM_HERO_IMAGES.length;
+        {heroImages.map((img, i) => {
+          const prev = (active - 1 + heroImages.length) % heroImages.length;
           const isActive = i === active;
           const isPrev = i === prev;
           const transform = isActive
@@ -87,23 +96,29 @@ export default function Team({ members }: { members: TeamMemberView[] }) {
             isActive || isPrev
               ? "transition-transform duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
               : "transition-none";
+          const position = TEAM_HERO_POSITIONS[i] ?? "object-[center_50%]";
+          const fadeOpacity = isActive ? "opacity-100" : "opacity-0";
           return (
-            <Image
-              key={img.src}
-              src={img.src}
-              alt=""
-              fill
-              sizes="100vw"
-              quality={92}
-              className={`absolute inset-0 object-cover ${img.position} brightness-110 pointer-events-none select-none ${motion} ${transform} ${opacity}`}
-              aria-hidden
-            />
+            <div key={`${img.url}-${i}`} className="contents">
+              <Image
+                src={img.url}
+                alt=""
+                fill
+                sizes="100vw"
+                quality={92}
+                className={`absolute inset-0 object-cover ${position} brightness-110 pointer-events-none select-none ${motion} ${transform} ${opacity}`}
+                aria-hidden
+              />
+              {img.bottomFadeStyle && (
+                <div
+                  aria-hidden
+                  className={`absolute inset-0 pointer-events-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${fadeOpacity}`}
+                  style={{ background: img.bottomFadeStyle }}
+                />
+              )}
+            </div>
           );
         })}
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[var(--surface)] pointer-events-none"
-          aria-hidden
-        />
         <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">
           <div className="grid w-full grid-cols-12">
             <div className="col-span-12 lg:col-span-10 lg:col-start-2">

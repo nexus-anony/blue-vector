@@ -5,7 +5,9 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useLanguage } from "../LanguageContext";
 import { content } from "@/app/lib/content";
 
-export default function Contact() {
+export type HeroImage = { url: string; bottomFadeStyle: string };
+
+export default function Contact({ background }: { background: HeroImage }) {
   const { t, lang } = useLanguage();
   const c = t.contact;
   const altEyebrowRaw = content[lang === "en" ? "jp" : "en"].contact.eyebrow;
@@ -46,7 +48,7 @@ export default function Contact() {
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
       <div className="relative w-full h-[50vh] mb-16 md:mb-20 lg:mb-24 overflow-hidden">
         <Image
-          src="/contact-bg.jpg"
+          src={background.url}
           alt=""
           fill
           sizes="100vw"
@@ -54,10 +56,13 @@ export default function Contact() {
           className="object-cover opacity-85 pointer-events-none select-none"
           aria-hidden
         />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-[var(--surface)] pointer-events-none"
-          aria-hidden
-        />
+        {background.bottomFadeStyle && (
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: background.bottomFadeStyle }}
+          />
+        )}
         <div className="relative z-10 h-full mx-auto max-w-7xl px-6 lg:px-10 flex items-end pb-10 md:pb-14 lg:pb-16">
           <div className="grid w-full grid-cols-12">
             <div className="col-span-12 lg:col-span-10 lg:col-start-2">

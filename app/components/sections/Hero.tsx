@@ -5,30 +5,27 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "../LanguageContext";
 
-const HERO_IMAGES: { src: string; fit?: "cover" | "contain"; position?: string }[] = [
-  { src: "/hero-1.jpg" },
-  { src: "/hero-2.jpg" },
-  { src: "/hero-3.jpg" },
-  { src: "/hero-4.jpg" },
-];
 const ROTATION_MS = 6000;
 
-export default function Hero() {
+export type HeroImage = { url: string; bottomFadeStyle: string };
+
+export default function Hero({ images }: { images: HeroImage[] }) {
   const { t } = useLanguage();
   const hero = t.hero;
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+    if (images.length <= 1) return;
     const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % HERO_IMAGES.length);
+      setActive((i) => (i + 1) % images.length);
     }, ROTATION_MS);
     return () => window.clearInterval(id);
-  }, []);
+  }, [images.length]);
 
   return (
-    <section className="relative flex flex-col min-h-screen bg-[var(--surface)] overflow-hidden">
-      {HERO_IMAGES.map((img, i) => {
-        const prev = (active - 1 + HERO_IMAGES.length) % HERO_IMAGES.length;
+    <section className="relative flex flex-col min-h-[88svh] sm:min-h-[92svh] md:min-h-screen bg-[var(--surface)] overflow-hidden">
+      {images.map((img, i) => {
+        const prev = (active - 1 + images.length) % images.length;
         const isActive = i === active;
         const isPrev = i === prev;
         const transform = isActive
@@ -37,23 +34,31 @@ export default function Hero() {
             ? "-translate-x-full"
             : "translate-x-full";
         const opacity = isActive || isPrev ? "opacity-75" : "opacity-0";
+        const fadeOpacity = isActive ? "opacity-100" : "opacity-0";
         const motion =
           isActive || isPrev
             ? "transition-transform duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
             : "transition-none";
-        const fitClass = img.fit === "contain" ? "object-contain" : "object-cover";
         return (
-          <Image
-            key={img.src}
-            src={img.src}
-            alt=""
-            fill
-            sizes="100vw"
-            quality={92}
-            preload={i === 0}
-            className={`absolute inset-0 ${fitClass} pointer-events-none select-none ${motion} ${transform} ${opacity}`}
-            aria-hidden
-          />
+          <div key={`${img.url}-${i}`} className="contents">
+            <Image
+              src={img.url}
+              alt=""
+              fill
+              sizes="100vw"
+              quality={92}
+              preload={i === 0}
+              className={`absolute inset-0 object-cover pointer-events-none select-none ${motion} ${transform} ${opacity}`}
+              aria-hidden
+            />
+            {img.bottomFadeStyle && (
+              <div
+                aria-hidden
+                className={`absolute inset-0 pointer-events-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${fadeOpacity}`}
+                style={{ background: img.bottomFadeStyle }}
+              />
+            )}
+          </div>
         );
       })}
       <div
@@ -65,14 +70,14 @@ export default function Hero() {
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <div className="flex items-center gap-4 mb-10 md:mb-12">
               <span className="inline-block w-10 h-px bg-[var(--rule-strong)]" />
-              <span className="text-[10px] tracking-[0.28em] uppercase text-[var(--ink-soft)]">
+              <span className="text-[12px] md:text-[13px] tracking-[0.28em] uppercase text-[var(--ink-soft)]">
                 {hero.eyebrow}
               </span>
             </div>
-            <h1 className="font-display text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-bold tracking-tight mb-10 md:mb-14 text-[var(--ink)]">
+            <h1 className="font-display text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-bold tracking-tight mb-4 md:mb-6 text-[var(--ink)]">
               {hero.headline}
             </h1>
-            <p className="text-[15px] md:text-base lg:text-[17px] text-[var(--ink-soft)] leading-[1.55] max-w-xl mb-10 md:mb-12">
+            <p className="font-display font-bold tracking-tighter text-[var(--ink)] text-[22px] md:text-[28px] lg:text-[32px] leading-[1.15] max-w-xl mb-10 md:mb-12">
               {hero.tagline}
             </p>
             <div className="flex flex-wrap gap-3">

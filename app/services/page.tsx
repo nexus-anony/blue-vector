@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Services from "@/app/components/sections/Services";
+import { getSiteImages } from "@/app/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
     "Four pillars of defense advisory: consulting, community initiatives, technology incubation, and investment support.",
 };
 
-export default function ServicesPage() {
-  return <Services />;
+export default async function ServicesPage() {
+  const images = await getSiteImages();
+  return <Services background={images.services_bg} />;
 }

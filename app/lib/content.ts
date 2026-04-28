@@ -130,7 +130,7 @@ export const content: Record<Lang, Dict> = {
     hero: {
       eyebrow: "Defense & Security",
       headline: "BLUE VECTOR",
-      tagline: "Defense & Security Consulting and Strategic Advisory",
+      tagline: "Vectoring the Future of Defense",
       subtext:
         "Supporting defense innovation, policy strategy, and ecosystem development for governments, primes, and emerging technology firms operating at the intersection of national security and industry.",
       cta: "Contact Us",
@@ -315,11 +315,11 @@ export const content: Record<Lang, Dict> = {
     hero: {
       eyebrow: "防衛・安全保障",
       headline: "BLUE VECTOR",
-      tagline: "防衛・安全保障領域の戦略コンサルティング",
+      tagline: "Vectoring the Future of Defense",
       subtext:
         "防衛イノベーション、政策戦略、そしてエコシステム形成を支援します。官公庁、防衛プライム、そして安全保障と産業の交差点で事業を展開する新興企業のパートナーとして活動します。",
-      cta: "お問い合わせ",
-      secondaryCta: "事業紹介",
+      cta: "Contact Us",
+      secondaryCta: "Our Services",
     },
     about: {
       eyebrow: "01 — 会社概要",
