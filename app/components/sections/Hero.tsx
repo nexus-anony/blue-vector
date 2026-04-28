@@ -8,7 +8,7 @@ import { useLanguage } from "../LanguageContext";
 const ROTATION_MS = 6000;
 
 export default function Hero({ images }: { images: string[] }) {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const hero = t.hero;
   const [active, setActive] = useState(0);
 
@@ -59,20 +59,14 @@ export default function Hero({ images }: { images: string[] }) {
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
             <div className="flex items-center gap-4 mb-10 md:mb-12">
               <span className="inline-block w-10 h-px bg-[var(--rule-strong)]" />
-              <span className="text-[10px] tracking-[0.28em] uppercase text-[var(--ink-soft)]">
+              <span className="text-[12px] md:text-[13px] tracking-[0.28em] uppercase text-[var(--ink-soft)]">
                 {hero.eyebrow}
               </span>
             </div>
-            <h1 className="font-display text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-bold tracking-tight mb-10 md:mb-14 text-[var(--ink)]">
+            <h1 className="font-display text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-bold tracking-tight mb-4 md:mb-6 text-[var(--ink)]">
               {hero.headline}
             </h1>
-            <p
-              className={
-                lang === "en"
-                  ? "font-display font-bold tracking-tighter text-[var(--ink)] text-[22px] md:text-[28px] lg:text-[32px] leading-[1.15] max-w-xl mb-10 md:mb-12"
-                  : "text-[15px] md:text-base lg:text-[17px] text-[var(--ink-soft)] leading-[1.55] max-w-xl mb-10 md:mb-12"
-              }
-            >
+            <p className="font-display font-bold tracking-tighter text-[var(--ink)] text-[22px] md:text-[28px] lg:text-[32px] leading-[1.15] max-w-xl mb-10 md:mb-12">
               {hero.tagline}
             </p>
             <div className="flex flex-wrap gap-3">
