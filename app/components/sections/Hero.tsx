@@ -7,7 +7,9 @@ import { useLanguage } from "../LanguageContext";
 
 const ROTATION_MS = 6000;
 
-export default function Hero({ images }: { images: string[] }) {
+export type HeroImage = { url: string; bottomFadeStyle: string };
+
+export default function Hero({ images }: { images: HeroImage[] }) {
   const { t } = useLanguage();
   const hero = t.hero;
   const [active, setActive] = useState(0);
@@ -22,7 +24,7 @@ export default function Hero({ images }: { images: string[] }) {
 
   return (
     <section className="relative flex flex-col min-h-[88svh] sm:min-h-[92svh] md:min-h-screen bg-[var(--surface)] overflow-hidden">
-      {images.map((src, i) => {
+      {images.map((img, i) => {
         const prev = (active - 1 + images.length) % images.length;
         const isActive = i === active;
         const isPrev = i === prev;
@@ -32,22 +34,31 @@ export default function Hero({ images }: { images: string[] }) {
             ? "-translate-x-full"
             : "translate-x-full";
         const opacity = isActive || isPrev ? "opacity-75" : "opacity-0";
+        const fadeOpacity = isActive ? "opacity-100" : "opacity-0";
         const motion =
           isActive || isPrev
             ? "transition-transform duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
             : "transition-none";
         return (
-          <Image
-            key={`${src}-${i}`}
-            src={src}
-            alt=""
-            fill
-            sizes="100vw"
-            quality={92}
-            preload={i === 0}
-            className={`absolute inset-0 object-cover pointer-events-none select-none ${motion} ${transform} ${opacity}`}
-            aria-hidden
-          />
+          <div key={`${img.url}-${i}`} className="contents">
+            <Image
+              src={img.url}
+              alt=""
+              fill
+              sizes="100vw"
+              quality={92}
+              preload={i === 0}
+              className={`absolute inset-0 object-cover pointer-events-none select-none ${motion} ${transform} ${opacity}`}
+              aria-hidden
+            />
+            {img.bottomFadeStyle && (
+              <div
+                aria-hidden
+                className={`absolute inset-0 pointer-events-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${fadeOpacity}`}
+                style={{ background: img.bottomFadeStyle }}
+              />
+            )}
+          </div>
         );
       })}
       <div

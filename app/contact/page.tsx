@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 
 export default async function ContactPage() {
   const images = await getSiteImages();
-  return <Contact backgroundImage={images.contact_bg} />;
+  return <Contact background={images.contact_bg} />;
 }

@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 
 export default async function ServicesPage() {
   const images = await getSiteImages();
-  return <Services backgroundImage={images.services_bg} />;
+  return <Services background={images.services_bg} />;
 }

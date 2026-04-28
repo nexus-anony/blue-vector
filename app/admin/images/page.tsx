@@ -39,7 +39,8 @@ export default async function ImagesAdminPage() {
                 key={s.key}
                 slot={s.key}
                 label={s.label}
-                initialUrl={current[s.key]}
+                initialUrl={current[s.key]?.url ?? s.defaultUrl}
+                initialBottomFade={current[s.key]?.bottomFadeLevel ?? 100}
                 defaultUrl={s.defaultUrl}
               />
             ))}

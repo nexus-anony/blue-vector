@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const images = await getSiteImages();
-  return <About backgroundImage={images.about_bg} />;
+  return <About background={images.about_bg} />;
 }

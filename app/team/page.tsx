@@ -21,6 +21,10 @@ export default async function TeamPage() {
     bio_jp: r.bio_jp,
     photo: r.photo,
   }));
-  const heroImages = [images.team_hero_1, images.team_hero_2, images.team_hero_3];
+  const heroImages = [
+    images.team_hero_1,
+    images.team_hero_2,
+    images.team_hero_3,
+  ];
   return <Team members={members} heroImages={heroImages} />;
 }
