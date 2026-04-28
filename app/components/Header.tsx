@@ -28,7 +28,7 @@ export default function Header() {
   const isActive = (path: string) =>
     path === "/" ? pathname === "/" : pathname.startsWith(path);
 
-  const shellClass = "fixed inset-x-0 top-0 z-40 bg-transparent";
+  const shellClass = `fixed inset-x-0 top-0 z-40 ${mobileOpen ? "bg-[var(--surface)] md:bg-transparent" : "bg-transparent"}`;
   const fadeOpacity = mobileOpen ? 1 : fade;
 
   return (

@@ -21,7 +21,7 @@ export default function Hero({ images }: { images: string[] }) {
   }, [images.length]);
 
   return (
-    <section className="relative flex flex-col min-h-screen bg-[var(--surface)] overflow-hidden">
+    <section className="relative flex flex-col min-h-[88svh] sm:min-h-[92svh] md:min-h-screen bg-[var(--surface)] overflow-hidden">
       {images.map((src, i) => {
         const prev = (active - 1 + images.length) % images.length;
         const isActive = i === active;
