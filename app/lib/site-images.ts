@@ -27,6 +27,10 @@ export const BOTTOM_FADE_LEVELS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] a
 export type BottomFadeLevel = (typeof BOTTOM_FADE_LEVELS)[number];
 export const DEFAULT_BOTTOM_FADE_LEVEL: BottomFadeLevel = 100;
 
+export const TOP_FADE_LEVELS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] as const;
+export type TopFadeLevel = (typeof TOP_FADE_LEVELS)[number];
+export const DEFAULT_TOP_FADE_LEVEL: TopFadeLevel = 0;
+
 const VALID_LEVELS = new Set<number>(BOTTOM_FADE_LEVELS);
 
 export function normalizeBottomFadeLevel(raw: unknown): BottomFadeLevel {
@@ -34,6 +38,13 @@ export function normalizeBottomFadeLevel(raw: unknown): BottomFadeLevel {
   if (!Number.isFinite(n)) return DEFAULT_BOTTOM_FADE_LEVEL;
   const rounded = Math.round(n / 10) * 10;
   return (VALID_LEVELS.has(rounded) ? rounded : DEFAULT_BOTTOM_FADE_LEVEL) as BottomFadeLevel;
+}
+
+export function normalizeTopFadeLevel(raw: unknown): TopFadeLevel {
+  const n = typeof raw === "number" ? raw : Number.parseInt(String(raw ?? ""), 10);
+  if (!Number.isFinite(n)) return DEFAULT_TOP_FADE_LEVEL;
+  const rounded = Math.round(n / 10) * 10;
+  return (VALID_LEVELS.has(rounded) ? rounded : DEFAULT_TOP_FADE_LEVEL) as TopFadeLevel;
 }
 
 export function bottomFadeStyle(level: BottomFadeLevel): string {
@@ -44,10 +55,20 @@ export function bottomFadeStyle(level: BottomFadeLevel): string {
   return `linear-gradient(to bottom, transparent 50%, color-mix(in oklab, var(--surface) ${level}%, transparent) 100%)`;
 }
 
+export function topFadeStyle(level: TopFadeLevel): string {
+  if (level <= 0) return "";
+  if (level >= 100) {
+    return "linear-gradient(to bottom, var(--surface) 0%, transparent 50%)";
+  }
+  return `linear-gradient(to bottom, color-mix(in oklab, var(--surface) ${level}%, transparent) 0%, transparent 50%)`;
+}
+
 export type SlotImage = {
   url: string;
   bottomFadeLevel: BottomFadeLevel;
   bottomFadeStyle: string;
+  topFadeLevel: TopFadeLevel;
+  topFadeStyle: string;
 };
 
 const DEFAULTS = Object.fromEntries(
@@ -65,15 +86,17 @@ async function ensureTable() {
     )
   `;
   await sql`ALTER TABLE site_images ADD COLUMN IF NOT EXISTS bottom_fade TEXT NOT NULL DEFAULT ''`;
+  await sql`ALTER TABLE site_images ADD COLUMN IF NOT EXISTS top_fade TEXT NOT NULL DEFAULT ''`;
   initialized = true;
 }
 
 export async function getSiteImages(): Promise<Record<string, SlotImage>> {
   await ensureTable();
-  const rows = (await sql`SELECT slot, url, bottom_fade FROM site_images`) as {
+  const rows = (await sql`SELECT slot, url, bottom_fade, top_fade FROM site_images`) as {
     slot: string;
     url: string;
     bottom_fade: string;
+    top_fade: string;
   }[];
   const map: Record<string, SlotImage> = {};
   for (const slot of SITE_IMAGE_SLOTS) {
@@ -81,18 +104,26 @@ export async function getSiteImages(): Promise<Record<string, SlotImage>> {
       url: slot.defaultUrl,
       bottomFadeLevel: DEFAULT_BOTTOM_FADE_LEVEL,
       bottomFadeStyle: bottomFadeStyle(DEFAULT_BOTTOM_FADE_LEVEL),
+      topFadeLevel: DEFAULT_TOP_FADE_LEVEL,
+      topFadeStyle: topFadeStyle(DEFAULT_TOP_FADE_LEVEL),
     };
   }
   for (const r of rows) {
     const target = map[r.slot];
     if (!target) continue;
-    const level =
+    const bLevel =
       r.bottom_fade === "" || r.bottom_fade === undefined
         ? DEFAULT_BOTTOM_FADE_LEVEL
         : normalizeBottomFadeLevel(r.bottom_fade);
+    const tLevel =
+      r.top_fade === "" || r.top_fade === undefined
+        ? DEFAULT_TOP_FADE_LEVEL
+        : normalizeTopFadeLevel(r.top_fade);
     target.url = r.url && r.url.length > 0 ? r.url : target.url;
-    target.bottomFadeLevel = level;
-    target.bottomFadeStyle = bottomFadeStyle(level);
+    target.bottomFadeLevel = bLevel;
+    target.bottomFadeStyle = bottomFadeStyle(bLevel);
+    target.topFadeLevel = tLevel;
+    target.topFadeStyle = topFadeStyle(tLevel);
   }
   return map;
 }
@@ -100,21 +131,29 @@ export async function getSiteImages(): Promise<Record<string, SlotImage>> {
 export async function setSiteImage(
   slot: string,
   url: string | null,
-  bottomFadeLevel: BottomFadeLevel | null
+  bottomFadeLevel: BottomFadeLevel | null,
+  topFadeLevel: TopFadeLevel | null
 ): Promise<void> {
   await ensureTable();
   const cleanUrl = (url ?? "").trim();
-  const isDefaultLevel =
+  const isDefaultBottom =
     bottomFadeLevel === null || bottomFadeLevel === DEFAULT_BOTTOM_FADE_LEVEL;
-  const fadeStr = isDefaultLevel ? "" : String(bottomFadeLevel);
-  if (cleanUrl.length === 0 && fadeStr === "") {
+  const isDefaultTop =
+    topFadeLevel === null || topFadeLevel === DEFAULT_TOP_FADE_LEVEL;
+  const bottomStr = isDefaultBottom ? "" : String(bottomFadeLevel);
+  const topStr = isDefaultTop ? "" : String(topFadeLevel);
+  if (cleanUrl.length === 0 && bottomStr === "" && topStr === "") {
     await sql`DELETE FROM site_images WHERE slot = ${slot}`;
     return;
   }
   await sql`
-    INSERT INTO site_images (slot, url, bottom_fade, updated_at)
-    VALUES (${slot}, ${cleanUrl}, ${fadeStr}, now())
-    ON CONFLICT (slot) DO UPDATE SET url = EXCLUDED.url, bottom_fade = EXCLUDED.bottom_fade, updated_at = now()
+    INSERT INTO site_images (slot, url, bottom_fade, top_fade, updated_at)
+    VALUES (${slot}, ${cleanUrl}, ${bottomStr}, ${topStr}, now())
+    ON CONFLICT (slot) DO UPDATE SET
+      url = EXCLUDED.url,
+      bottom_fade = EXCLUDED.bottom_fade,
+      top_fade = EXCLUDED.top_fade,
+      updated_at = now()
   `;
 }
 

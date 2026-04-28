@@ -1,13 +1,15 @@
 "use client";
 
-import { useActionState, useRef, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { updateSiteImageAction, type ImageActionState } from "./actions";
 
-const BOTTOM_FADE_LEVELS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] as const;
-const DEFAULT_LEVEL = 100;
+const FADE_LEVELS = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100] as const;
+const DEFAULT_BOTTOM_LEVEL = 100;
+const DEFAULT_TOP_LEVEL = 0;
 
-function fadeBackground(level: number): string {
+function bottomFadeBackground(level: number): string {
   if (level <= 0) return "";
   if (level >= 100) {
     return "linear-gradient(to bottom, transparent 50%, var(--surface) 100%)";
@@ -15,21 +17,32 @@ function fadeBackground(level: number): string {
   return `linear-gradient(to bottom, transparent 50%, color-mix(in oklab, var(--surface) ${level}%, transparent) 100%)`;
 }
 
+function topFadeBackground(level: number): string {
+  if (level <= 0) return "";
+  if (level >= 100) {
+    return "linear-gradient(to bottom, var(--surface) 0%, transparent 50%)";
+  }
+  return `linear-gradient(to bottom, color-mix(in oklab, var(--surface) ${level}%, transparent) 0%, transparent 50%)`;
+}
+
 export default function ImageSlotRow({
   slot,
   label,
   initialUrl,
   initialBottomFade,
+  initialTopFade,
   defaultUrl,
 }: {
   slot: string;
   label: string;
   initialUrl: string;
   initialBottomFade: number;
+  initialTopFade: number;
   defaultUrl: string;
 }) {
   const [url, setUrl] = useState<string>(initialUrl);
   const [bottomFade, setBottomFade] = useState<number>(initialBottomFade);
+  const [topFade, setTopFade] = useState<number>(initialTopFade);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [state, formAction, pending] = useActionState<ImageActionState | undefined, FormData>(
@@ -37,12 +50,29 @@ export default function ImageSlotRow({
     undefined
   );
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (state?.ok) router.refresh();
+  }, [state, router]);
+
+  useEffect(() => {
+    setUrl(initialUrl);
+  }, [initialUrl]);
+  useEffect(() => {
+    setBottomFade(initialBottomFade);
+  }, [initialBottomFade]);
+  useEffect(() => {
+    setTopFade(initialTopFade);
+  }, [initialTopFade]);
 
   const isCustomUrl = url !== defaultUrl;
-  const isCustomFade = bottomFade !== DEFAULT_LEVEL;
-  const isCustom = isCustomUrl || isCustomFade;
+  const isCustomBottom = bottomFade !== DEFAULT_BOTTOM_LEVEL;
+  const isCustomTop = topFade !== DEFAULT_TOP_LEVEL;
+  const isCustom = isCustomUrl || isCustomBottom || isCustomTop;
 
-  const previewFadeBackground = fadeBackground(bottomFade);
+  const previewBottomBackground = bottomFadeBackground(bottomFade);
+  const previewTopBackground = topFadeBackground(topFade);
 
   async function handlePick(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -69,7 +99,8 @@ export default function ImageSlotRow({
 
   function handleReset() {
     setUrl(defaultUrl);
-    setBottomFade(DEFAULT_LEVEL);
+    setBottomFade(DEFAULT_BOTTOM_LEVEL);
+    setTopFade(DEFAULT_TOP_LEVEL);
   }
 
   return (
@@ -77,16 +108,24 @@ export default function ImageSlotRow({
       <input type="hidden" name="slot" value={slot} />
       <input type="hidden" name="url" value={isCustomUrl ? url : ""} />
       <input type="hidden" name="bottomFade" value={String(bottomFade)} />
+      <input type="hidden" name="topFade" value={String(topFade)} />
 
       <div className="relative w-full aspect-[4/3] md:w-40 md:h-30 border border-[var(--rule-strong)] overflow-hidden bg-[var(--surface-raised)]">
         {url ? (
           <>
             <Image src={url} alt={label} fill sizes="160px" className="object-cover" />
-            {previewFadeBackground && (
+            {previewTopBackground && (
               <div
                 aria-hidden
                 className="absolute inset-0 pointer-events-none"
-                style={{ background: previewFadeBackground }}
+                style={{ background: previewTopBackground }}
+              />
+            )}
+            {previewBottomBackground && (
+              <div
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: previewBottomBackground }}
               />
             )}
           </>
@@ -116,6 +155,21 @@ export default function ImageSlotRow({
             className="text-[12px] text-[var(--ink-soft)] file:mr-3 file:py-1.5 file:px-3 file:border file:border-[var(--rule-strong)] file:bg-transparent file:text-[var(--ink)] file:text-[10px] file:tracking-[0.2em] file:uppercase file:font-semibold file:cursor-pointer hover:file:bg-[var(--surface-hover)] cursor-pointer disabled:opacity-50"
           />
           <label className="flex items-center gap-2 text-[10px] tracking-[0.22em] uppercase font-semibold text-[var(--ink-soft)]">
+            Top fade
+            <select
+              value={String(topFade)}
+              onChange={(e) => setTopFade(Number.parseInt(e.target.value, 10))}
+              disabled={uploading || pending}
+              className="bg-transparent border border-[var(--rule-strong)] text-[var(--ink)] text-[11px] tracking-normal normal-case font-normal px-2 py-1.5 cursor-pointer hover:bg-[var(--surface-hover)] disabled:opacity-50"
+            >
+              {FADE_LEVELS.map((lvl) => (
+                <option key={lvl} value={String(lvl)} className="bg-[var(--surface)] text-[var(--ink)]">
+                  {lvl}%
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-2 text-[10px] tracking-[0.22em] uppercase font-semibold text-[var(--ink-soft)]">
             Bottom fade
             <select
               value={String(bottomFade)}
@@ -123,7 +177,7 @@ export default function ImageSlotRow({
               disabled={uploading || pending}
               className="bg-transparent border border-[var(--rule-strong)] text-[var(--ink)] text-[11px] tracking-normal normal-case font-normal px-2 py-1.5 cursor-pointer hover:bg-[var(--surface-hover)] disabled:opacity-50"
             >
-              {BOTTOM_FADE_LEVELS.map((lvl) => (
+              {FADE_LEVELS.map((lvl) => (
                 <option key={lvl} value={String(lvl)} className="bg-[var(--surface)] text-[var(--ink)]">
                   {lvl}%
                 </option>

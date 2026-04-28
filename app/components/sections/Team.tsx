@@ -58,7 +58,7 @@ function Avatar({
   );
 }
 
-export type HeroImage = { url: string; bottomFadeStyle: string };
+export type HeroImage = { url: string; bottomFadeStyle: string; topFadeStyle: string };
 
 export default function Team({
   members,
@@ -109,6 +109,13 @@ export default function Team({
                 className={`absolute inset-0 object-cover ${position} brightness-110 pointer-events-none select-none ${motion} ${transform} ${opacity}`}
                 aria-hidden
               />
+              {img.topFadeStyle && (
+                <div
+                  aria-hidden
+                  className={`absolute inset-0 pointer-events-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${fadeOpacity}`}
+                  style={{ background: img.topFadeStyle }}
+                />
+              )}
               {img.bottomFadeStyle && (
                 <div
                   aria-hidden

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "../LanguageContext";
 
-export type HeroImage = { url: string; bottomFadeStyle: string };
+export type HeroImage = { url: string; bottomFadeStyle: string; topFadeStyle: string };
 
 export default function About({ background }: { background: HeroImage }) {
   const { t, lang } = useLanguage();
@@ -25,6 +25,13 @@ export default function About({ background }: { background: HeroImage }) {
           className="object-cover object-[center_45%] opacity-85 pointer-events-none select-none"
           aria-hidden
         />
+        {background.topFadeStyle && (
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: background.topFadeStyle }}
+          />
+        )}
         {background.bottomFadeStyle && (
           <div
             aria-hidden

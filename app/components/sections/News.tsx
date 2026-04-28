@@ -44,7 +44,7 @@ function formatDate(raw: string, lang: Lang) {
   });
 }
 
-export type HeroImage = { url: string; bottomFadeStyle: string };
+export type HeroImage = { url: string; bottomFadeStyle: string; topFadeStyle: string };
 
 export default function News({
   items,
@@ -101,6 +101,13 @@ export default function News({
                 className={`absolute inset-0 object-cover ${position} pointer-events-none select-none ${motion} ${transform} ${opacity}`}
                 aria-hidden
               />
+              {img.topFadeStyle && (
+                <div
+                  aria-hidden
+                  className={`absolute inset-0 pointer-events-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${fadeOpacity}`}
+                  style={{ background: img.topFadeStyle }}
+                />
+              )}
               {img.bottomFadeStyle && (
                 <div
                   aria-hidden

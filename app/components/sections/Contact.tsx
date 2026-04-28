@@ -5,7 +5,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useLanguage } from "../LanguageContext";
 import { content } from "@/app/lib/content";
 
-export type HeroImage = { url: string; bottomFadeStyle: string };
+export type HeroImage = { url: string; bottomFadeStyle: string; topFadeStyle: string };
 
 export type PrivacyContent = {
   title_en: string;
@@ -77,6 +77,13 @@ export default function Contact({
           className="object-cover opacity-85 pointer-events-none select-none"
           aria-hidden
         />
+        {background.topFadeStyle && (
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: background.topFadeStyle }}
+          />
+        )}
         {background.bottomFadeStyle && (
           <div
             aria-hidden

@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { updatePrivacyAction, type PrivacyActionState } from "./actions";
 
 type Initial = {
@@ -25,6 +26,11 @@ export default function PrivacyForm({
     updatePrivacyAction,
     undefined
   );
+  const router = useRouter();
+
+  useEffect(() => {
+    if (state?.ok) router.refresh();
+  }, [state, router]);
 
   return (
     <form action={formAction} className="space-y-8">
