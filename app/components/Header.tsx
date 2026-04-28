@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { NAV_ITEMS } from "@/app/lib/content";
 import BrandMark from "./BrandMark";
 import LanguageToggle from "./LanguageToggle";
@@ -12,51 +12,32 @@ export default function Header() {
   const { t } = useLanguage();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const lastYRef = useRef(0);
-  const tickingRef = useRef(false);
+  const [fade, setFade] = useState(0);
 
   useEffect(() => {
-    lastYRef.current = window.scrollY;
-    const TOP_FLOOR = 20;
-
+    const RAMP = 160;
     const onScroll = () => {
-      if (tickingRef.current) return;
-      tickingRef.current = true;
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY;
-        const last = lastYRef.current;
-        if (y < TOP_FLOOR) {
-          setHidden(false);
-        } else if (y > last) {
-          setHidden(true);
-        } else if (y < last) {
-          setHidden(false);
-        }
-        lastYRef.current = y;
-        tickingRef.current = false;
-      });
+      const y = window.scrollY;
+      setFade(Math.min(1, Math.max(0, y / RAMP)));
     };
-
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (mobileOpen) setHidden(false);
-  }, [mobileOpen]);
-
   const isActive = (path: string) =>
     path === "/" ? pathname === "/" : pathname.startsWith(path);
 
-  const transformClass = `transition-transform duration-150 ease-out will-change-transform ${hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"}`;
-  const bgClass = mobileOpen
-    ? "bg-[var(--surface)]/95 backdrop-blur-[2px]"
-    : "bg-transparent";
-  const shellClass = `fixed inset-x-0 top-0 z-40 ${bgClass} border-b border-[var(--rule)] ${transformClass}`;
+  const shellClass = "fixed inset-x-0 top-0 z-40 bg-transparent";
+  const fadeOpacity = mobileOpen ? 1 : fade;
 
   return (
     <header className={shellClass}>
+      <div
+        aria-hidden
+        className="bv-nav-fade pointer-events-none absolute inset-x-0 top-0 h-32 -z-10 transition-opacity duration-200 ease-out"
+        style={{ opacity: fadeOpacity }}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
           <BrandMark brand={t.brand} />
