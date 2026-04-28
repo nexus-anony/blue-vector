@@ -99,6 +99,10 @@ export type Dict = {
     officeValue: string;
     emailContactLabel: string;
     emailContactValue: string;
+    privacyTitle: string;
+    privacyBody: string;
+    privacyAgree: string;
+    privacyCancel: string;
   };
   footer: {
     tagline: string;
@@ -124,7 +128,7 @@ export const content: Record<Lang, Dict> = {
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Defense · Security · Strategic Advisory",
+      eyebrow: "Defense & Security",
       headline: "BLUE VECTOR",
       tagline: "Defense & Security Consulting and Strategic Advisory",
       subtext:
@@ -135,7 +139,7 @@ export const content: Record<Lang, Dict> = {
     about: {
       eyebrow: "01 — About",
       heading: "Connecting people and knowledge in defense",
-      lede: "BLUE VECTOR is a private infrastructure firm that advances the Japanese and allied defense ecosystem through intelligence advisory, strategic assessment, and venture formation. Our model draws on the traditions of civilian strategic assessment organizations while emphasizing execution alongside analysis.",
+      lede: "BLUE VECTOR is a company dedicated to creating value in the defense and national security sectors through defense consulting, the incubation of defense technology companies, defense investment support, and defense community initiatives. We accelerate innovation in the defense sector and contribute to the optimization of defense capabilities and the enhancement of deterrence for peace.",
       visionLabel: "Vision",
       vision: "To realize a society that co-creates peace.",
       missionLabel: "Mission",
@@ -153,7 +157,7 @@ export const content: Record<Lang, Dict> = {
     services: {
       eyebrow: "02 — Services",
       heading: "Four pillars of defense advisory",
-      lede: "Our engagements span strategy, community, technology incubation, and investment support. We work closely with operators and decision-makers from mission definition through program execution.",
+      lede: "BLUE VECTOR strategically integrates strategic and tactical requirements with private-sector technology and capital, providing end-to-end support from concept development through business development and implementation.",
       items: [
         {
           id: "consulting",
@@ -261,7 +265,7 @@ export const content: Record<Lang, Dict> = {
     contact: {
       eyebrow: "05 — Contact",
       heading: "Engage with BLUE VECTOR",
-      lede: "For advisory engagements, briefings, or general inquiries, please send us a note. We respond to qualified correspondence within three business days.",
+      lede: "Please contact us regarding entry into the defense sector or for any other inquiries.",
       nameLabel: "Name",
       namePlaceholder: "Full name",
       emailLabel: "Email",
@@ -270,20 +274,25 @@ export const content: Record<Lang, Dict> = {
       subjectPlaceholder: "Nature of inquiry",
       messageLabel: "Message",
       messagePlaceholder: "Please describe the engagement or inquiry.",
-      submit: "Submit Inquiry",
+      submit: "Agree and Submit",
       submitting: "Submitting…",
       success:
         "Thank you. Your inquiry has been received. A member of the firm will respond shortly.",
       officeLabel: "Office",
       officeValue:
-        "7F, East Wing, Shin-Aoyama Building\n1-1-1 Minami-Aoyama, Minato-ku, Tokyo, Japan",
+        "Shin-Aoyama Building\n1-1-1 Minami-Aoyama, Minato-ku, Tokyo, Japan",
       emailContactLabel: "General inquiries",
       emailContactValue: "inquiries@bluevector.co.jp",
+      privacyTitle: "Privacy Policy",
+      privacyBody:
+        "BLUE VECTOR Inc. (\"the Firm\") handles personal information submitted through this inquiry form in accordance with the following principles, reflecting the heightened sensitivity required when operating at the intersection of defense, national security, and industry.\n\n1. Purpose of Use\nInformation you provide will be used solely to respond to your inquiry, to identify the appropriate point of contact within the Firm, and to coordinate any follow-up engagement you initiate. We will not use your information for marketing without explicit consent.\n\n2. Confidentiality\nAll inquiries are treated as confidential. The substance of correspondence and any attached materials are accessible only to authorized members of the Firm on a need-to-know basis. Sensitive engagements are conducted under a separate written non-disclosure agreement.\n\n3. Disclosure to Third Parties\nWe do not sell, rent, or otherwise disclose your personal information to third parties. Disclosure is limited to circumstances where it is required by law, ordered by a court of competent jurisdiction, or expressly authorized by you in writing.\n\n4. Retention\nInquiry records are retained only as long as reasonably necessary to fulfill the purpose for which they were collected, after which they are deleted or anonymized in accordance with the Firm's records-management policy.\n\n5. Security\nWe implement administrative, technical, and physical safeguards consistent with industry practice for handling sensitive defense-related correspondence.\n\n6. Your Rights\nYou may request access to, correction of, or deletion of your personal information held by the Firm by contacting us at inquiries@bluevector.co.jp. We will respond within a reasonable period.\n\n7. Governing Law\nThis policy is governed by the laws of Japan. By submitting your inquiry, you acknowledge that you have read and understood this Privacy Policy.\n\nLast updated: April 2026.",
+      privacyAgree: "Submit after agreeing",
+      privacyCancel: "Cancel",
     },
     footer: {
       tagline: "Defense & Security Consulting and Strategic Advisory",
       address:
-        "BLUE VECTOR Inc. · 7F, East Wing, Shin-Aoyama Building, 1-1-1 Minami-Aoyama, Minato-ku, Tokyo",
+        "BLUE VECTOR Inc. · Shin-Aoyama Building, 1-1-1 Minami-Aoyama, Minato-ku, Tokyo",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["Privacy Notice", "Terms of Engagement", "Accessibility"],
     },
@@ -304,7 +313,7 @@ export const content: Record<Lang, Dict> = {
       contact: "お問い合わせ",
     },
     hero: {
-      eyebrow: "防衛・安全保障・戦略アドバイザリー",
+      eyebrow: "防衛・安全保障",
       headline: "BLUE VECTOR",
       tagline: "防衛・安全保障領域の戦略コンサルティング",
       subtext:
@@ -315,7 +324,7 @@ export const content: Record<Lang, Dict> = {
     about: {
       eyebrow: "01 — 会社概要",
       heading: "防衛領域で人と知を結び続ける",
-      lede: "株式会社 BLUE VECTOR は、インテリジェンス・アドバイザリーと戦略アセスメント、ベンチャー創出を通じて、日本および同盟国の防衛エコシステムを支える民間インフラ企業です。民間シンクタンクの伝統を踏まえつつ、分析だけにとどまらず「実装」まで一貫して担います。",
+      lede: "BLUE VECTORは、防衛コンサルティング、防衛テック企業の創出、防衛投資支援、防衛コミュニティ事業を通じて、防衛・国家安全保障領域における価値創出を担う企業です。防衛領域におけるイノベーションを加速させ、防衛力の最適化と、平和のための抑止力の向上に貢献します。",
       visionLabel: "Vision",
       vision: "平和を共創する社会の実現。",
       missionLabel: "Mission",
@@ -333,7 +342,7 @@ export const content: Record<Lang, Dict> = {
     services: {
       eyebrow: "02 — サービス",
       heading: "4つの事業領域",
-      lede: "防衛コンサル・コミュニティ・技術創出・投資支援の4事業を、戦略立案から事業実行まで一貫して提供します。現場の運用者と意思決定者の双方に寄り添うことを旨とします。",
+      lede: "BLUE VECTORは、戦略・戦術ニーズと民間の技術・資本を戦略的に統合し、構想から事業開発、実装に至るまで一貫して支援。",
       items: [
         {
           id: "consulting",
@@ -441,7 +450,7 @@ export const content: Record<Lang, Dict> = {
     contact: {
       eyebrow: "05 — お問い合わせ",
       heading: "BLUE VECTOR へのご連絡",
-      lede: "アドバイザリー業務、ブリーフィング、その他のご相談は下記フォームよりご連絡ください。適格なご相談には3営業日以内にご返信いたします。",
+      lede: "防衛領域への参入、その他ご相談は下記フォームよりご連絡ください。",
       nameLabel: "お名前",
       namePlaceholder: "氏名",
       emailLabel: "メールアドレス",
@@ -450,19 +459,24 @@ export const content: Record<Lang, Dict> = {
       subjectPlaceholder: "ご相談内容",
       messageLabel: "本文",
       messagePlaceholder: "ご相談の背景・内容をご記入ください。",
-      submit: "送信する",
+      submit: "同意して送信",
       submitting: "送信中…",
       success:
         "お問い合わせを受け付けました。担当者よりご連絡いたします。",
       officeLabel: "オフィス",
-      officeValue: "東京都港区南青山１丁目１−１\n新青山ビル 東館7F",
+      officeValue: "東京都港区南青山1丁目1-1\n新青山ビル",
       emailContactLabel: "お問い合わせ窓口",
       emailContactValue: "inquiries@bluevector.co.jp",
+      privacyTitle: "プライバシーポリシー",
+      privacyBody:
+        "株式会社 BLUE VECTOR(以下「当社」)は、防衛・国家安全保障領域と産業の交差点における事業特性を踏まえ、本お問い合わせフォームを通じて提供される個人情報を、以下の方針に従い慎重に取り扱います。\n\n1. 利用目的\nお預かりした情報は、お問い合わせへのご返信、社内における適切な担当者の特定、および、お客様が希望される場合の後続対応の調整に限り使用いたします。明示的なご同意なくマーケティング目的で利用することはありません。\n\n2. 機密保持\nすべてのお問い合わせは機密情報として取り扱います。やり取りの内容および添付資料は、業務上必要な範囲において、当社の権限を有する担当者のみがアクセスできるものとします。機微な案件については、別途守秘義務契約のもとで対応いたします。\n\n3. 第三者への開示\nお預かりした個人情報を第三者に販売、貸与、開示することはありません。法令に基づく要請、管轄裁判所の命令、またはお客様の書面によるご同意がある場合に限り、開示を行います。\n\n4. 保管期間\nお問い合わせ記録は、収集目的の達成に合理的に必要な期間に限り保管し、その後は当社の文書管理ポリシーに従って削除または匿名化いたします。\n\n5. 安全管理\n防衛関連の機微なやり取りに対し、業界水準に沿った組織的・技術的・物理的な安全管理措置を講じております。\n\n6. お客様の権利\nお客様は、当社が保有する個人情報の開示、訂正、または削除を、inquiries@bluevector.co.jp 宛にご請求いただけます。合理的な期間内にご対応いたします。\n\n7. 準拠法\n本ポリシーは日本法に準拠します。お問い合わせを送信いただくことにより、本プライバシーポリシーをお読みいただきご理解いただいたものとみなします。\n\n最終更新: 2026年4月。",
+      privacyAgree: "同意のうえ送信",
+      privacyCancel: "キャンセル",
     },
     footer: {
       tagline: "防衛・安全保障領域の戦略コンサルティング",
       address:
-        "株式会社 BLUE VECTOR ・ 東京都港区南青山１丁目１−１ 新青山ビル 東館7F",
+        "株式会社 BLUE VECTOR ・ 東京都港区南青山1丁目1-1 新青山ビル",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["プライバシー", "利用規約", "アクセシビリティ"],
     },
