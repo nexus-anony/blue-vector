@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useLanguage } from "../LanguageContext";
 import { content } from "@/app/lib/content";
 
@@ -15,15 +15,34 @@ export default function Contact({ background }: { background: HeroImage }) {
   const altLabel = altEyebrowRaw.replace(/^\d{2}\s*[—–-]\s*/, "");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setShowPrivacy(true);
+  }
+
+  function confirmSubmit() {
+    setShowPrivacy(false);
     setSubmitting(true);
     window.setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
     }, 650);
   }
+
+  useEffect(() => {
+    if (!showPrivacy) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowPrivacy(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [showPrivacy]);
 
   return (
     <section className="relative min-h-screen pb-24 md:pb-32 lg:pb-40 bg-[var(--surface)] text-[var(--ink)] overflow-hidden">
@@ -80,7 +99,19 @@ export default function Contact({ background }: { background: HeroImage }) {
                   </div>
                 </div>
                 <h1 className="font-display text-[22px] md:text-[28px] lg:text-[34px] leading-[1.2] font-bold tracking-tight mb-4 text-[var(--ink)]">
-                  {c.heading}
+                  {lang === "jp" ? (
+                    <>
+                      BLUE VECTOR
+                      <br />
+                      へのご連絡
+                    </>
+                  ) : (
+                    <>
+                      Engage with
+                      <br />
+                      BLUE VECTOR
+                    </>
+                  )}
                 </h1>
                 <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)] max-w-md">
                   {c.lede}
@@ -108,6 +139,11 @@ export default function Contact({ background }: { background: HeroImage }) {
                 </div>
               </div>
               <div className="lg:col-span-7">
+                <div className="mb-6 md:mb-8 pb-4 border-b border-[var(--rule)]">
+                  <div className="text-[14px] md:text-[15px] tracking-[0.28em] font-bold text-[var(--ink)]">
+                    {t.brand.name}
+                  </div>
+                </div>
                 {submitted ? (
                   <div className="border border-[var(--rule)] bg-[var(--surface-raised)] p-6 md:p-10">
                     <div className="text-[10px] tracking-[0.22em] uppercase text-[var(--ink-soft)] mb-3">
@@ -148,7 +184,7 @@ export default function Contact({ background }: { background: HeroImage }) {
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="inline-flex items-center gap-3 px-6 py-3 bg-[var(--invert)] text-[var(--on-invert)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:opacity-90 transition-opacity disabled:opacity-60"
+                        className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--rule-strong)] bg-[var(--invert)] text-[var(--on-invert)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:bg-[var(--surface-hover)] hover:border-[var(--ink)] transition-colors disabled:opacity-60"
                       >
                         {submitting ? c.submitting : c.submit}
                         {!submitting && <span aria-hidden>→</span>}
@@ -162,6 +198,55 @@ export default function Contact({ background }: { background: HeroImage }) {
         </div>
       </div>
       </div>
+      {showPrivacy && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/60 backdrop-blur-sm p-0 md:p-6"
+          onClick={() => setShowPrivacy(false)}
+        >
+          <div
+            className="bg-[var(--surface)] text-[var(--ink)] w-full max-w-2xl max-h-[92vh] flex flex-col border border-[var(--rule)] shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--rule)]">
+              <span className="text-[10px] tracking-[0.22em] uppercase font-semibold text-[var(--ink-soft)]">
+                {c.privacyTitle}
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowPrivacy(false)}
+                className="text-[11px] tracking-[0.2em] uppercase text-[var(--ink-soft)] hover:text-[var(--ink)]"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-6 py-6 md:px-10 md:py-8 overflow-y-auto flex-1">
+              <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)] whitespace-pre-line">
+                {c.privacyBody}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 px-6 py-4 border-t border-[var(--rule)]">
+              <button
+                type="button"
+                onClick={confirmSubmit}
+                className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--rule-strong)] bg-[var(--invert)] text-[var(--on-invert)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:bg-[var(--surface-hover)] hover:border-[var(--ink)] transition-colors"
+              >
+                {c.privacyAgree}
+                <span aria-hidden>→</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowPrivacy(false)}
+                className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--rule)] text-[var(--ink-soft)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:text-[var(--ink)] hover:border-[var(--rule-strong)] transition-colors"
+              >
+                {c.privacyCancel}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

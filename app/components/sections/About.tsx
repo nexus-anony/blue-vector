@@ -61,7 +61,15 @@ export default function About({ background }: { background: HeroImage }) {
                   </span>
                 </div>
                 <h2 className="mt-4 font-display text-[22px] md:text-[28px] lg:text-[32px] leading-[1.2] font-bold text-[var(--ink)] tracking-tight">
-                  {about.heading}
+                  {lang === "jp" ? (
+                    <>
+                      防衛領域で
+                      <br />
+                      人と知を結び続ける
+                    </>
+                  ) : (
+                    about.heading
+                  )}
                 </h2>
               </div>
               <div className="lg:col-span-7">
