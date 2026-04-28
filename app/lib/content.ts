@@ -88,6 +88,8 @@ export type Dict = {
     namePlaceholder: string;
     emailLabel: string;
     emailPlaceholder: string;
+    companyLabel: string;
+    companyPlaceholder: string;
     subjectLabel: string;
     subjectPlaceholder: string;
     messageLabel: string;
@@ -270,6 +272,8 @@ export const content: Record<Lang, Dict> = {
       namePlaceholder: "Full name",
       emailLabel: "Email",
       emailPlaceholder: "you@organization.com",
+      companyLabel: "Company",
+      companyPlaceholder: "Your company or organization",
       subjectLabel: "Subject",
       subjectPlaceholder: "Nature of inquiry",
       messageLabel: "Message",
@@ -455,6 +459,8 @@ export const content: Record<Lang, Dict> = {
       namePlaceholder: "氏名",
       emailLabel: "メールアドレス",
       emailPlaceholder: "you@organization.com",
+      companyLabel: "会社名",
+      companyPlaceholder: "ご所属の会社・組織",
       subjectLabel: "件名",
       subjectPlaceholder: "ご相談内容",
       messageLabel: "本文",

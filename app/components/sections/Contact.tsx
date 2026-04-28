@@ -197,6 +197,11 @@ export default function Contact({
                       required
                     />
                     <Field
+                      label={c.companyLabel}
+                      name="company"
+                      placeholder={c.companyPlaceholder}
+                    />
+                    <Field
                       label={c.subjectLabel}
                       name="subject"
                       placeholder={c.subjectPlaceholder}
