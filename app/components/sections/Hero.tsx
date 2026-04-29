@@ -75,16 +75,29 @@ export default function Hero({ images }: { images: HeroImage[] }) {
       <div className="relative flex-1 flex items-center mx-auto w-full max-w-7xl px-6 lg:px-10 pt-28 md:pt-32 lg:pt-40 pb-20 md:pb-28 lg:pb-32">
         <div className="grid w-full grid-cols-12">
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <div className="flex items-center gap-4 mb-10 md:mb-12">
+            <div className="flex items-center gap-4 mb-8 md:mb-10">
               <span className="inline-block w-10 h-px bg-[var(--rule-strong)]" />
               <span className="text-[12px] md:text-[13px] tracking-[0.28em] uppercase text-[var(--ink-soft)]">
                 {hero.eyebrow}
               </span>
             </div>
-            <h1 className="font-hero text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-semibold tracking-[0.06em] mb-4 md:mb-6 text-[var(--ink)]">
-              {hero.headline}
+            <h1 className="mb-3 md:mb-4">
+              <span
+                aria-label={hero.headline}
+                className="block overflow-hidden w-44 sm:w-56 md:w-72 lg:w-88 xl:w-100 aspect-1264/174"
+              >
+                <Image
+                  src="/BLUE VECTOR logo_word.png"
+                  alt=""
+                  width={1920}
+                  height={1080}
+                  priority
+                  aria-hidden
+                  className="w-[152%] max-w-none -translate-x-[17.1%] -translate-y-[39.1%] select-none pointer-events-none"
+                />
+              </span>
             </h1>
-            <p className="font-hero font-medium tracking-[0.2em] [word-spacing:-0.25em] uppercase text-[var(--ink)] text-[16px] md:text-[20px] lg:text-[24px] leading-[1.4] max-w-xl mb-10 md:mb-12">
+            <p className="font-hero font-medium tracking-[0.2em] [word-spacing:-0.25em] uppercase text-[var(--ink)] text-[16px] md:text-[20px] lg:text-[24px] leading-[1.4] max-w-xl mb-6 md:mb-8">
               {hero.tagline}
             </p>
             <div className="flex flex-wrap gap-3">
