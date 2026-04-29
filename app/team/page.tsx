@@ -6,7 +6,7 @@ import { getSiteImages } from "@/app/lib/site-images";
 export const metadata: Metadata = {
   title: "Team",
   description:
-    "Founding members of BLUE VECTOR — experienced operators from the Ministry of Defense, the Self-Defense Forces, and the private defense investment sector.",
+    "Founding members of BLUE VECTOR — experienced operators from the Ministry of Defence, the Self-Defence Forces, and the private defence investment sector.",
 };
 
 export default async function TeamPage() {

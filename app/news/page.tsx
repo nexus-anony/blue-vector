@@ -6,7 +6,7 @@ import { getSiteImages } from "@/app/lib/site-images";
 export const metadata: Metadata = {
   title: "News",
   description:
-    "News, briefings, and announcements from BLUE VECTOR — firm updates, research perspectives, and commentary on the defense landscape.",
+    "News, briefings, and announcements from BLUE VECTOR — firm updates, research perspectives, and commentary on the defence landscape.",
 };
 
 export default async function NewsPage() {

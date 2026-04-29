@@ -141,7 +141,7 @@ export const content: Record<Lang, Dict> = {
   en: {
     brand: {
       name: "BLUE VECTOR",
-      subtitle: "Defense & Security",
+      subtitle: "Defence & Security",
     },
     nav: {
       home: "Home",
@@ -152,57 +152,57 @@ export const content: Record<Lang, Dict> = {
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Defense & Security",
+      eyebrow: "Defence & Security",
       headline: "BLUE VECTOR",
-      tagline: "Vectoring the Future of Defense",
+      tagline: "Vectoring the Future of Defence",
       subtext:
-        "Supporting defense innovation, policy strategy, and ecosystem development for governments, primes, and emerging technology firms operating at the intersection of national security and industry.",
+        "Supporting defence innovation, policy strategy, and ecosystem development for governments, primes, and emerging technology firms operating at the intersection of national security and industry.",
       cta: "Contact Us",
       secondaryCta: "Our Services",
     },
     about: {
       eyebrow: "01 — About",
-      heading: "Connecting people and knowledge in defense",
-      lede: "BLUE VECTOR is a company dedicated to creating value in the defense and national security sectors through defense consulting, the incubation of defense technology companies, defense investment support, and defense community initiatives. We accelerate innovation in the defense sector and contribute to the optimization of defense capabilities and the enhancement of deterrence for peace.",
+      heading: "Connecting people and knowledge in defence",
+      lede: "BLUE VECTOR is a company dedicated to creating value in the defence and national security sectors through defence consulting, the incubation of defence technology companies, defence investment support, and defence community initiatives. We accelerate innovation in the defence sector and contribute to the optimization of defence capabilities and the enhancement of deterrence for peace.",
       visionLabel: "Vision",
       vision: "To realize a society that co-creates peace.",
       missionLabel: "Mission",
       mission:
-        "To implement an ecosystem that supports peace in society and contribute to national defense capabilities.",
+        "To implement an ecosystem that supports peace in society and contribute to national defence capabilities.",
       valuesLabel: "Values",
       values:
-        "We continue to connect people and knowledge through high-level defense expertise and practical judgment.",
+        "We continue to connect people and knowledge through high-level defence expertise and practical judgment.",
       establishedLabel: "Established",
       established: "April 2026",
       clientsLabel: "Key Clients",
       clients:
-        "Defense technology startups, prime contractors, financial institutions and venture capital, research and policy institutes.",
+        "Defence technology startups, prime contractors, financial institutions and venture capital, research and policy institutes.",
     },
     services: {
       eyebrow: "02 — Services",
-      heading: "Four pillars of defense advisory",
+      heading: "Four pillars of defence advisory",
       lede: "BLUE VECTOR strategically integrates strategic and tactical requirements with private-sector technology and capital, providing end-to-end support from concept development through business development and implementation.",
       items: [
         {
           id: "consulting",
           number: "01",
-          title: "Defense Consulting",
+          title: "Defence Consulting",
           subtitle: "Advisory · Proposal support · Project execution",
           description:
-            "Supporting companies entering the defense sector end-to-end, from business launch and proposal development for the Ministry of Defense through to project implementation.",
+            "Supporting companies entering the defence sector end-to-end, from business launch and proposal development for the Ministry of Defence through to project implementation.",
         },
         {
           id: "community",
           number: "02",
-          title: "Defense Community",
+          title: "Defence Community",
           subtitle: "Startups · Primes · VC / Finance · Research institutions",
           description:
-            "Analyzing defense needs and technology domains, designing a paid community, and supporting companies' decisions to enter the defense sector.",
+            "Analyzing defence needs and technology domains, designing a paid community, and supporting companies' decisions to enter the defence sector.",
         },
         {
           id: "incubation",
           number: "03",
-          title: "Defense Tech Creation",
+          title: "Defence Tech Creation",
           subtitle: "Business area selection · Entrepreneur matching",
           description:
             "Identifying business whitespace from the information and insights we gather, and supporting entrepreneurs with introductions and capital.",
@@ -210,23 +210,23 @@ export const content: Record<Lang, Dict> = {
         {
           id: "investment",
           number: "04",
-          title: "Defense Investment Support",
+          title: "Defence Investment Support",
           subtitle: "Judgment on investment candidates",
           description:
-            "Supporting investment-target judgment using information on defense-tech entrants obtained through our consulting engagements.",
+            "Supporting investment-target judgment using information on defence-tech entrants obtained through our consulting engagements.",
         },
       ],
     },
     team: {
       eyebrow: "03 — Team",
       heading: "Founding members",
-      lede: "Our team is composed of members with practical experience in defense projects at the Ministry of Defense, the Self-Defense Forces, and the private sector. We provide comprehensive support from business development to proposal creation and implementation.",
+      lede: "Our team is composed of members with practical experience in defence projects at the Ministry of Defence, the Self-Defence Forces, and the private sector. We provide comprehensive support from business development to proposal creation and implementation.",
       members: [
         {
           id: "uemura",
           name: "Kota Uemura",
-          role: "Co-Founder · Defense Advisory",
-          bio: "Former Lieutenant Colonel in the Japan Air Self-Defense Force. After graduating from the National Defense Academy, Kota served on the front lines of fighter units for approximately ten years. He later worked in the Japan–U.S. Security Treaty Division of the Ministry of Foreign Affairs, was involved in the first post-war exemption from the Three Principles on Arms Exports, and initiated the first Japan–U.S. cyber dialogue on security. He participated in the drafting of the Japan–U.S. Defense Guidelines within the Ministry of Defense before founding a company supporting defense startups and emerging-technology commercialization.",
+          role: "Co-Founder · Defence Advisory",
+          bio: "Former Lieutenant Colonel in the Japan Air Self-Defence Force. After graduating from the National Defence Academy, Kota served on the front lines of fighter units for approximately ten years. He later worked in the Japan–U.S. Security Treaty Division of the Ministry of Foreign Affairs, was involved in the first post-war exemption from the Three Principles on Arms Exports, and initiated the first Japan–U.S. cyber dialogue on security. He participated in the drafting of the Japan–U.S. Defence Guidelines within the Ministry of Defence before founding a company supporting defence startups and emerging-technology commercialization.",
           initials: "KU",
           photo: "/kota-uemura.png",
         },
@@ -234,7 +234,7 @@ export const content: Record<Lang, Dict> = {
           id: "maehara",
           name: "Tsuyoshi Maehara",
           role: "Co-Founder · Managing Partner",
-          bio: "Government Relations Officer at Solafune Co., Ltd. and Managing Partner of the Asia Defense Innovation Fund. A graduate of the Faculty of Policy Management at Keio University, Tsuyoshi experienced the ravages of war in Kyiv in 2022. He has engaged in negotiations with international organizations and governments across Japan, Africa, and Asia. In 2024 he assisted a former Senior Advisor to the Prime Minister on the establishment of a family office managing capital from Japanese, U.S., and South Korean conglomerates. In 2025 he founded the Asia Defense Innovation Fund, Japan's first private defense fund, and serves as Managing Partner.",
+          bio: "Government Relations Officer at Solafune Co., Ltd. and Managing Partner of the Asia Defence Innovation Fund. A graduate of the Faculty of Policy Management at Keio University, Tsuyoshi experienced the ravages of war in Kyiv in 2022. He has engaged in negotiations with international organizations and governments across Japan, Africa, and Asia. In 2024 he assisted a former Senior Advisor to the Prime Minister on the establishment of a family office managing capital from Japanese, U.S., and South Korean conglomerates. In 2025 he founded the Asia Defence Innovation Fund, Japan's first private defence fund, and serves as Managing Partner.",
           initials: "TM",
           photo: "/tsuyoshi-maehara.png",
         },
@@ -243,7 +243,7 @@ export const content: Record<Lang, Dict> = {
     news: {
       eyebrow: "04 — News",
       heading: "Insights, briefings & announcements",
-      lede: "Updates from BLUE VECTOR — firm announcements, selected research, and perspectives on the evolving defense landscape.",
+      lede: "Updates from BLUE VECTOR — firm announcements, selected research, and perspectives on the evolving defence landscape.",
       viewAll: "View all news",
       readMore: "Read more",
       close: "Close",
@@ -254,8 +254,8 @@ export const content: Record<Lang, Dict> = {
           category: "Announcement",
           title: "BLUE VECTOR is formally established",
           excerpt:
-            "BLUE VECTOR Inc. begins operations as a private infrastructure firm for defense and security advisory.",
-          body: "BLUE VECTOR Inc. has been formally established as a private infrastructure firm dedicated to the Japanese and allied defense ecosystem. The firm will provide intelligence advisory, strategic assessment, community initiatives, technology incubation, and investment support services to governments, prime contractors, startups, and capital providers.",
+            "BLUE VECTOR Inc. begins operations as a private infrastructure firm for defence and security advisory.",
+          body: "BLUE VECTOR Inc. has been formally established as a private infrastructure firm dedicated to the Japanese and allied defence ecosystem. The firm will provide intelligence advisory, strategic assessment, community initiatives, technology incubation, and investment support services to governments, prime contractors, startups, and capital providers.",
         },
         {
           id: "n2",
@@ -270,26 +270,26 @@ export const content: Record<Lang, Dict> = {
           id: "n3",
           date: "2026-04-15",
           category: "Perspective",
-          title: "Notes on the private defense capital landscape in Asia",
+          title: "Notes on the private defence capital landscape in Asia",
           excerpt:
-            "A short perspective on emerging private defense capital formation across Japan, Korea, and Southeast Asia.",
-          body: "Private defense capital formation across Japan, Korea, and Southeast Asia has accelerated considerably over the past eighteen months. This perspective piece outlines the principal vehicles, policy tailwinds, and execution challenges facing new entrants into the category.",
+            "A short perspective on emerging private defence capital formation across Japan, Korea, and Southeast Asia.",
+          body: "Private defence capital formation across Japan, Korea, and Southeast Asia has accelerated considerably over the past eighteen months. This perspective piece outlines the principal vehicles, policy tailwinds, and execution challenges facing new entrants into the category.",
         },
         {
           id: "n4",
           date: "2026-04-18",
           category: "Event",
-          title: "Hosted defense ecosystem roundtable",
+          title: "Hosted defence ecosystem roundtable",
           excerpt:
             "BLUE VECTOR hosted a closed-door roundtable bringing together primes, startups, and capital allocators.",
-          body: "BLUE VECTOR hosted a closed-door roundtable bringing together representatives of defense primes, emerging technology startups, and institutional capital allocators. Attendees discussed collaboration models for dual-use research and pathways to program-of-record adoption.",
+          body: "BLUE VECTOR hosted a closed-door roundtable bringing together representatives of defence primes, emerging technology startups, and institutional capital allocators. Attendees discussed collaboration models for dual-use research and pathways to program-of-record adoption.",
         },
       ],
     },
     contact: {
       eyebrow: "05 — Contact",
       heading: "Engage with BLUE VECTOR",
-      lede: "Please contact us regarding entry into the defense sector or for any other inquiries.",
+      lede: "Please contact us regarding entry into the defence sector or for any other inquiries.",
       nameLabel: "Name",
       namePlaceholder: "Full name",
       emailLabel: "Email",
@@ -311,12 +311,12 @@ export const content: Record<Lang, Dict> = {
       emailContactValue: "inquiries@bluevector.co.jp",
       privacyTitle: "Privacy Policy",
       privacyBody:
-        "BLUE VECTOR Inc. (\"the Firm\") handles personal information submitted through this inquiry form in accordance with the following principles, reflecting the heightened sensitivity required when operating at the intersection of defense, national security, and industry.\n\n1. Purpose of Use\nInformation you provide will be used solely to respond to your inquiry, to identify the appropriate point of contact within the Firm, and to coordinate any follow-up engagement you initiate. We will not use your information for marketing without explicit consent.\n\n2. Confidentiality\nAll inquiries are treated as confidential. The substance of correspondence and any attached materials are accessible only to authorized members of the Firm on a need-to-know basis. Sensitive engagements are conducted under a separate written non-disclosure agreement.\n\n3. Disclosure to Third Parties\nWe do not sell, rent, or otherwise disclose your personal information to third parties. Disclosure is limited to circumstances where it is required by law, ordered by a court of competent jurisdiction, or expressly authorized by you in writing.\n\n4. Retention\nInquiry records are retained only as long as reasonably necessary to fulfill the purpose for which they were collected, after which they are deleted or anonymized in accordance with the Firm's records-management policy.\n\n5. Security\nWe implement administrative, technical, and physical safeguards consistent with industry practice for handling sensitive defense-related correspondence.\n\n6. Your Rights\nYou may request access to, correction of, or deletion of your personal information held by the Firm by contacting us at inquiries@bluevector.co.jp. We will respond within a reasonable period.\n\n7. Governing Law\nThis policy is governed by the laws of Japan. By submitting your inquiry, you acknowledge that you have read and understood this Privacy Policy.\n\nLast updated: April 2026.",
+        "BLUE VECTOR Inc. (\"the Firm\") handles personal information submitted through this inquiry form in accordance with the following principles, reflecting the heightened sensitivity required when operating at the intersection of defence, national security, and industry.\n\n1. Purpose of Use\nInformation you provide will be used solely to respond to your inquiry, to identify the appropriate point of contact within the Firm, and to coordinate any follow-up engagement you initiate. We will not use your information for marketing without explicit consent.\n\n2. Confidentiality\nAll inquiries are treated as confidential. The substance of correspondence and any attached materials are accessible only to authorized members of the Firm on a need-to-know basis. Sensitive engagements are conducted under a separate written non-disclosure agreement.\n\n3. Disclosure to Third Parties\nWe do not sell, rent, or otherwise disclose your personal information to third parties. Disclosure is limited to circumstances where it is required by law, ordered by a court of competent jurisdiction, or expressly authorized by you in writing.\n\n4. Retention\nInquiry records are retained only as long as reasonably necessary to fulfill the purpose for which they were collected, after which they are deleted or anonymized in accordance with the Firm's records-management policy.\n\n5. Security\nWe implement administrative, technical, and physical safeguards consistent with industry practice for handling sensitive defence-related correspondence.\n\n6. Your Rights\nYou may request access to, correction of, or deletion of your personal information held by the Firm by contacting us at inquiries@bluevector.co.jp. We will respond within a reasonable period.\n\n7. Governing Law\nThis policy is governed by the laws of Japan. By submitting your inquiry, you acknowledge that you have read and understood this Privacy Policy.\n\nLast updated: April 2026.",
       privacyAgree: "Agree and Submit",
       privacyCancel: "Cancel",
     },
     footer: {
-      tagline: "Defense & Security Consulting and Strategic Advisory",
+      tagline: "Defence & Security Consulting and Strategic Advisory",
       address:
         "BLUE VECTOR Inc. · Shin-Aoyama Building, 1-1-1 Minami-Aoyama, Minato-ku, Tokyo",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
@@ -328,7 +328,7 @@ export const content: Record<Lang, Dict> = {
       effectiveLabel: "Effective",
       privacy: {
         title: "Privacy Notice",
-        lede: "This notice describes how BLUE VECTOR Inc. collects, uses, and safeguards personal information provided through this website. It is intended to satisfy applicable obligations under Japan's Act on the Protection of Personal Information and to meet the expectations of clients operating in regulated defense and national-security environments.",
+        lede: "This notice describes how BLUE VECTOR Inc. collects, uses, and safeguards personal information provided through this website. It is intended to satisfy applicable obligations under Japan's Act on the Protection of Personal Information and to meet the expectations of clients operating in regulated defence and national-security environments.",
         effective: "April 2026",
         sections: [
           {
@@ -400,7 +400,7 @@ export const content: Record<Lang, Dict> = {
             number: "8",
             heading: "Security",
             paragraphs: [
-              "We maintain administrative, technical, and physical safeguards designed to protect personal information against unauthorized access, alteration, disclosure, loss, or destruction. These measures are calibrated to the sensitivity of the information handled by a firm operating at the intersection of defense and national security.",
+              "We maintain administrative, technical, and physical safeguards designed to protect personal information against unauthorized access, alteration, disclosure, loss, or destruction. These measures are calibrated to the sensitivity of the information handled by a firm operating at the intersection of defence and national security.",
               "While we work to reduce risk to a reasonable minimum, no system of safeguards can be guaranteed perfectly secure. In the event of a personal-information incident affecting your data, we will notify you and the relevant authorities to the extent required by applicable law.",
             ],
           },
@@ -535,7 +535,7 @@ export const content: Record<Lang, Dict> = {
   jp: {
     brand: {
       name: "BLUE VECTOR",
-      subtitle: "Defense & Security",
+      subtitle: "Defence & Security",
     },
     nav: {
       home: "ホーム",
@@ -546,9 +546,9 @@ export const content: Record<Lang, Dict> = {
       contact: "お問い合わせ",
     },
     hero: {
-      eyebrow: "防衛・安全保障",
+      eyebrow: "Defence & Security",
       headline: "BLUE VECTOR",
-      tagline: "Vectoring the Future of Defense",
+      tagline: "Vectoring the Future of Defence",
       subtext:
         "防衛イノベーション、政策戦略、そしてエコシステム形成を支援します。官公庁、防衛プライム、そして安全保障と産業の交差点で事業を展開する新興企業のパートナーとして活動します。",
       cta: "Contact Us",
@@ -628,7 +628,7 @@ export const content: Record<Lang, Dict> = {
           id: "maehara",
           name: "前原 剛",
           role: "共同創業者 ／ 代表パートナー",
-          bio: "株式会社Solafune 政府渉外役／Asia Defense Innovation Fund 代表パートナー。慶應義塾大学総合政策学部卒業。2022年、ウクライナのキーウにて戦禍を経験。帰国後の2023年より、株式会社 Solafune の政府渉外役として、国際機関をはじめ、国内およびアフリカ・アジア地域を中心に各国政府・関連省庁との交渉業務に従事。2024年、日米韓の財閥系資本を運用するファミリーオフィスの日本拠点設立において、元内閣総理大臣補佐官（国家安全保障に関する重要政策担当）の補佐役として参画。2025年に日本初の民間防衛ファンド「Asia Defense Innovation Fund」を設立、代表パートナーに就任。一貫して民間サイドから日本の外交・安全保障・防衛領域の課題に取り組んでいる。",
+          bio: "株式会社Solafune 政府渉外役／Asia Defence Innovation Fund 代表パートナー。慶應義塾大学総合政策学部卒業。2022年、ウクライナのキーウにて戦禍を経験。帰国後の2023年より、株式会社 Solafune の政府渉外役として、国際機関をはじめ、国内およびアフリカ・アジア地域を中心に各国政府・関連省庁との交渉業務に従事。2024年、日米韓の財閥系資本を運用するファミリーオフィスの日本拠点設立において、元内閣総理大臣補佐官（国家安全保障に関する重要政策担当）の補佐役として参画。2025年に日本初の民間防衛ファンド「Asia Defence Innovation Fund」を設立、代表パートナーに就任。一貫して民間サイドから日本の外交・安全保障・防衛領域の課題に取り組んでいる。",
           initials: "TM",
           photo: "/tsuyoshi-maehara.png",
         },

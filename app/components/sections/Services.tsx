@@ -69,7 +69,7 @@ export default function Services({ background }: { background: HeroImage }) {
                     <>
                       Four pillars of
                       <br />
-                      defense advisory
+                      defence advisory
                     </>
                   )}
                 </h2>

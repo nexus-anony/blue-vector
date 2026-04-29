@@ -21,7 +21,7 @@ const serif = Libre_Baskerville({
 const heroFont = Jost({
   variable: "--font-hero",
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -35,27 +35,27 @@ const jp = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL("https://blue-vector.vercel.app"),
   title: {
-    default: "BLUE VECTOR | Defense & Security",
+    default: "BLUE VECTOR | Defence & Security",
     template: "%s | BLUE VECTOR",
   },
   description:
-    "BLUE VECTOR is a private infrastructure firm providing defense and security consulting, strategic advisory, community initiatives, technology incubation, and investment support.",
+    "BLUE VECTOR is a private infrastructure firm providing defence and security consulting, strategic advisory, community initiatives, technology incubation, and investment support.",
   keywords: [
     "BLUE VECTOR",
-    "Defense",
+    "Defence",
     "Security",
     "National Security",
     "Intelligence Advisory",
     "Strategic Assessment",
     "Japan",
-    "Defense Technology",
-    "Defense Investment",
+    "Defence Technology",
+    "Defence Investment",
   ],
   authors: [{ name: "BLUE VECTOR Inc." }],
   openGraph: {
-    title: "BLUE VECTOR | Defense & Security Consulting",
+    title: "BLUE VECTOR | Defence & Security Consulting",
     description:
-      "Defense and security consulting and strategic advisory. Supporting defense innovation, policy strategy, and ecosystem development.",
+      "Defence and security consulting and strategic advisory. Supporting defence innovation, policy strategy, and ecosystem development.",
     url: "https://blue-vector.vercel.app",
     siteName: "BLUE VECTOR",
     locale: "en_US",
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BLUE VECTOR | Defense & Security Consulting",
+    title: "BLUE VECTOR | Defence & Security Consulting",
     description:
-      "Defense and security consulting and strategic advisory. Supporting defense innovation, policy strategy, and ecosystem development.",
+      "Defence and security consulting and strategic advisory. Supporting defence innovation, policy strategy, and ecosystem development.",
   },
   robots: {
     index: true,

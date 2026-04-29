@@ -79,6 +79,10 @@ time,
   letter-spacing: -0.01em;
 }
 
+.font-hero {
+  font-family: var(--font-hero), var(--font-sans);
+}
+
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 0.75rem;

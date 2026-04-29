@@ -5,7 +5,7 @@ import { getSiteImages } from "@/app/lib/site-images";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Four pillars of defense advisory: consulting, community initiatives, technology incubation, and investment support.",
+    "Four pillars of defence advisory: consulting, community initiatives, technology incubation, and investment support.",
 };
 
 export default async function ServicesPage() {
