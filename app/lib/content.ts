@@ -316,7 +316,7 @@ export const content: Record<Lang, Dict> = {
       privacyCancel: "Cancel",
     },
     footer: {
-      tagline: "Defence & Security Consulting and Strategic Advisory",
+      tagline: "Vectoring the Future of Defence.",
       address:
         "BLUE VECTOR Inc. · Shin-Aoyama Building, 1-1-1 Minami-Aoyama, Minato-ku, Tokyo",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
@@ -709,7 +709,7 @@ export const content: Record<Lang, Dict> = {
       privacyCancel: "キャンセル",
     },
     footer: {
-      tagline: "防衛・安全保障領域の戦略コンサルティング",
+      tagline: "Vectoring the Future of Defence.",
       address:
         "株式会社 BLUE VECTOR ・ 東京都港区南青山1丁目1-1 新青山ビル",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",

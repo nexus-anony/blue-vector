@@ -39,7 +39,7 @@ export default function Header() {
         style={{ opacity: fadeOpacity }}
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div className="flex items-center justify-between h-28 md:h-32 lg:h-36">
           <BrandMark brand={t.brand} />
           <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium">
             {NAV_ITEMS.map((item) => (

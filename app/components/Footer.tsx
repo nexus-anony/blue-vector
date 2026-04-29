@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-12 gap-10">
           <div className="md:col-span-8">
             <BrandMark brand={t.brand} />
-            <p className="mt-5 text-[13px] leading-[1.7] text-[var(--ink-soft)] max-w-sm">
+            <p className="mt-5 font-hero font-medium tracking-[0.2em] [word-spacing:-0.25em] uppercase text-[13px] md:text-[14px] leading-[1.4] text-[var(--ink)] max-w-sm">
               {t.footer.tagline}
             </p>
             <div className="mt-6 text-[12px] tracking-[0.18em] uppercase text-[var(--ink-muted)]">
