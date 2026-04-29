@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Libre_Baskerville, Noto_Sans_JP } from "next/font/google";
+import { Inter, Jost, Libre_Baskerville, Noto_Sans_JP } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Shell from "@/app/components/Shell";
@@ -15,6 +15,13 @@ const serif = Libre_Baskerville({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
+});
+
+const heroFont = Jost({
+  variable: "--font-hero",
+  subsets: ["latin"],
+  weight: ["700", "800"],
   display: "swap",
 });
 
@@ -74,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${sans.variable} ${serif.variable} ${jp.variable} h-full`}
+      className={`${sans.variable} ${serif.variable} ${heroFont.variable} ${jp.variable} h-full`}
     >
       <body className="min-h-full bg-[var(--surface)] text-[var(--ink)]">
         <Shell>{children}</Shell>

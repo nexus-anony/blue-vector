@@ -10,23 +10,15 @@ export default function BrandMark({
   onDark?: boolean;
 }) {
   return (
-    <Link href="/" className="flex items-center gap-3 group shrink-0">
+    <Link href="/" className="flex items-center group shrink-0" aria-label={`${brand.name} — ${brand.subtitle}`}>
       <Image
-        src="/logo.png"
-        alt={`${brand.name} logo`}
-        width={32}
-        height={32}
+        src="/new-logos/BLUE VECTOR logo03.png"
+        alt={`${brand.name} — ${brand.subtitle}`}
+        width={1920}
+        height={1080}
         preload
-        className="h-8 w-8 object-contain"
+        className="h-16 md:h-20 lg:h-24 w-auto object-contain object-left"
       />
-      <div className="leading-tight">
-        <div className="text-[13px] tracking-[0.28em] font-bold text-[var(--ink)]">
-          {brand.name}
-        </div>
-        <div className="text-[9px] tracking-[0.32em] uppercase mt-0.5 text-[var(--ink-muted)]">
-          {brand.subtitle}
-        </div>
-      </div>
     </Link>
   );
 }

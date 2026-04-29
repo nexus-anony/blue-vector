@@ -81,10 +81,10 @@ export default function Hero({ images }: { images: HeroImage[] }) {
                 {hero.eyebrow}
               </span>
             </div>
-            <h1 className="font-display text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-bold tracking-tight mb-4 md:mb-6 text-[var(--ink)]">
+            <h1 className="font-[var(--font-hero)] text-[36px] leading-[1.05] md:text-[56px] lg:text-[72px] xl:text-[80px] md:leading-[1] font-extrabold tracking-tight mb-4 md:mb-6 text-[var(--ink)]">
               {hero.headline}
             </h1>
-            <p className="font-display font-bold tracking-tighter text-[var(--ink)] text-[22px] md:text-[28px] lg:text-[32px] leading-[1.15] max-w-xl mb-10 md:mb-12">
+            <p className="font-[var(--font-hero)] font-bold tracking-tight text-[var(--ink)] text-[22px] md:text-[28px] lg:text-[32px] leading-[1.15] max-w-xl mb-10 md:mb-12">
               {hero.tagline}
             </p>
             <div className="flex flex-wrap gap-3">
