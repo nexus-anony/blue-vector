@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import BrandMark from "./BrandMark";
 import { useLanguage } from "./LanguageContext";
+
+const LEGAL_PATHS = ["/privacy", "/terms", "/accessibility"];
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -23,11 +26,14 @@ export default function Footer() {
               Legal
             </div>
             <ul className="space-y-2 text-[13px]">
-              {t.footer.legal.map((item) => (
+              {t.footer.legal.map((item, i) => (
                 <li key={item}>
-                  <a href="#" className="text-[var(--ink-soft)] hover:text-[var(--ink)]">
+                  <Link
+                    href={LEGAL_PATHS[i] ?? "#"}
+                    className="text-[var(--ink-soft)] hover:text-[var(--ink)]"
+                  >
                     {item}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

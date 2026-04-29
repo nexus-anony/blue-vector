@@ -26,6 +26,20 @@ type NewsItem = {
   body: string;
 };
 
+type LegalSection = {
+  id: string;
+  number: string;
+  heading: string;
+  paragraphs: string[];
+};
+
+type LegalDoc = {
+  title: string;
+  lede: string;
+  effective: string;
+  sections: LegalSection[];
+};
+
 export type Dict = {
   brand: { name: string; subtitle: string };
   nav: {
@@ -111,6 +125,14 @@ export type Dict = {
     address: string;
     copyright: string;
     legal: string[];
+  };
+  legalPages: {
+    draftTag: string;
+    contentsLabel: string;
+    effectiveLabel: string;
+    privacy: LegalDoc;
+    terms: LegalDoc;
+    accessibility: LegalDoc;
   };
   lang: { current: string; switchTo: string };
 };
@@ -300,6 +322,213 @@ export const content: Record<Lang, Dict> = {
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["Privacy Notice", "Terms of Engagement", "Accessibility"],
     },
+    legalPages: {
+      draftTag: "Draft — Pending Legal Review",
+      contentsLabel: "Contents",
+      effectiveLabel: "Effective",
+      privacy: {
+        title: "Privacy Notice",
+        lede: "This notice describes how BLUE VECTOR Inc. collects, uses, and safeguards personal information provided through this website. It is intended to satisfy applicable obligations under Japan's Act on the Protection of Personal Information and to meet the expectations of clients operating in regulated defense and national-security environments.",
+        effective: "April 2026",
+        sections: [
+          {
+            id: "scope",
+            number: "1",
+            heading: "Scope",
+            paragraphs: [
+              "This Privacy Notice (the \"Notice\") applies to personal information that BLUE VECTOR Inc. (the \"Firm,\" \"we,\" \"us,\" or \"our\") collects, processes, or otherwise handles in connection with this website (the \"Site\"), including the contact form, electronic correspondence initiated from the Site, and technical data generated when you access the Site.",
+              "This Notice does not apply to information collected outside the Site, including information exchanged under a separate engagement letter, non-disclosure agreement, or other contractual arrangement, which is governed by the terms of that arrangement.",
+            ],
+          },
+          {
+            id: "controller",
+            number: "2",
+            heading: "Data Controller",
+            paragraphs: [
+              "BLUE VECTOR Inc., a company organized under the laws of Japan with its registered office at Shin-Aoyama Building, 1-1-1 Minami-Aoyama, Minato-ku, Tokyo, is the controller of personal information processed under this Notice.",
+              "For inquiries regarding this Notice, including requests to exercise the rights described in Section 9, please write to inquiries@bluevector.co.jp.",
+            ],
+          },
+          {
+            id: "information-collected",
+            number: "3",
+            heading: "Information We Collect",
+            paragraphs: [
+              "We collect personal information in two circumstances. First, we collect information you submit voluntarily through the Site, including your name, electronic mail address, the organization with which you are affiliated (if provided), the subject of your inquiry, and the substance of your message.",
+              "Second, we collect limited technical information generated automatically when you access the Site, including internet protocol address, device and browser type, referring page, and pages viewed. We do not deploy third-party advertising trackers, behavioral profiling cookies, or cross-site tracking pixels.",
+            ],
+          },
+          {
+            id: "purpose",
+            number: "4",
+            heading: "Purpose of Use",
+            paragraphs: [
+              "Information submitted through the Site is used solely to (a) respond to your inquiry, (b) identify the appropriate member of the Firm to address your matter, and (c) coordinate any follow-up engagement you initiate.",
+              "Technical information is used to operate and secure the Site, to diagnose performance and reliability issues, and to protect against abuse. We will not use your personal information for marketing or promotional communications without your explicit, informed consent.",
+            ],
+          },
+          {
+            id: "confidentiality",
+            number: "5",
+            heading: "Confidentiality",
+            paragraphs: [
+              "All inquiries are treated as confidential. The substance of any correspondence, and any materials you transmit, are accessible only to those members of the Firm whose duties require access on a need-to-know basis.",
+              "Engagements involving sensitive information are conducted under a separate written non-disclosure agreement, the terms of which take precedence over this Notice with respect to information governed by that agreement.",
+            ],
+          },
+          {
+            id: "third-parties",
+            number: "6",
+            heading: "Disclosure to Third Parties",
+            paragraphs: [
+              "We do not sell, rent, lease, or otherwise commercially disclose your personal information to third parties.",
+              "Disclosure is limited to circumstances in which it is (a) required by law or by an order of a court or regulator of competent jurisdiction, (b) expressly authorized by you in writing, or (c) reasonably necessary to enforce the Firm's legal rights, protect the safety of personnel, or respond to a credible threat.",
+              "Where the Firm engages service providers (for example, hosting infrastructure, electronic-mail providers, or analytics platforms), those providers are bound by contractual confidentiality and data-protection obligations and process personal information solely under the Firm's instructions and for the purposes set out in this Notice.",
+            ],
+          },
+          {
+            id: "retention",
+            number: "7",
+            heading: "Retention",
+            paragraphs: [
+              "Records of your inquiry are retained only for as long as reasonably necessary to fulfill the purposes for which they were collected and to comply with applicable record-keeping obligations. Following the applicable retention period, records are deleted, destroyed, or irreversibly anonymized in accordance with the Firm's records-management policy.",
+              "Aggregated, anonymized analytics that cannot reasonably be linked to an identified individual may be retained indefinitely for the purpose of evaluating and improving the Site.",
+            ],
+          },
+          {
+            id: "security",
+            number: "8",
+            heading: "Security",
+            paragraphs: [
+              "We maintain administrative, technical, and physical safeguards designed to protect personal information against unauthorized access, alteration, disclosure, loss, or destruction. These measures are calibrated to the sensitivity of the information handled by a firm operating at the intersection of defense and national security.",
+              "While we work to reduce risk to a reasonable minimum, no system of safeguards can be guaranteed perfectly secure. In the event of a personal-information incident affecting your data, we will notify you and the relevant authorities to the extent required by applicable law.",
+            ],
+          },
+          {
+            id: "rights",
+            number: "9",
+            heading: "Your Rights",
+            paragraphs: [
+              "Subject to applicable law, you may request that the Firm (a) confirm whether it holds personal information about you, (b) disclose the contents of that information, (c) correct, supplement, or update inaccurate or outdated information, (d) suspend the use of, or delete, your information, or (e) cease the disclosure of your information to third parties.",
+              "Requests should be addressed to inquiries@bluevector.co.jp. The Firm will respond within a reasonable period and in any event within the time limits prescribed by applicable law. We may request additional information necessary to verify your identity before acting on a request.",
+            ],
+          },
+          {
+            id: "transfers",
+            number: "10",
+            heading: "International Transfers",
+            paragraphs: [
+              "The Firm is based in Japan. Personal information you submit may be processed in Japan and, to the extent service providers are engaged, in other jurisdictions in which those providers operate.",
+              "Where personal information is transferred outside Japan, the Firm ensures that the transfer is governed by appropriate safeguards consistent with the Act on the Protection of Personal Information and any other applicable legal requirements.",
+            ],
+          },
+          {
+            id: "changes",
+            number: "11",
+            heading: "Changes to This Notice",
+            paragraphs: [
+              "We may amend this Notice from time to time to reflect changes in our practices, applicable law, or service infrastructure. The version in effect at any given time is the version posted on this page, identified by the \"Effective\" date displayed at the top of this Notice.",
+              "Material changes will be communicated by means appropriate to the change, which may include notice on the Site or, where reasonably practicable, direct notice to affected individuals. Your continued use of the Site after the effective date of any change constitutes acceptance of the revised Notice.",
+            ],
+          },
+          {
+            id: "contact",
+            number: "12",
+            heading: "Contact",
+            paragraphs: [
+              "Questions, requests, or complaints regarding this Notice or the Firm's processing of personal information should be directed to inquiries@bluevector.co.jp.",
+              "If you are unsatisfied with the Firm's response, you may have the right to lodge a complaint with the supervisory authority in your jurisdiction; in Japan, that authority is the Personal Information Protection Commission.",
+            ],
+          },
+        ],
+      },
+      terms: {
+        title: "Terms of Engagement",
+        lede: "BLUE VECTOR Inc. provides advisory and consulting services on a per-engagement basis. The terms governing each engagement are set out in a written engagement letter executed between the Firm and the client.",
+        effective: "April 2026",
+        sections: [
+          {
+            id: "engagement-letter",
+            number: "1",
+            heading: "Engagement Letter Governs",
+            paragraphs: [
+              "Each engagement undertaken by BLUE VECTOR Inc. (the \"Firm\") is governed by a written engagement letter executed between the Firm and the client. The engagement letter sets out the matters specific to the engagement, including the scope of work, the personnel responsible, the fee structure, deliverables, timing, and any agreed limitations on liability.",
+              "Where there is a conflict between this page and the engagement letter, the engagement letter controls.",
+            ],
+          },
+          {
+            id: "no-public-tos",
+            number: "2",
+            heading: "No Standard Public Terms",
+            paragraphs: [
+              "The Firm does not publish standard public terms of service applicable to visitors of this website. The nature of our work requires that terms be tailored to each engagement, taking into account the regulatory environment, sensitivity of information, and operational posture of the client.",
+              "Visiting this website, reading the materials it makes available, or initiating an inquiry through the contact form does not, in itself, create an attorney-client, advisory, or other professional relationship between the visitor and the Firm.",
+            ],
+          },
+          {
+            id: "confidentiality",
+            number: "3",
+            heading: "Confidentiality of Inquiries",
+            paragraphs: [
+              "Inquiries received through this Site or by direct correspondence are treated as confidential and are accessible only to those members of the Firm whose duties require access. Sensitive engagements are conducted under a separate non-disclosure agreement.",
+              "Submitting an inquiry does not waive any privilege, confidentiality, or trade-secret protection attached to the information you transmit. The Firm asks that highly sensitive material not be transmitted through unsecured channels until a non-disclosure agreement is in place.",
+            ],
+          },
+          {
+            id: "intellectual-property",
+            number: "4",
+            heading: "Intellectual Property and Work Product",
+            paragraphs: [
+              "Allocation of intellectual-property rights in deliverables, including pre-existing materials, project deliverables, and any data or know-how developed during an engagement, is addressed in the applicable engagement letter.",
+              "Materials made publicly available on this Site remain the property of the Firm and may not be reproduced, distributed, or used commercially without the Firm's prior written consent.",
+            ],
+          },
+          {
+            id: "contact",
+            number: "5",
+            heading: "Inquiries",
+            paragraphs: [
+              "For inquiries regarding engagement terms, scope of services, or to request an introductory conversation, please write to inquiries@bluevector.co.jp.",
+              "The Firm will respond to qualified correspondence within a reasonable period and in any event within three business days, subject to operational constraints.",
+            ],
+          },
+        ],
+      },
+      accessibility: {
+        title: "Accessibility",
+        lede: "BLUE VECTOR Inc. is committed to making this website usable by the widest possible audience, including users who rely on assistive technologies such as screen readers, keyboard navigation, or screen magnification.",
+        effective: "April 2026",
+        sections: [
+          {
+            id: "conformance",
+            number: "1",
+            heading: "Conformance Target",
+            paragraphs: [
+              "The Firm strives to follow the Web Content Accessibility Guidelines (WCAG) version 2.1 at the AA level. WCAG defines requirements for designers and developers to improve accessibility for people with disabilities, and is the standard against which the Firm measures the Site.",
+              "The Firm does not at this time certify full conformance, and acknowledges that some areas of the Site may not yet meet that goal. We work to close those gaps as part of routine maintenance.",
+            ],
+          },
+          {
+            id: "limitations",
+            number: "2",
+            heading: "Known Limitations",
+            paragraphs: [
+              "The Site uses imagery and motion, including image carousels and scroll-driven effects. Where reasonably practicable, these are configured to respect operating-system reduced-motion preferences.",
+              "Some third-party embeds and PDF documents accessible through the Site may not be fully accessible. The Firm is working with the relevant providers and authors to remediate these limitations.",
+            ],
+          },
+          {
+            id: "feedback",
+            number: "3",
+            heading: "Feedback and Assistance",
+            paragraphs: [
+              "If you encounter an accessibility barrier on the Site, have a suggestion for improvement, or require an alternative means of accessing information presented on the Site, please contact inquiries@bluevector.co.jp.",
+              "The Firm treats accessibility feedback as a priority and will respond within a reasonable period. Where the Firm cannot promptly remediate an issue, we will work with you to provide the information through an accessible alternative channel.",
+            ],
+          },
+        ],
+      },
+    },
     lang: { current: "EN", switchTo: "日本語" },
   },
 
@@ -485,6 +714,213 @@ export const content: Record<Lang, Dict> = {
         "株式会社 BLUE VECTOR ・ 東京都港区南青山1丁目1-1 新青山ビル",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
       legal: ["プライバシー", "利用規約", "アクセシビリティ"],
+    },
+    legalPages: {
+      draftTag: "ドラフト — 法務確認待ち",
+      contentsLabel: "目次",
+      effectiveLabel: "施行日",
+      privacy: {
+        title: "プライバシーポリシー",
+        lede: "本ポリシーは、株式会社 BLUE VECTOR が、本ウェブサイトを通じて取得する個人情報をどのように収集・利用・保護するかを定めるものです。個人情報の保護に関する法律に基づく義務を遵守するとともに、防衛・国家安全保障領域で事業を展開するクライアントのご期待に応えることを目的としております。",
+        effective: "2026年4月",
+        sections: [
+          {
+            id: "scope",
+            number: "1",
+            heading: "適用範囲",
+            paragraphs: [
+              "本プライバシーポリシー(以下「本ポリシー」)は、株式会社 BLUE VECTOR(以下「当社」)が、本ウェブサイト(以下「本サイト」)に関連して取得・処理・取り扱う個人情報に適用されます。お問い合わせフォーム、本サイトから開始される電子メールでのやり取り、および本サイトへのアクセス時に生成される技術情報を対象とします。",
+              "本サイト外で取得される情報、たとえば別途締結される業務委託契約書、守秘義務契約書、その他の契約に基づき交換される情報については、当該契約の条項に従うものとし、本ポリシーは適用されません。",
+            ],
+          },
+          {
+            id: "controller",
+            number: "2",
+            heading: "個人情報取扱事業者",
+            paragraphs: [
+              "本ポリシーに基づき個人情報を取り扱う事業者は、東京都港区南青山1丁目1-1 新青山ビルに本店を置く、日本法に基づき設立された株式会社 BLUE VECTOR です。",
+              "本ポリシー、および第9条に定める権利の行使に関するお問い合わせは、inquiries@bluevector.co.jp までご連絡ください。",
+            ],
+          },
+          {
+            id: "information-collected",
+            number: "3",
+            heading: "取得する情報",
+            paragraphs: [
+              "当社は次の二つの場合に個人情報を取得します。第一に、お客様が本サイトを通じて任意にご提供いただく情報、すなわち氏名、電子メールアドレス、ご所属(任意)、お問い合わせの件名、および本文です。",
+              "第二に、本サイトへのアクセス時に自動的に生成される技術情報、すなわち IP アドレス、デバイスおよびブラウザの種別、参照元ページ、閲覧ページなどです。第三者の広告トラッカー、行動プロファイリング Cookie、クロスサイトのトラッキングピクセルは導入しておりません。",
+            ],
+          },
+          {
+            id: "purpose",
+            number: "4",
+            heading: "利用目的",
+            paragraphs: [
+              "本サイトを通じてお預かりした情報は、(a) お問い合わせへのご返信、(b) 案件に対応する適切な担当者の特定、(c) お客様が希望される場合の後続対応の調整、これらの目的に限定して使用いたします。",
+              "技術情報は、本サイトの運営および安全性の確保、性能・信頼性に関する不具合の診断、不正利用の防止のために使用します。お客様の明示的かつ十分な情報に基づくご同意がない限り、マーケティングまたは販売促進目的で個人情報を利用することはありません。",
+            ],
+          },
+          {
+            id: "confidentiality",
+            number: "5",
+            heading: "機密保持",
+            paragraphs: [
+              "すべてのお問い合わせは機密情報として取り扱います。やり取りの内容および当社にご送付いただいた資料には、業務上の必要性に基づき、必要最小限の担当者のみがアクセスできるものとします。",
+              "機微な情報を伴う案件は、別途締結される守秘義務契約のもとで対応いたします。当該契約の対象となる情報については、当該契約の条項が本ポリシーに優先するものとします。",
+            ],
+          },
+          {
+            id: "third-parties",
+            number: "6",
+            heading: "第三者への開示",
+            paragraphs: [
+              "お預かりした個人情報を販売、貸与、リース、その他商業的な目的で第三者に開示することはありません。",
+              "開示は、(a) 法令の定めにより、または管轄を有する裁判所もしくは規制当局の命令により要求される場合、(b) お客様の書面による明示的な承諾がある場合、(c) 当社の法的権利の行使、関係者の安全の確保、または信頼性ある脅威への対処のため合理的に必要な場合に限定されます。",
+              "当社が業務委託先(たとえば、ホスティング基盤、電子メール提供事業者、分析プラットフォーム等)を利用する場合、当該業務委託先は契約上の機密保持義務およびデータ保護義務を負い、当社の指示に基づき、本ポリシーに定める目的のためにのみ個人情報を処理するものとします。",
+            ],
+          },
+          {
+            id: "retention",
+            number: "7",
+            heading: "保管期間",
+            paragraphs: [
+              "お問い合わせの記録は、収集目的を達成するために合理的に必要な期間に限り保管し、適用される記録保管義務を遵守するために必要な範囲で延長されることがあります。所定の保管期間経過後は、当社の文書管理ポリシーに従い、削除、廃棄、または不可逆的に匿名化されます。",
+              "個人を合理的に特定できないかたちに匿名化された統計情報については、本サイトの評価および改善の目的のため、無期限に保管する場合があります。",
+            ],
+          },
+          {
+            id: "security",
+            number: "8",
+            heading: "安全管理",
+            paragraphs: [
+              "当社は、不正アクセス、改ざん、漏えい、滅失、毀損から個人情報を保護するため、組織的・技術的・物理的な安全管理措置を講じております。これらの措置は、防衛・国家安全保障領域における事業特性を踏まえ、取り扱う情報の機微性に応じて整備されております。",
+              "合理的な水準までリスクを低減するよう努めておりますが、いかなる安全管理措置も完全な安全性を保証するものではありません。お客様の個人情報に影響する事案が発生した場合、適用法令に従い、お客様および所管当局に通知いたします。",
+            ],
+          },
+          {
+            id: "rights",
+            number: "9",
+            heading: "お客様の権利",
+            paragraphs: [
+              "適用される法令に従い、お客様は当社に対し、(a) お客様の個人情報を保有しているかの確認、(b) 当該情報の内容の開示、(c) 不正確または古い情報の訂正、追加または更新、(d) 利用の停止または削除、(e) 第三者への提供の停止、これらをご請求いただけます。",
+              "ご請求は inquiries@bluevector.co.jp 宛にお願いいたします。当社は、合理的な期間内かつ適用法令に定める期限内にご対応いたします。ご請求への対応にあたり、本人確認のため追加の情報をお求めする場合があります。",
+            ],
+          },
+          {
+            id: "transfers",
+            number: "10",
+            heading: "国際的な情報移転",
+            paragraphs: [
+              "当社は日本に拠点を置きます。お客様からお預かりした個人情報は、日本国内で処理されるほか、業務委託先が所在する国・地域でも処理される場合があります。",
+              "個人情報を日本国外に移転する場合、当社は、個人情報の保護に関する法律およびその他適用法令に整合する適切な保護措置のもとで移転を行います。",
+            ],
+          },
+          {
+            id: "changes",
+            number: "11",
+            heading: "本ポリシーの変更",
+            paragraphs: [
+              "当社の運用、適用法令、またはサービス基盤の変更を反映するため、本ポリシーは随時改定されることがあります。任意の時点において有効な版は、本ページに掲載されている版とし、本ポリシー上部に表示される「施行日」により特定されます。",
+              "重要な変更については、サイト上での告知、または合理的に実施可能な場合には影響を受ける個人への直接通知など、変更の内容に応じた適切な方法でお知らせいたします。改定後の施行日以降に本サイトのご利用を継続される場合、改定後の本ポリシーにご同意いただいたものとみなします。",
+            ],
+          },
+          {
+            id: "contact",
+            number: "12",
+            heading: "お問い合わせ窓口",
+            paragraphs: [
+              "本ポリシーまたは当社による個人情報の処理に関するご質問、ご請求、苦情のお申し出は、inquiries@bluevector.co.jp までご連絡ください。",
+              "当社の対応にご納得いただけない場合、お客様の所在する法域における監督機関に対し、苦情を申し立てる権利を有する場合があります。日本においては、個人情報保護委員会がこれに該当します。",
+            ],
+          },
+        ],
+      },
+      terms: {
+        title: "利用規約",
+        lede: "株式会社 BLUE VECTOR は、アドバイザリーおよびコンサルティング業務を案件ごとにご提供しております。各案件の条件は、当社とクライアントとの間で締結される業務委託契約書に定められます。",
+        effective: "2026年4月",
+        sections: [
+          {
+            id: "engagement-letter",
+            number: "1",
+            heading: "業務委託契約書の優先",
+            paragraphs: [
+              "株式会社 BLUE VECTOR(以下「当社」)が引き受ける各案件は、当社とクライアントとの間で締結される業務委託契約書により規律されます。業務委託契約書には、業務範囲、担当者、報酬体系、成果物、納期、合意された責任制限など、当該案件に固有の事項を定めます。",
+              "本ページの内容と業務委託契約書の内容との間に矛盾がある場合、業務委託契約書の規定が優先します。",
+            ],
+          },
+          {
+            id: "no-public-tos",
+            number: "2",
+            heading: "共通の公開規約は設けません",
+            paragraphs: [
+              "当社は、本ウェブサイトの全訪問者に一律に適用される標準的な公開利用規約を設けておりません。当社の業務性質上、規制環境、情報の機微性、クライアントの運用体制を踏まえ、案件ごとに調整された条件を設定する必要があるためです。",
+              "本ウェブサイトの閲覧、本サイトを通じて公開される資料の参照、お問い合わせフォームを通じた連絡だけをもって、訪問者と当社との間に弁護士・依頼者関係、アドバイザリー関係、その他の専門家関係が成立するものではありません。",
+            ],
+          },
+          {
+            id: "confidentiality",
+            number: "3",
+            heading: "お問い合わせの機密保持",
+            paragraphs: [
+              "本サイトまたは直接の連絡を通じてお寄せいただいたお問い合わせは機密情報として取り扱い、業務上必要な担当者のみがアクセスできるものとします。機微な案件は、別途締結される守秘義務契約のもとで対応いたします。",
+              "お問い合わせの送信は、お客様が送信される情報に関する特権、機密保持、または営業秘密の保護を放棄するものではありません。守秘義務契約が締結されるまで、極めて機微な情報を保護されていない経路で送信されないようお願いいたします。",
+            ],
+          },
+          {
+            id: "intellectual-property",
+            number: "4",
+            heading: "知的財産権および成果物",
+            paragraphs: [
+              "成果物に関する知的財産権の帰属、すなわち既存資料、案件成果物、案件中に開発されたデータまたはノウハウについての権利配分は、適用される業務委託契約書に定めるものとします。",
+              "本サイトで一般に公開されている資料は、当社に帰属するものであり、当社の事前の書面による同意なく複製、配布、または商業的に利用することはできません。",
+            ],
+          },
+          {
+            id: "contact",
+            number: "5",
+            heading: "お問い合わせ",
+            paragraphs: [
+              "業務条件、サービス範囲、または初回のご相談に関するお問い合わせは、inquiries@bluevector.co.jp までご連絡ください。",
+              "適格なご相談には、運用上の制約のもと、合理的な期間内かつ3営業日以内にご返信いたします。",
+            ],
+          },
+        ],
+      },
+      accessibility: {
+        title: "アクセシビリティ",
+        lede: "株式会社 BLUE VECTOR は、本ウェブサイトを、スクリーンリーダー、キーボード操作、画面拡大などの支援技術を利用される方を含め、できるだけ多くの方にご利用いただけるよう取り組んでおります。",
+        effective: "2026年4月",
+        sections: [
+          {
+            id: "conformance",
+            number: "1",
+            heading: "適合目標",
+            paragraphs: [
+              "当社は、ウェブコンテンツアクセシビリティガイドライン(WCAG)2.1 の AA レベルへの準拠を目指しております。WCAG は、設計者・開発者が障害のある方々のためにアクセシビリティを向上させるための要件を定めており、当社が本サイトを評価する基準としております。",
+              "現時点で完全な準拠を表明するものではなく、本サイトの一部に目標を満たしていない領域があることを認識しております。これらは通常の保守作業の一環として継続的に改善に取り組んでおります。",
+            ],
+          },
+          {
+            id: "limitations",
+            number: "2",
+            heading: "既知の制約",
+            paragraphs: [
+              "本サイトでは、画像演出およびモーション(画像カルーセル、スクロール連動効果)を使用しております。合理的に実施可能な範囲で、オペレーティングシステムのモーション抑制設定を尊重するよう構成しております。",
+              "本サイトを通じてアクセスできる一部の埋め込みコンテンツおよび PDF 文書については、完全なアクセシビリティが確保されていない場合があります。当社は、関係する提供事業者および作成者と連携し、これらの制約の改善に取り組んでおります。",
+            ],
+          },
+          {
+            id: "feedback",
+            number: "3",
+            heading: "ご意見・ご支援",
+            paragraphs: [
+              "本サイトでアクセシビリティ上の障害に遭遇された場合、改善のご提案がある場合、または本サイトに掲載されている情報への代替的なアクセス手段が必要な場合は、inquiries@bluevector.co.jp までご連絡ください。",
+              "当社は、アクセシビリティに関するご意見を優先課題として受け止め、合理的な期間内にご対応いたします。すぐに改善できない場合は、別の利用しやすい経路で情報をご提供できるよう、お客様と連携いたします。",
+            ],
+          },
+        ],
+      },
     },
     lang: { current: "JP", switchTo: "English" },
   },
