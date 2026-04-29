@@ -102,6 +102,8 @@ export type Dict = {
     namePlaceholder: string;
     emailLabel: string;
     emailPlaceholder: string;
+    companyLabel: string;
+    companyPlaceholder: string;
     subjectLabel: string;
     subjectPlaceholder: string;
     messageLabel: string;
@@ -292,6 +294,8 @@ export const content: Record<Lang, Dict> = {
       namePlaceholder: "Full name",
       emailLabel: "Email",
       emailPlaceholder: "you@organization.com",
+      companyLabel: "Company",
+      companyPlaceholder: "Your company or organization",
       subjectLabel: "Subject",
       subjectPlaceholder: "Nature of inquiry",
       messageLabel: "Message",
@@ -308,7 +312,7 @@ export const content: Record<Lang, Dict> = {
       privacyTitle: "Privacy Policy",
       privacyBody:
         "BLUE VECTOR Inc. (\"the Firm\") handles personal information submitted through this inquiry form in accordance with the following principles, reflecting the heightened sensitivity required when operating at the intersection of defense, national security, and industry.\n\n1. Purpose of Use\nInformation you provide will be used solely to respond to your inquiry, to identify the appropriate point of contact within the Firm, and to coordinate any follow-up engagement you initiate. We will not use your information for marketing without explicit consent.\n\n2. Confidentiality\nAll inquiries are treated as confidential. The substance of correspondence and any attached materials are accessible only to authorized members of the Firm on a need-to-know basis. Sensitive engagements are conducted under a separate written non-disclosure agreement.\n\n3. Disclosure to Third Parties\nWe do not sell, rent, or otherwise disclose your personal information to third parties. Disclosure is limited to circumstances where it is required by law, ordered by a court of competent jurisdiction, or expressly authorized by you in writing.\n\n4. Retention\nInquiry records are retained only as long as reasonably necessary to fulfill the purpose for which they were collected, after which they are deleted or anonymized in accordance with the Firm's records-management policy.\n\n5. Security\nWe implement administrative, technical, and physical safeguards consistent with industry practice for handling sensitive defense-related correspondence.\n\n6. Your Rights\nYou may request access to, correction of, or deletion of your personal information held by the Firm by contacting us at inquiries@bluevector.co.jp. We will respond within a reasonable period.\n\n7. Governing Law\nThis policy is governed by the laws of Japan. By submitting your inquiry, you acknowledge that you have read and understood this Privacy Policy.\n\nLast updated: April 2026.",
-      privacyAgree: "Submit after agreeing",
+      privacyAgree: "Agree and Submit",
       privacyCancel: "Cancel",
     },
     footer: {
@@ -684,6 +688,8 @@ export const content: Record<Lang, Dict> = {
       namePlaceholder: "氏名",
       emailLabel: "メールアドレス",
       emailPlaceholder: "you@organization.com",
+      companyLabel: "会社名",
+      companyPlaceholder: "ご所属の会社・組織",
       subjectLabel: "件名",
       subjectPlaceholder: "ご相談内容",
       messageLabel: "本文",
@@ -699,7 +705,7 @@ export const content: Record<Lang, Dict> = {
       privacyTitle: "プライバシーポリシー",
       privacyBody:
         "株式会社 BLUE VECTOR(以下「当社」)は、防衛・国家安全保障領域と産業の交差点における事業特性を踏まえ、本お問い合わせフォームを通じて提供される個人情報を、以下の方針に従い慎重に取り扱います。\n\n1. 利用目的\nお預かりした情報は、お問い合わせへのご返信、社内における適切な担当者の特定、および、お客様が希望される場合の後続対応の調整に限り使用いたします。明示的なご同意なくマーケティング目的で利用することはありません。\n\n2. 機密保持\nすべてのお問い合わせは機密情報として取り扱います。やり取りの内容および添付資料は、業務上必要な範囲において、当社の権限を有する担当者のみがアクセスできるものとします。機微な案件については、別途守秘義務契約のもとで対応いたします。\n\n3. 第三者への開示\nお預かりした個人情報を第三者に販売、貸与、開示することはありません。法令に基づく要請、管轄裁判所の命令、またはお客様の書面によるご同意がある場合に限り、開示を行います。\n\n4. 保管期間\nお問い合わせ記録は、収集目的の達成に合理的に必要な期間に限り保管し、その後は当社の文書管理ポリシーに従って削除または匿名化いたします。\n\n5. 安全管理\n防衛関連の機微なやり取りに対し、業界水準に沿った組織的・技術的・物理的な安全管理措置を講じております。\n\n6. お客様の権利\nお客様は、当社が保有する個人情報の開示、訂正、または削除を、inquiries@bluevector.co.jp 宛にご請求いただけます。合理的な期間内にご対応いたします。\n\n7. 準拠法\n本ポリシーは日本法に準拠します。お問い合わせを送信いただくことにより、本プライバシーポリシーをお読みいただきご理解いただいたものとみなします。\n\n最終更新: 2026年4月。",
-      privacyAgree: "同意のうえ送信",
+      privacyAgree: "同意して送信",
       privacyCancel: "キャンセル",
     },
     footer: {

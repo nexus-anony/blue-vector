@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Contact from "@/app/components/sections/Contact";
 import { getSiteImages } from "@/app/lib/site-images";
+import { getPrivacyContent } from "@/app/lib/privacy-content";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -9,6 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const images = await getSiteImages();
-  return <Contact background={images.contact_bg} />;
+  const [images, privacy] = await Promise.all([
+    getSiteImages(),
+    getPrivacyContent(),
+  ]);
+  return <Contact background={images.contact_bg} privacy={privacy} />;
 }

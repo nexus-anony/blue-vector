@@ -7,7 +7,7 @@ import { useLanguage } from "../LanguageContext";
 
 const ROTATION_MS = 6000;
 
-export type HeroImage = { url: string; bottomFadeStyle: string };
+export type HeroImage = { url: string; bottomFadeStyle: string; topFadeStyle: string };
 
 export default function Hero({ images }: { images: HeroImage[] }) {
   const { t } = useLanguage();
@@ -51,6 +51,13 @@ export default function Hero({ images }: { images: HeroImage[] }) {
               className={`absolute inset-0 object-cover pointer-events-none select-none ${motion} ${transform} ${opacity}`}
               aria-hidden
             />
+            {img.topFadeStyle && (
+              <div
+                aria-hidden
+                className={`absolute inset-0 pointer-events-none transition-opacity duration-[1100ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${fadeOpacity}`}
+                style={{ background: img.topFadeStyle }}
+              />
+            )}
             {img.bottomFadeStyle && (
               <div
                 aria-hidden

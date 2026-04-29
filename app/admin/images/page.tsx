@@ -41,6 +41,7 @@ export default async function ImagesAdminPage() {
                 label={s.label}
                 initialUrl={current[s.key]?.url ?? s.defaultUrl}
                 initialBottomFade={current[s.key]?.bottomFadeLevel ?? 100}
+                initialTopFade={current[s.key]?.topFadeLevel ?? 0}
                 defaultUrl={s.defaultUrl}
               />
             ))}

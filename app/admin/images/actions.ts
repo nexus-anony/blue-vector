@@ -6,6 +6,7 @@ import { verifySession } from "@/app/lib/dal";
 import {
   SITE_IMAGE_SLOTS,
   normalizeBottomFadeLevel,
+  normalizeTopFadeLevel,
   setSiteImage,
 } from "@/app/lib/site-images";
 
@@ -17,6 +18,7 @@ const Schema = z.object({
     .transform((v) => (v.length === 0 ? null : v))
     .nullable(),
   bottomFade: z.string().trim().default(""),
+  topFade: z.string().trim().default(""),
 });
 
 const VALID_SLOTS = new Set(SITE_IMAGE_SLOTS.map((s) => s.key));
@@ -35,9 +37,10 @@ export async function updateSiteImageAction(
   if (!parsed.success) return { error: "Invalid input." };
   if (!VALID_SLOTS.has(parsed.data.slot)) return { error: "Unknown slot." };
 
-  const level = normalizeBottomFadeLevel(parsed.data.bottomFade);
+  const bottomLevel = normalizeBottomFadeLevel(parsed.data.bottomFade);
+  const topLevel = normalizeTopFadeLevel(parsed.data.topFade);
 
-  await setSiteImage(parsed.data.slot, parsed.data.url, level);
+  await setSiteImage(parsed.data.slot, parsed.data.url, bottomLevel, topLevel);
   revalidatePath("/");
   revalidatePath("/about");
   revalidatePath("/services");
