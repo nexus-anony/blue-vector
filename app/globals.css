@@ -83,6 +83,10 @@ time,
   font-family: var(--font-hero), var(--font-sans);
 }
 
+.font-segoe {
+  font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 0.75rem;

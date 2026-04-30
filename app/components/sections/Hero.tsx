@@ -75,16 +75,16 @@ export default function Hero({ images }: { images: HeroImage[] }) {
       <div className="relative flex-1 flex items-center mx-auto w-full max-w-7xl px-6 lg:px-10 pt-28 md:pt-32 lg:pt-40 pb-20 md:pb-28 lg:pb-32">
         <div className="grid w-full grid-cols-12">
           <div className="col-span-12 lg:col-span-10 lg:col-start-2">
-            <div className="flex items-center gap-4 mb-8 md:mb-10">
-              <span className="inline-block w-10 h-px bg-[var(--rule-strong)]" />
-              <span className="text-[12px] md:text-[13px] tracking-[0.28em] uppercase text-[var(--ink-soft)]">
+            <div className="flex items-center gap-5 mb-8 md:mb-10">
+              <span className="inline-block w-14 md:w-16 h-px bg-(--rule-strong)" />
+              <span className="font-segoe font-light tracking-[0.2em] uppercase text-(--ink) text-[18px] md:text-[22px] lg:text-[26px] leading-[1.3]">
                 {hero.eyebrow}
               </span>
             </div>
             <h1 className="mb-3 md:mb-4">
               <span
                 aria-label={hero.headline}
-                className="block overflow-hidden w-44 sm:w-56 md:w-72 lg:w-88 xl:w-100 aspect-1264/174"
+                className="block overflow-hidden w-56 sm:w-72 md:w-96 lg:w-md xl:w-lg aspect-1264/174"
               >
                 <Image
                   src="/BLUE VECTOR logo_word.png"
@@ -97,7 +97,7 @@ export default function Hero({ images }: { images: HeroImage[] }) {
                 />
               </span>
             </h1>
-            <p className="font-hero font-medium tracking-[0.2em] [word-spacing:-0.25em] uppercase text-[var(--ink)] text-[16px] md:text-[20px] lg:text-[24px] leading-[1.4] max-w-xl mb-6 md:mb-8">
+            <p className="font-segoe font-semibold tracking-[-0.01em] text-(--ink) text-[32px] sm:text-[40px] md:text-[52px] lg:text-[60px] xl:text-[64px] leading-[1.1] mb-6 md:mb-8 lg:whitespace-nowrap">
               {hero.tagline}
             </p>
             <div className="flex flex-wrap gap-3">

@@ -152,7 +152,7 @@ export const content: Record<Lang, Dict> = {
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Defence & Security",
+      eyebrow: "Defense & Security",
       headline: "BLUE VECTOR",
       tagline: "Vectoring the Future of Defense",
       subtext:
@@ -546,7 +546,7 @@ export const content: Record<Lang, Dict> = {
       contact: "お問い合わせ",
     },
     hero: {
-      eyebrow: "Defence & Security",
+      eyebrow: "Defense & Security",
       headline: "BLUE VECTOR",
       tagline: "Vectoring the Future of Defense",
       subtext:
