@@ -588,7 +588,7 @@ export const content: Record<Lang, Dict> = {
     services: {
       eyebrow: "02 — サービス",
       heading: "4つの事業領域",
-      lede: "BLUE VECTORは、戦略・戦術ニーズと民間の技術・資本を戦略的に統合し、構想から事業開発、実装に至るまで一貫して支援。",
+      lede: "BLUE VECTORは、戦略・戦術ニーズと民間の技術・資本を戦略的に統合し、構想から事業開発、実装に至るまで一貫して支援します。",
       items: [
         {
           id: "consulting",

@@ -147,15 +147,7 @@ export default function News({
                     </span>
                   </div>
                   <h2 className="mt-4 font-display text-[22px] md:text-[28px] lg:text-[32px] leading-[1.2] font-bold text-[var(--ink)] tracking-tight">
-                    {lang === "jp" ? (
-                      <>
-                        お知らせ・ブリーフィング
-                        <br />
-                        発表
-                      </>
-                    ) : (
-                      news.heading
-                    )}
+                    {news.heading}
                   </h2>
                 </div>
                 <div className="lg:col-span-7">
