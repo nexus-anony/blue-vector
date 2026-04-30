@@ -40,10 +40,10 @@ export default function Services({ background }: { background: HeroImage }) {
               <h1 className="font-display text-[44px] leading-[1] md:text-[64px] lg:text-[80px] xl:text-[92px] font-bold tracking-tight text-white mb-3 md:mb-4">
                 {lang === "jp" ? "サービス" : "Services"}
               </h1>
-              <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-md">
+              <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-xl">
                 {lang === "jp"
-                  ? "コンサル、コミュニティ、テック、投資。"
-                  : "Consulting. Community. Technology. Capital."}
+                  ? "コンサルティング・コミュニティ・企業創出・投資支援"
+                  : "Consulting. Community. Business Creation. Capital."}
               </p>
             </div>
           </div>

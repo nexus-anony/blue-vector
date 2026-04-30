@@ -126,8 +126,8 @@ export default function News({
               </h1>
               <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-md">
                 {lang === "jp"
-                  ? "視点、ブリーフィング、発表。"
-                  : "Perspectives. Briefings. Announcements."}
+                  ? "お知らせ、分析、解説"
+                  : "Announcements, Analysis, Insights"}
               </p>
             </div>
           </div>

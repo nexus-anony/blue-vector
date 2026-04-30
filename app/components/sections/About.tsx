@@ -47,8 +47,8 @@ export default function About({ background }: { background: HeroImage }) {
               </h1>
               <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-md">
                 {lang === "jp"
-                  ? "分析から実装まで。"
-                  : "Analysis to execution."}
+                  ? "平和を共創する社会を実現する"
+                  : "Enabling a society that co-creates peace"}
               </p>
             </div>
           </div>

@@ -119,6 +119,12 @@ export type Dict = {
     privacyBody: string;
     privacyAgree: string;
     privacyCancel: string;
+    modTitle: string;
+    modBody: string;
+    modPdfLabel: string;
+    modPdfUrl: string;
+    modAgree: string;
+    modCancel: string;
   };
   footer: {
     tagline: string;
@@ -152,7 +158,7 @@ export const content: Record<Lang, Dict> = {
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Defense & Security",
+      eyebrow: "Enabling a society that co-creates peace",
       headline: "BLUE VECTOR",
       tagline: "Vectoring the Future of Defense",
       subtext:
@@ -163,7 +169,7 @@ export const content: Record<Lang, Dict> = {
     about: {
       eyebrow: "01 — About",
       heading: "Connecting people and knowledge in defence",
-      lede: "BLUE VECTOR is a company dedicated to creating value in the defence and national security sectors through defence consulting, the incubation of defence technology companies, defence investment support, and defence community initiatives. We accelerate innovation in the defence sector and contribute to the optimization of defence capabilities and the enhancement of deterrence for peace.",
+      lede: "BLUE VECTOR is a company dedicated to creating value in the defence and national security sectors through defence consulting, defence community initiatives, the incubation of defence technology companies, and defence investment support. We accelerate innovation in the defence sector and contribute to the optimization of defence capabilities and the enhancement of deterrence for peace.",
       visionLabel: "Vision",
       vision: "To realize a society that co-creates peace.",
       missionLabel: "Mission",
@@ -189,7 +195,7 @@ export const content: Record<Lang, Dict> = {
           title: "Defence Consulting",
           subtitle: "Advisory · Proposal support · Project execution",
           description:
-            "Supporting companies entering the defence sector end-to-end, from business launch and proposal development for the Ministry of Defence through to project implementation.",
+            "We provide end-to-end support for companies entering the defence sector — from business launch and proposal development for the Ministry of Defence through to project implementation.",
         },
         {
           id: "community",
@@ -197,7 +203,7 @@ export const content: Record<Lang, Dict> = {
           title: "Defence Community",
           subtitle: "Startups · Primes · VC / Finance · Research institutions",
           description:
-            "Analyzing defence needs and technology domains, designing a paid community, and supporting companies' decisions to enter the defence sector.",
+            "We analyze defence needs and technology seeds, and through a defence-focused community, support companies' entry decisions into the sector.",
         },
         {
           id: "incubation",
@@ -205,7 +211,7 @@ export const content: Record<Lang, Dict> = {
           title: "Defence Tech Creation",
           subtitle: "Business area selection · Entrepreneur matching",
           description:
-            "Identifying business whitespace from the information and insights we gather, and supporting entrepreneurs with introductions and capital.",
+            "We identify whitespace in defence businesses and support entrepreneur matching and capital formation.",
         },
         {
           id: "investment",
@@ -213,7 +219,7 @@ export const content: Record<Lang, Dict> = {
           title: "Defence Investment Support",
           subtitle: "Judgment on investment candidates",
           description:
-            "Supporting investment-target judgment using information on defence-tech entrants obtained through our consulting engagements.",
+            "We support investment judgment for defence-tech and startup companies operating in the sector.",
         },
       ],
     },
@@ -242,7 +248,7 @@ export const content: Record<Lang, Dict> = {
     },
     news: {
       eyebrow: "04 — News",
-      heading: "Insights, briefings & announcements",
+      heading: "Announcements · Analysis · Insights",
       lede: "Updates from BLUE VECTOR — firm announcements, selected research, and perspectives on the evolving defence landscape.",
       viewAll: "View all news",
       readMore: "Read more",
@@ -314,9 +320,16 @@ export const content: Record<Lang, Dict> = {
         "BLUE VECTOR Inc. (\"the Firm\") handles personal information submitted through this inquiry form in accordance with the following principles, reflecting the heightened sensitivity required when operating at the intersection of defence, national security, and industry.\n\n1. Purpose of Use\nInformation you provide will be used solely to respond to your inquiry, to identify the appropriate point of contact within the Firm, and to coordinate any follow-up engagement you initiate. We will not use your information for marketing without explicit consent.\n\n2. Confidentiality\nAll inquiries are treated as confidential. The substance of correspondence and any attached materials are accessible only to authorized members of the Firm on a need-to-know basis. Sensitive engagements are conducted under a separate written non-disclosure agreement.\n\n3. Disclosure to Third Parties\nWe do not sell, rent, or otherwise disclose your personal information to third parties. Disclosure is limited to circumstances where it is required by law, ordered by a court of competent jurisdiction, or expressly authorized by you in writing.\n\n4. Retention\nInquiry records are retained only as long as reasonably necessary to fulfill the purpose for which they were collected, after which they are deleted or anonymized in accordance with the Firm's records-management policy.\n\n5. Security\nWe implement administrative, technical, and physical safeguards consistent with industry practice for handling sensitive defence-related correspondence.\n\n6. Your Rights\nYou may request access to, correction of, or deletion of your personal information held by the Firm by contacting us at inquiries@bluevector.co.jp. We will respond within a reasonable period.\n\n7. Governing Law\nThis policy is governed by the laws of Japan. By submitting your inquiry, you acknowledge that you have read and understood this Privacy Policy.\n\nLast updated: April 2026.",
       privacyAgree: "Agree and Submit",
       privacyCancel: "Cancel",
+      modTitle: "Notice on Contact with Ministry of Defence Personnel (Inquiry)",
+      modBody:
+        "In the course of our activities, we may interact with current or former personnel of the Ministry of Defence and the Self-Defence Forces (collectively, \"MOD-related personnel\") who may handle information subject to confidentiality protection under the Self-Defence Forces Act and other applicable laws. When making an inquiry to the Firm, please observe the following notes and applicable laws.\n\n— To Those Who Have Retired from the MOD —\nReference: https://www.mod.go.jp/dih/26d_04_1.pdf\n\n[ Summary ]\n\nMatters retired Self-Defence officers (former MOD personnel) are required to observe:\n\n1. Restrictions on briefings\n• Personnel of departments handling sensitive information (intelligence sections) are, in principle, prohibited from briefing former MOD personnel.\n• Briefings by other personnel also require prior authorization and post-briefing reporting.\n• Briefing requests must be channelled through points of contact designated by the MOD.\n\n2. Management of meetings\n• Where intelligence-section personnel meet with former MOD personnel, prior authorization and a report on the outcome are required.\n• Other personnel must also report meeting outcomes.\n\n3. Response to inappropriate solicitation\n• Even authorized briefings or meetings must be terminated immediately if any inappropriate or unusual solicitation of information occurs.\n\n4. Continuing duty of confidentiality after retirement\n• Confidentiality obligations under the Self-Defence Forces Act, the Act on the Protection of Specially Designated Secrets, and related laws continue after retirement.\n• Disclosure of confidential information learned during service may result in criminal penalties (up to ten years' imprisonment, etc.).\n\n5. Risks regarding conduct by former personnel\n• Conduct in which former MOD personnel use prior hierarchical relationships to solicit confidential information may constitute incitement to disclosure and become subject to penalty.\n\n6. Impact on current personnel\n• In the event of a leak, current personnel may face severe disciplinary action, including dismissal, with significant impact on their work and personal lives.",
+      modPdfLabel: "Reference (MOD)",
+      modPdfUrl: "https://www.mod.go.jp/dih/26d_04_1.pdf",
+      modAgree: "Agree and Submit",
+      modCancel: "Cancel",
     },
     footer: {
-      tagline: "Vectoring the Future of Defence.",
+      tagline: "Enabling a society that co-creates peace",
       address:
         "BLUE VECTOR Inc. · Shin-Aoyama Building, 1-1-1 Minami-Aoyama, Minato-ku, Tokyo",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",
@@ -546,7 +559,7 @@ export const content: Record<Lang, Dict> = {
       contact: "お問い合わせ",
     },
     hero: {
-      eyebrow: "Defense & Security",
+      eyebrow: "平和を共創する社会を実現する",
       headline: "BLUE VECTOR",
       tagline: "Vectoring the Future of Defense",
       subtext:
@@ -557,7 +570,7 @@ export const content: Record<Lang, Dict> = {
     about: {
       eyebrow: "01 — 会社概要",
       heading: "防衛領域で人と知を結び続ける",
-      lede: "BLUE VECTORは、防衛コンサルティング、防衛テック企業の創出、防衛投資支援、防衛コミュニティ事業を通じて、防衛・国家安全保障領域における価値創出を担う企業です。防衛領域におけるイノベーションを加速させ、防衛力の最適化と、平和のための抑止力の向上に貢献します。",
+      lede: "BLUE VECTORは、防衛コンサルティング、防衛コミュニティ、防衛テック企業創出、防衛投資支援を通じて、防衛・国家安全保障領域における価値創出を担う企業です。防衛領域におけるイノベーションを加速させ、防衛力の最適化と、平和のための抑止力の向上に貢献します。",
       visionLabel: "Vision",
       vision: "平和を共創する社会の実現。",
       missionLabel: "Mission",
@@ -580,10 +593,10 @@ export const content: Record<Lang, Dict> = {
         {
           id: "consulting",
           number: "01",
-          title: "防衛コンサル事業",
+          title: "防衛コンサルティング事業",
           subtitle: "アドバイザリー ／ 事業提案支援 ／ 事業実施支援",
           description:
-            "防衛事業参入企業に対して事業立ち上げから防衛省への提案支援〜事業実施を一貫して支援。",
+            "防衛事業参入企業に対して、事業立ち上げから防衛省への提案支援〜事業実施を一貫してご支援。",
         },
         {
           id: "community",
@@ -591,7 +604,7 @@ export const content: Record<Lang, Dict> = {
           title: "防衛コミュニティ事業",
           subtitle: "スタートアップ ／ 防衛プライム ／ VC・金融 ／ 研究機関",
           description:
-            "防衛ニーズと技術領域を分析、有料コミュニティを設計、企業の防衛事業参入判断をサポート。",
+            "防衛ニーズと技術シーズを分析、防衛特化のコミュニティを通じて、企業の防衛事業参入判断をサポート。",
         },
         {
           id: "incubation",
@@ -599,7 +612,7 @@ export const content: Record<Lang, Dict> = {
           title: "防衛テック創出事業",
           subtitle: "事業領域選定 ／ 起業家マッチング",
           description:
-            "得られた情報・知見から事業空白領域を識別し、起業家の提供と資金供給を支援。",
+            "防衛事業空白領域を識別し、起業家のマッチングや資金供給に関してご支援。",
         },
         {
           id: "investment",
@@ -607,7 +620,7 @@ export const content: Record<Lang, Dict> = {
           title: "防衛投資支援事業",
           subtitle: "投資先候補の判断支援",
           description:
-            "防衛コンサル事業を通じた参入防衛テック企業の情報から投資候補先判断を支援。",
+            "防衛テック・スタートアップ企業等に対する投資判断をご支援。",
         },
       ],
     },
@@ -636,7 +649,7 @@ export const content: Record<Lang, Dict> = {
     },
     news: {
       eyebrow: "04 — ニュース",
-      heading: "お知らせ・ブリーフィング・発表",
+      heading: "お知らせ・分析・解説",
       lede: "会社からのお知らせ、主要な調査・論考、そして防衛・安全保障領域の動向に関する視点をお届けします。",
       viewAll: "すべてのニュースを見る",
       readMore: "続きを読む",
@@ -707,9 +720,16 @@ export const content: Record<Lang, Dict> = {
         "株式会社 BLUE VECTOR(以下「当社」)は、防衛・国家安全保障領域と産業の交差点における事業特性を踏まえ、本お問い合わせフォームを通じて提供される個人情報を、以下の方針に従い慎重に取り扱います。\n\n1. 利用目的\nお預かりした情報は、お問い合わせへのご返信、社内における適切な担当者の特定、および、お客様が希望される場合の後続対応の調整に限り使用いたします。明示的なご同意なくマーケティング目的で利用することはありません。\n\n2. 機密保持\nすべてのお問い合わせは機密情報として取り扱います。やり取りの内容および添付資料は、業務上必要な範囲において、当社の権限を有する担当者のみがアクセスできるものとします。機微な案件については、別途守秘義務契約のもとで対応いたします。\n\n3. 第三者への開示\nお預かりした個人情報を第三者に販売、貸与、開示することはありません。法令に基づく要請、管轄裁判所の命令、またはお客様の書面によるご同意がある場合に限り、開示を行います。\n\n4. 保管期間\nお問い合わせ記録は、収集目的の達成に合理的に必要な期間に限り保管し、その後は当社の文書管理ポリシーに従って削除または匿名化いたします。\n\n5. 安全管理\n防衛関連の機微なやり取りに対し、業界水準に沿った組織的・技術的・物理的な安全管理措置を講じております。\n\n6. お客様の権利\nお客様は、当社が保有する個人情報の開示、訂正、または削除を、inquiries@bluevector.co.jp 宛にご請求いただけます。合理的な期間内にご対応いたします。\n\n7. 準拠法\n本ポリシーは日本法に準拠します。お問い合わせを送信いただくことにより、本プライバシーポリシーをお読みいただきご理解いただいたものとみなします。\n\n最終更新: 2026年4月。",
       privacyAgree: "同意して送信",
       privacyCancel: "キャンセル",
+      modTitle: "防衛省関係者との接触に関する注意事項（お問い合わせ時）",
+      modBody:
+        "当社の活動においては、自衛隊法その他の法令に基づき秘密保護の対象となる情報を取り扱う可能性のある防衛省・自衛隊の現職職員または退職者（以下「防衛省関係者」といいます）と接する場合があります。当社へのお問い合わせに際しては、関係法令・以下の注意事項を遵守いただきますようお願い致します。\n\n防衛省を退職された皆様へ（防衛省）\nhttps://www.mod.go.jp/dih/26d_04_1.pdf\n\n【 要約 】\n\n退職自衛官（元防衛省職員）が負う留意事項\n\n1. ブリーフィングに関する制限\n• 機微情報を扱う部署（情報部署）の職員は、元防衛省職員へのブリーフィングは原則禁止\n• それ以外の職員によるブリーフィングについても、事前許可および実施後の報告が必須\n• ブリーフィングの依頼は、防衛省が指定する窓口を通じて実施\n\n2. 面会に関する管理\n• 情報部署の職員が元防衛省職員と面会する場合、事前許可および結果報告が必要\n• その他の職員であっても、面会結果の報告が必要\n\n3. 不適切な働きかけへの対応\n• 許可されたブリーフィング・面会であっても、不適切または異常な情報提供の働きかけがあった場合は即時中止\n\n4. 退職後も継続する守秘義務\n• 自衛隊法、特定秘密保護法等に基づく守秘義務は、退職後も継続\n• 在職中に知り得た秘密を漏えいした場合、刑事処罰の対象となる可能性（最大10年以下の懲役等）\n\n5. 元職員側の行為に関するリスク\n• 元防衛省職員が、過去の上下関係等を利用して秘密情報の提供を求める行為は、漏えいの教唆として処罰対象となる可能性\n\n6. 現職職員への影響\n• 情報漏えいが発生した場合、現職職員は免職等の重い懲戒処分を受ける可能性があり、業務・生活に重大な影響を及ぼす",
+      modPdfLabel: "参考（防衛省）",
+      modPdfUrl: "https://www.mod.go.jp/dih/26d_04_1.pdf",
+      modAgree: "同意して送信",
+      modCancel: "キャンセル",
     },
     footer: {
-      tagline: "Vectoring the Future of Defence.",
+      tagline: "平和を共創する社会を実現する",
       address:
         "株式会社 BLUE VECTOR ・ 東京都港区南青山1丁目1-1 新青山ビル",
       copyright: "© 2026 BLUE VECTOR Inc. All rights reserved.",

@@ -27,10 +27,13 @@ export default function Contact({
 }) {
   const { t, lang } = useLanguage();
   const c = t.contact;
-  const privacyTitle = lang === "jp" ? privacy.title_jp : privacy.title_en;
-  const privacyBody = lang === "jp" ? privacy.body_jp : privacy.body_en;
-  const privacyAgree = lang === "jp" ? privacy.agree_jp : privacy.agree_en;
-  const privacyCancel = lang === "jp" ? privacy.cancel_jp : privacy.cancel_en;
+  void privacy;
+  const modTitle = c.modTitle;
+  const modBody = c.modBody;
+  const modAgree = c.modAgree;
+  const modCancel = c.modCancel;
+  const modPdfLabel = c.modPdfLabel;
+  const modPdfUrl = c.modPdfUrl;
   const altEyebrowRaw = content[lang === "en" ? "jp" : "en"].contact.eyebrow;
   const eyebrowLabel = c.eyebrow.replace(/^\d{2}\s*[—–-]\s*/, "");
   const altLabel = altEyebrowRaw.replace(/^\d{2}\s*[—–-]\s*/, "");
@@ -243,13 +246,13 @@ export default function Contact({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--rule)]">
-              <span className="text-[10px] tracking-[0.22em] uppercase font-semibold text-[var(--ink-soft)]">
-                {privacyTitle}
+              <span className="text-[12px] md:text-[13px] font-semibold text-(--ink) pr-4">
+                {modTitle}
               </span>
               <button
                 type="button"
                 onClick={() => setShowPrivacy(false)}
-                className="text-[11px] tracking-[0.2em] uppercase text-[var(--ink-soft)] hover:text-[var(--ink)]"
+                className="text-[11px] tracking-[0.2em] uppercase text-[var(--ink-soft)] hover:text-[var(--ink)] shrink-0"
                 aria-label="Close"
               >
                 ×
@@ -257,8 +260,19 @@ export default function Contact({
             </div>
             <div className="px-6 py-6 md:px-10 md:py-8 overflow-y-auto flex-1">
               <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)] whitespace-pre-line">
-                {privacyBody}
+                {modBody}
               </p>
+              <div className="mt-4 text-[12px] tracking-[0.04em] text-ink-muted">
+                {modPdfLabel}:{" "}
+                <a
+                  href={modPdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bv-underline text-(--ink)"
+                >
+                  {modPdfUrl}
+                </a>
+              </div>
             </div>
             <div className="flex flex-wrap gap-3 px-6 py-4 border-t border-[var(--rule)]">
               <button
@@ -266,7 +280,7 @@ export default function Contact({
                 onClick={confirmSubmit}
                 className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--rule-strong)] bg-[var(--invert)] text-[var(--on-invert)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:bg-[var(--surface-hover)] hover:border-[var(--ink)] transition-colors"
               >
-                {privacyAgree}
+                {modAgree}
                 <span aria-hidden>→</span>
               </button>
               <button
@@ -274,7 +288,7 @@ export default function Contact({
                 onClick={() => setShowPrivacy(false)}
                 className="inline-flex items-center gap-3 px-6 py-3 border border-[var(--rule)] text-[var(--ink-soft)] text-[10px] font-semibold tracking-[0.22em] uppercase hover:text-[var(--ink)] hover:border-[var(--rule-strong)] transition-colors"
               >
-                {privacyCancel}
+                {modCancel}
               </button>
             </div>
           </div>

@@ -134,8 +134,8 @@ export default function Team({
               </h1>
               <p className="text-[12px] md:text-[13px] tracking-[0.14em] uppercase text-white/75 max-w-md">
                 {lang === "jp"
-                  ? "現場の経験、防衛への実装。"
-                  : "Operational experience. Defence in practice."}
+                  ? "現場経験に基づく、防衛への実装力"
+                  : "Frontline experience translated into defence implementation."}
               </p>
             </div>
           </div>
