@@ -7,7 +7,17 @@ export const metadata: Metadata = {
   title: "Team",
   description:
     "Founding members of BLUE VECTOR — experienced operators from the Ministry of Defence, the Self-Defence Forces, and the private defence investment sector.",
+  alternates: { canonical: "/team" },
+  openGraph: {
+    title: "Team | BLUE VECTOR",
+    description:
+      "Founding members — operators from the Ministry of Defence, the Self-Defence Forces, and the defence investment sector.",
+    url: "/team",
+    type: "profile",
+  },
 };
+
+export const revalidate = 3600;
 
 export default async function TeamPage() {
   const [rows, images] = await Promise.all([listTeam(), getSiteImages()]);

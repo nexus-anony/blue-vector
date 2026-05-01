@@ -7,7 +7,17 @@ export const metadata: Metadata = {
   title: "News",
   description:
     "News, briefings, and announcements from BLUE VECTOR — firm updates, research perspectives, and commentary on the defence landscape.",
+  alternates: { canonical: "/news" },
+  openGraph: {
+    title: "News | BLUE VECTOR",
+    description:
+      "Firm updates, research perspectives, and commentary on the defence landscape.",
+    url: "/news",
+    type: "website",
+  },
 };
+
+export const revalidate = 600;
 
 export default async function NewsPage() {
   const [rows, images] = await Promise.all([listNews(), getSiteImages()]);

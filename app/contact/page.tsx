@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact BLUE VECTOR for advisory engagements, briefings, and general inquiries.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | BLUE VECTOR",
+    description:
+      "Advisory engagements, briefings, and qualified inquiries.",
+    url: "/contact",
+    type: "website",
+  },
 };
 
 export default async function ContactPage() {

@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "Accessibility",
   description:
     "BLUE VECTOR's accessibility commitment, conformance goals, and feedback channel.",
+  alternates: { canonical: "/accessibility" },
+  robots: { index: true, follow: true },
 };
 
 export default function AccessibilityPage() {

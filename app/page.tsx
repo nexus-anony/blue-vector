@@ -1,5 +1,22 @@
+import type { Metadata } from "next";
 import Hero from "@/app/components/sections/Hero";
 import { getSiteImages } from "@/app/lib/site-images";
+
+export const metadata: Metadata = {
+  title: "Defence & Security Consulting",
+  description:
+    "BLUE VECTOR — a private infrastructure firm vectoring the future of defence. Strategic advisory, community initiatives, technology incubation, and investment support across Japan's defence ecosystem.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "BLUE VECTOR | Defence & Security Consulting",
+    description:
+      "Vectoring the future of defence — strategic advisory, technology incubation, and investment support.",
+    url: "/",
+    type: "website",
+  },
+};
+
+export const revalidate = 3600;
 
 export default async function Home() {
   const images = await getSiteImages();

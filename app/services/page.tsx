@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Four pillars of defence advisory: consulting, community initiatives, technology incubation, and investment support.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Services | BLUE VECTOR",
+    description:
+      "Defence consulting, community initiatives, technology incubation, and investment support.",
+    url: "/services",
+    type: "website",
+  },
 };
 
 export default async function ServicesPage() {

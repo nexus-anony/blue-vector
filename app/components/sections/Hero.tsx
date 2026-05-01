@@ -82,8 +82,11 @@ export default function Hero({ images }: { images: HeroImage[] }) {
               </span>
             </div>
             <h1 className="mb-3 md:mb-4">
+              <span className="sr-only">
+                {hero.headline} — {hero.tagline}
+              </span>
               <span
-                aria-label={hero.headline}
+                aria-hidden
                 className="block overflow-hidden w-56 sm:w-72 md:w-96 lg:w-md xl:w-lg aspect-1264/174"
               >
                 <Image

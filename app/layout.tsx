@@ -1,8 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Jost, Libre_Baskerville, Noto_Sans_JP } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Shell from "@/app/components/Shell";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_LEGAL_NAME,
+  SITE_DESCRIPTION,
+  ORG_JSON_LD,
+  WEBSITE_JSON_LD,
+} from "@/app/lib/seo";
 import "./globals.css";
 
 const sans = Inter({
@@ -33,44 +41,84 @@ const jp = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://blue-vector.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "BLUE VECTOR | Defence & Security",
-    template: "%s | BLUE VECTOR",
+    default: `${SITE_NAME} | Defence & Security Consulting`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "BLUE VECTOR is a private infrastructure firm providing defence and security consulting, strategic advisory, community initiatives, technology incubation, and investment support.",
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
     "BLUE VECTOR",
-    "Defence",
-    "Security",
-    "National Security",
-    "Intelligence Advisory",
-    "Strategic Assessment",
-    "Japan",
-    "Defence Technology",
-    "Defence Investment",
+    "defence consulting",
+    "security consulting",
+    "national security",
+    "intelligence advisory",
+    "strategic assessment",
+    "Japan defence",
+    "defence technology",
+    "defence investment",
+    "防衛コンサルティング",
+    "安全保障",
   ],
-  authors: [{ name: "BLUE VECTOR Inc." }],
+  authors: [{ name: SITE_LEGAL_NAME, url: SITE_URL }],
+  creator: SITE_LEGAL_NAME,
+  publisher: SITE_LEGAL_NAME,
+  category: "Defence & Security",
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/",
+      ja: "/",
+      "x-default": "/",
+    },
+  },
   openGraph: {
-    title: "BLUE VECTOR | Defence & Security Consulting",
+    title: `${SITE_NAME} | Defence & Security Consulting`,
     description:
       "Defence and security consulting and strategic advisory. Supporting defence innovation, policy strategy, and ecosystem development.",
-    url: "https://blue-vector.vercel.app",
-    siteName: "BLUE VECTOR",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "en_US",
+    alternateLocale: ["ja_JP"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BLUE VECTOR | Defence & Security Consulting",
+    title: `${SITE_NAME} | Defence & Security Consulting`,
     description:
       "Defence and security consulting and strategic advisory. Supporting defence innovation, policy strategy, and ecosystem development.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0a1f3d" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a1f3d" },
+  ],
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -80,13 +128,22 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ja"
+      lang="en"
       className={`${sans.variable} ${serif.variable} ${heroFont.variable} ${jp.variable} h-full`}
     >
       <body className="min-h-full bg-[var(--surface)] text-[var(--ink)]">
         <Shell>{children}</Shell>
         <Analytics />
         <SpeedInsights />
+        <script
+          type="application/ld+json"
+          // JSON-LD must be raw JSON; React would otherwise escape quotes.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}
+        />
       </body>
     </html>
   );

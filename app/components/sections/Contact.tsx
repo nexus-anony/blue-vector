@@ -129,7 +129,7 @@ export default function Contact({
                     )}
                   </div>
                 </div>
-                <h1 className="font-display text-[22px] md:text-[28px] lg:text-[34px] leading-[1.2] font-bold tracking-tight mb-4 text-[var(--ink)]">
+                <h2 className="font-display text-[22px] md:text-[28px] lg:text-[34px] leading-[1.2] font-bold tracking-tight mb-4 text-[var(--ink)]">
                   {lang === "jp" ? (
                     <>
                       BLUE VECTOR
@@ -143,7 +143,7 @@ export default function Contact({
                       BLUE VECTOR
                     </>
                   )}
-                </h1>
+                </h2>
                 <p className="text-[13px] leading-[1.8] text-[var(--ink-soft)] max-w-md">
                   {c.lede}
                 </p>
